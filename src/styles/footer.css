@@ -1,0 +1,151 @@
+.site-footer {
+  background: #0f1f3d;
+  color: #c8d3e6;
+  width: 100%;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding: 56px 80px 40px;
+}
+
+.footer-col-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 18px;
+}
+
+.footer-col-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col-list a {
+  color: #c8d3e6;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.footer-col-list a:hover {
+  color: #fff;
+}
+
+.footer-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.footer-logo {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.footer-brand-name {
+  display: block;
+  font-weight: 700;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.footer-brand-sub {
+  display: block;
+  font-size: 0.75rem;
+  color: #9aabc4;
+}
+
+.footer-tagline {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  color: #b8c5da;
+}
+
+.footer-nabl-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.footer-nabl {
+  height: 48px;
+  width: auto;
+}
+
+.footer-nabl-text {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: #9aabc4;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 10px;
+}
+
+.social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c8d3e6;
+  transition: background 0.2s, color 0.2s;
+}
+
+.social-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+.footer-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 18px 80px;
+  text-align: center;
+}
+
+.footer-copy {
+  font-size: 0.82rem;
+  color: #8fa0bc;
+}
+
+@media (max-width: 980px) {
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    padding: 40px 32px 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    padding: 32px 20px 24px;
+  }
+
+  .footer-bottom {
+    padding: 16px 20px;
+  }
+}

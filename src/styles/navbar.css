@@ -1,0 +1,396 @@
+/* =============================================
+   SITE HEADER — sticky base + fixed-on-scroll
+   ============================================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  width: 100%;
+}
+
+.site-header.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to   { transform: translateY(0); }
+}
+
+/* =============================================
+   NAVBAR BASE
+   ============================================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem var(--section-pad-x);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 255, 255, 0.96) 100%
+  );
+  border-bottom: 1px solid var(--border);
+  width: 100%;
+}
+
+/* =============================================
+   LOGO
+   ============================================= */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  flex-shrink: 0;
+  min-height: 52px;
+  z-index: 2;
+}
+
+.nav-logo-img {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.nav-brand-text {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  max-width: 180px;
+}
+
+/* =============================================
+   HAMBURGER TOGGLE
+   ============================================= */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border: 1px solid rgba(26, 60, 107, 0.12);
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+  z-index: 600;
+  flex-shrink: 0;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* =============================================
+   DESKTOP NAV LINKS
+   ============================================= */
+.nav-links--desktop {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.nav-links--desktop li a {
+  display: block;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav-links--desktop li a:hover,
+.nav-links--desktop li a.active {
+  color: var(--primary);
+}
+
+.nav-links--desktop li a.active:not(.enquiry-btn) {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.nav-links--desktop li a.enquiry-btn {
+  background: var(--primary);
+  color: var(--white) !important;
+  border-radius: 6px;
+  padding: 8px 18px;
+  margin-left: 6px;
+  text-decoration: none !important;
+}
+
+.nav-links--desktop li a.enquiry-btn:hover,
+.nav-links--desktop li a.enquiry-btn.active {
+  background: var(--primary-light);
+  color: var(--white) !important;
+}
+
+/* =============================================
+   TABLET TWEAKS (desktop links only)
+   ============================================= */
+@media (max-width: 1024px) {
+  .nav-brand-text {
+    max-width: 140px;
+    font-size: 0.88rem;
+  }
+
+  .nav-links--desktop li a {
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+}
+
+/* =============================================
+   MOBILE — show toggle, hide desktop links
+   ============================================= */
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0.65rem 1.25rem;
+  }
+
+  .nav-toggle {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .nav-brand-text {
+    display: block;
+    max-width: 120px;
+    font-size: 0.82rem;
+  }
+
+  .nav-logo-img {
+    height: 46px;
+  }
+
+  /* Hide desktop links entirely on mobile */
+  .nav-links--desktop {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-brand-text {
+    display: none;
+  }
+
+  .nav-logo-img {
+    height: 42px;
+  }
+}
+
+/* =============================================
+   MOBILE OVERLAY (dark backdrop)
+   ============================================= */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 550;
+  transition: background 0.35s ease;
+}
+
+@media (max-width: 900px) {
+  .nav-overlay {
+    display: block;
+    pointer-events: none;
+  }
+
+  .nav-overlay.is-visible {
+    background: rgba(0, 0, 0, 0.45);
+    pointer-events: auto;
+  }
+}
+
+/* =============================================
+   MOBILE DRAWER PANEL
+   ============================================= */
+.nav-drawer {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100dvh;         /* dynamic viewport height */
+  width: min(75vw, 300px);
+  background: #ffffff;
+  z-index: 600;
+  flex-direction: column;
+  align-items: stretch;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.12);
+  will-change: transform;
+}
+
+@media (max-width: 900px) {
+  .nav-drawer {
+    display: flex;
+  }
+
+  .nav-drawer.is-open {
+    transform: translateX(0);
+  }
+}
+
+/* =============================================
+   DRAWER HEADER (logo + close btn row)
+   ============================================= */
+.nav-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  flex-shrink: 0;
+}
+
+.nav-drawer-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav-drawer-logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Close (X) button */
+.nav-drawer-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(26, 60, 107, 0.15);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-dark, #1a3c6b);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease,
+              border-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.nav-drawer-close:hover {
+  background: rgba(26, 60, 107, 0.08);
+  border-color: var(--primary, #1a3c6b);
+  color: var(--primary, #1a3c6b);
+  transform: rotate(90deg);
+}
+
+.nav-drawer-close:active {
+  transform: rotate(90deg) scale(0.9);
+}
+
+/* =============================================
+   DRAWER DIVIDER
+   ============================================= */
+.nav-drawer-divider {
+  height: 1px;
+  background: rgba(26, 60, 107, 0.08);
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* =============================================
+   DRAWER NAV LINKS
+   ============================================= */
+.nav-drawer-links {
+  list-style: none;
+  margin: 0;
+  padding: 1rem 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+}
+
+/* Regular drawer link */
+.nav-drawer-links li a.drawer-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark, #1a1a2e);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  border-radius: 10px;
+  background: transparent;
+  transition: background 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+}
+
+.nav-drawer-links li a.drawer-link:hover {
+  background: rgba(26, 60, 107, 0.06);
+  color: var(--primary, #1a3c6b);
+  padding-left: 20px;
+}
+
+.nav-drawer-links li a.drawer-link.active {
+  background: rgba(26, 60, 107, 0.09);
+  color: var(--primary, #1a3c6b);
+  border-left: 3px solid var(--primary, #1a3c6b);
+}
+
+/* Enquiry / CTA button inside drawer */
+.nav-drawer-links li a.drawer-enquiry-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 13px 14px;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  border-radius: 10px;
+  background: var(--primary, #1a3c6b);
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.nav-drawer-links li a.drawer-enquiry-btn:hover {
+  background: var(--primary-light, #2a5299);
+  transform: translateY(-1px);
+}
+
+.nav-drawer-links li a.drawer-enquiry-btn:active {
+  transform: translateY(0);
+}
+
+/* =============================================
+   BODY SCROLL LOCK WHEN MENU IS OPEN
+   ============================================= */
+body.nav-menu-open {
+  overflow: hidden;
+}

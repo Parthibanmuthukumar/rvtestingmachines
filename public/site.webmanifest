@@ -1,0 +1,18 @@
+{
+  "name": "RV Testing Machines",
+  "short_name": "RVTM",
+  "description": "ISO/IEC 17025 accredited material testing and calibration laboratory",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a3c6b",
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

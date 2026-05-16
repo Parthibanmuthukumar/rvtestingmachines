@@ -1,0 +1,181 @@
+.prem-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #1a1a2e;
+}
+
+.prem-hero-text {
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  bottom: 0;
+  padding: 72px 60px 120px;
+  max-width: 680px;
+  color: #fff;
+}
+
+.prem-hero-eyebrow {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.prem-hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+
+.prem-hero-title-line {
+  display: block;
+}
+
+.prem-hero-sub {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 28px;
+  max-width: 420px;
+}
+
+.prem-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.prem-btn-primary,
+.prem-btn-secondary {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.prem-btn-primary {
+  background: var(--accent);
+  color: var(--text-dark);
+}
+
+.prem-btn-primary:hover {
+  background: #f0c040;
+}
+
+.prem-btn-secondary {
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.prem-btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.prem-slider-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+.prem-slider-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding: var(--slider-gap-y) 0;
+  box-sizing: border-box;
+}
+
+.prem-slide-img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--slider-gap-y);
+  bottom: var(--slider-gap-y);
+  width: 100%;
+  height: calc(100% - (var(--slider-gap-y) * 2));
+  object-fit: cover;
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.prem-slide-img.active {
+  opacity: 1;
+}
+
+.prem-slider-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.55) 0%, transparent 70%);
+  z-index: 1;
+}
+
+.prem-arrow-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 36px;
+  transform: translateX(-50%);
+  z-index: 6;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  transition: background 0.2s;
+}
+
+.prem-arrow-btn:hover {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.prem-dots {
+  position: absolute;
+  bottom: 100px;
+  left: 60px;
+  z-index: 6;
+  display: flex;
+  gap: 10px;
+}
+
+.prem-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.prem-dot.active {
+  background: #fff;
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .prem-hero-text {
+    padding: 48px 24px 100px;
+  }
+
+  .prem-dots {
+    left: 24px;
+    bottom: 88px;
+  }
+}

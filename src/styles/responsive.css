@@ -1,0 +1,107 @@
+/* ===== GLOBAL RESPONSIVE ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.site-wrapper {
+  overflow-x: hidden;
+}
+
+.inner-page,
+.about-page,
+.home-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+.page-hero-content h1,
+.about-hero-content h1 {
+  word-wrap: break-word;
+}
+
+/* Inner pages — consistent mobile spacing */
+@media (max-width: 768px) {
+  .page-intro,
+  .page-category-band,
+  .product-showcase,
+  .consultation-slider-section,
+  .consultation-cards,
+  .consultation-stats,
+  .consultation-gallery,
+  .service-block,
+  .calibration-section,
+  .contact-section,
+  .about-ceo,
+  .about-overview,
+  .about-research,
+  .about-why,
+  .about-partners,
+  .about-highlights {
+    padding-left: var(--section-pad-x);
+    padding-right: var(--section-pad-x);
+  }
+
+  .product-showcase-inner {
+    gap: 1.75rem;
+  }
+
+  .product-showcase-content h2,
+  .service-block-text h2,
+  .about-overview-text h2 {
+    font-size: clamp(1.35rem, 5vw, 1.75rem);
+  }
+
+  .contact-form-wrap {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .contact-submit {
+    width: 100%;
+    text-align: center;
+  }
+
+  .section-heading {
+    font-size: clamp(1.45rem, 5vw, 1.85rem);
+  }
+
+  .research-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-highlights {
+    padding-left: var(--section-pad-x);
+    padding-right: var(--section-pad-x);
+  }
+}
+
+@media (max-width: 480px) {
+  .prem-hero-text {
+    padding: 48px 1.25rem 100px;
+  }
+
+  .prem-hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .prem-btn-primary,
+  .prem-btn-secondary {
+    text-align: center;
+  }
+
+  .home-expertise__tags li {
+    font-size: 0.72rem;
+  }
+}
