@@ -4,7 +4,7 @@ import mega from '../assets/images/MEGA-11-350-SD.png';
 import up50 from '../assets/images/UP-50-HK-2-DH.png';
 
 export const productsIntro =
-  'RV Testing Machines delivers precision material testing equipment for rubber, polymers, and metals — backed by accredited calibration, expert consultation, and nationwide technical support.';
+  'RV Private Limited delivers precision material testing machines and equipment for rubber, plastics, metals, and other materials like wood, ceramic, glass, and textiles.';
 
 export const productItems = [
   {
@@ -38,7 +38,7 @@ export const productItems = [
   {
     id: 'metal-utm',
     category: 'Metal Testing',
-    title: 'MEGA-11 Universal Testing Machine',
+    title: 'Universal Testing Machine',
     description:
       'Robust universal testing machine for tensile, compression, bend, and shear testing on metals, alloys, and structural materials in industrial environments.',
     image: mega,
@@ -52,7 +52,7 @@ export const productItems = [
   {
     id: 'metal-hardness',
     category: 'Metal Testing',
-    title: 'UP-50 Precision Hardness System',
+    title: 'Precision Hardness Testing System',
     description:
       'Premium hardness testing solution for metals and engineered components, supporting reliable surface hardness evaluation across manufacturing sectors.',
     image: up50,

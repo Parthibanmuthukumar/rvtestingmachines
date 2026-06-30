@@ -1,4 +1,4 @@
-export function BrandLogoMark({ logoSrc, title = 'RV TESTING MACHINES', subtitle }) {
+export function BrandLogoMark({ logoSrc, title = 'RV PRIVATE LIMITED', subtitle }) {
   return (
     <div className="brand-logo-mark">
       <div className="brand-logo-mark__frame">

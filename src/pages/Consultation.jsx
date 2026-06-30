@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { Sliders, ClipboardCheck, Award, Eye } from 'lucide-react';
 import { PageHero } from '../components/shared/PageHero';
 import { ImageSlider } from '../components/shared/ImageSlider';
 import { GlobalPartners } from '../components/shared/GlobalPartners';
@@ -11,6 +12,8 @@ import {
   consultationGallery,
 } from '../data/consultationData';
 
+const highlightIcons = [Sliders, ClipboardCheck, Award, Eye];
+
 export default function Consultation() {
   return (
     <main id="main-content" className="inner-page">
@@ -18,11 +21,7 @@ export default function Consultation() {
         eyebrow="Expert Guidance"
         title="Consultation"
         subtitle={consultationIntro}
-      >
-        <Link to="/contact" className="about-cta-btn" style={{ marginTop: 20 }}>
-          Book a Consultation
-        </Link>
-      </PageHero>
+      />
 
       <section className="consultation-slider-section">
         <ScrollAnimation>
@@ -32,15 +31,26 @@ export default function Consultation() {
         </ScrollAnimation>
       </section>
 
-      <div className="consultation-cards">
-        {consultationHighlights.map((item) => (
-          <ScrollAnimation key={item.title}>
-            <article className="consultation-card">
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-            </article>
-          </ScrollAnimation>
-        ))}
+      <div className="consultation-cards-container">
+        {consultationHighlights.map((item, idx) => {
+          const Icon = highlightIcons[idx] || Sliders;
+          return (
+            <ScrollAnimation key={item.title}>
+              <motion.article
+                className="consultation-card-premium"
+                whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              >
+                <div className="card-accent-line" />
+                <div className="card-icon-wrapper">
+                  <Icon size={24} className="card-icon" />
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </motion.article>
+            </ScrollAnimation>
+          );
+        })}
       </div>
 
       <section className="consultation-stats" aria-label="Company highlights">

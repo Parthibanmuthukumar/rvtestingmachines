@@ -125,12 +125,10 @@
 }
 
 .about-overview-inner {
-  display: grid;
-  grid-template-columns: 1fr 1.1fr;
-  gap: var(--section-gap);
-  align-items: center;
-  max-width: var(--container-max);
+  display: block;
+  max-width: 800px;
   margin: 0 auto;
+  text-align: left;
 }
 
 .about-overview-text h2 {
@@ -148,9 +146,10 @@
 .overview-list {
   margin: 20px 0 28px;
   padding-left: 20px;
+  text-align: left;
 }
 
-/* About RV Testing Machines — company logo showcase */
+/* About RV Private Limited — company logo showcase */
 .about-company-logo {
   display: flex;
   flex-direction: column;
@@ -262,12 +261,11 @@
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid rgba(26, 60, 107, 0.08);
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.3s, transform 0.3s;
+  box-shadow: none;
+  transition: transform 0.3s;
 }
 
 .principle-card:hover {
-  box-shadow: var(--shadow-md);
   transform: translateY(-3px);
 }
 
@@ -305,12 +303,10 @@
 }
 
 .about-why-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--section-gap);
-  max-width: var(--container-max);
+  display: block;
+  max-width: 800px;
   margin: 0 auto;
-  align-items: center;
+  text-align: left;
 }
 
 .why-intro {
@@ -324,6 +320,8 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  text-align: left;
+  margin: 0;
 }
 
 .why-list li {
@@ -424,14 +422,53 @@
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-mid);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease;
 }
 
 .partner-tag:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
   color: var(--primary);
+}
+
+/* ===== ABOUT PAGE — ANIMATION ENHANCEMENTS ===== */
+.highlight-card {
+  transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.35s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(26, 60, 107, 0.15);
+}
+
+.principle-card {
+  transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.why-number {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.why-list li:hover .why-number {
+  transform: scale(1.15);
+  color: var(--primary);
+}
+
+.about-cta-btn {
+  transition: background 0.3s ease, transform 0.25s ease;
+}
+
+.about-cta-btn:hover {
+  transform: translateY(-2px);
+}
+
+.partner-tag {
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.3s ease, background-color 0.3s ease;
+}
+
+.partner-tag:hover {
+  transform: translateY(-3px) scale(1.03);
+  color: var(--primary);
+  background-color: rgba(26, 60, 107, 0.03);
 }
 
 @media (max-width: 980px) {

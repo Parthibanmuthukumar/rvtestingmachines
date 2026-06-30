@@ -10,9 +10,9 @@ const Footer = () => (
       {/* Col 1: Brand */}
       <div className="footer-col footer-col-brand">
         <div className="footer-brand-header">
-          <img src={logoPdf} alt="RV Testing Machines" className="footer-logo" />
+          <img src={logoPdf} alt="RV Private Limited" className="footer-logo" />
           <div className="footer-brand-text">
-            <span className="footer-brand-name">RV Testing Machines</span>
+            <span className="footer-brand-name">RV Private Limited</span>
             <span className="footer-brand-sub">ISO/IEC 17025 Accredited Lab</span>
           </div>
         </div>
@@ -87,7 +87,7 @@ const Footer = () => (
     </div>
 
     <div className="footer-bottom">
-      <p className="footer-copy">© {new Date().getFullYear()} RV Testing Machines Pvt. Ltd. All rights reserved.</p>
+      <p className="footer-copy">© {new Date().getFullYear()} RV Private Limited All rights reserved.</p>
     </div>
 
   </footer>

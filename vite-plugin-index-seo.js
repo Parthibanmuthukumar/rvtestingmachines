@@ -35,7 +35,7 @@ export function indexSeoPlugin() {
             {
               '@context': 'https://schema.org',
               '@type': 'Organization',
-              name: 'RV Testing Machines',
+              name: 'RV Private Limited',
               keywordCount: keywords.length,
               knowsAbout: keywords,
             },

@@ -46,8 +46,8 @@ export function buildIndexSeoHtml(keywords) {
       {
         '@type': 'Organization',
         '@id': 'https://www.rvtestingmachines.com/#organization',
-        name: 'RV Testing Machines Pvt. Ltd.',
-        alternateName: 'RV Testing Machines',
+        name: 'RV Private Limited',
+        alternateName: 'RV Private Limited',
         url: 'https://www.rvtestingmachines.com/',
         description:
           'NABL-oriented material testing machines, universal testing systems, rubber and metal testing equipment, calibration and technical support across India.',
@@ -56,14 +56,14 @@ export function buildIndexSeoHtml(keywords) {
       {
         '@type': 'WebSite',
         '@id': 'https://www.rvtestingmachines.com/#website',
-        name: 'RV Testing Machines',
+        name: 'RV Private Limited',
         url: 'https://www.rvtestingmachines.com/',
         inLanguage: 'en-IN',
       },
     ],
   };
 
-  return `    <!-- SEO: ${keywords.length} researched keywords — RV Testing Machines -->
+  return `    <!-- SEO: ${keywords.length} researched keywords — RV Private Limited -->
     <meta name="keywords" content="${escapedMeta}" />
     <meta name="keywords-total" content="${keywords.length}" />
     <script type="application/ld+json" id="index-seo-keywords">

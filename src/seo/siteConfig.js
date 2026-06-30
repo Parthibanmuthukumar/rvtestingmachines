@@ -3,11 +3,11 @@ export const SITE_URL = (
   import.meta.env.VITE_SITE_URL || 'https://www.rvtestingmachines.com'
 ).replace(/\/$/, '');
 
-export const SITE_NAME = 'RV Testing Machines';
-export const SITE_LEGAL_NAME = 'RV Testing Machines Pvt. Ltd.';
+export const SITE_NAME = 'RV Private Limited';
+export const SITE_LEGAL_NAME = 'RV Private Limited';
 export const SITE_TAGLINE = 'ISO/IEC 17025 Accredited Material Testing & Calibration Laboratory';
 export const DEFAULT_DESCRIPTION =
-  'RV Testing Machines — NABL accredited material testing, universal testing machines, rubber & metal testing equipment, calibration and technical support across India since 2004.';
+  'RV Private Limited — NABL accredited material testing, universal testing machines, rubber & metal testing equipment, calibration and technical support across India since 2004.';
 /** Fallback; per-page keywords come from src/seo/keywords.js (800+ terms) */
 export const DEFAULT_KEYWORDS =
   'RV testing machines, material testing machines India, NABL calibration, universal testing machine, rubber testing equipment';

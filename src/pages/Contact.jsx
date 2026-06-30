@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { PageHero } from '../components/shared/PageHero';
 import { GlobalPartners } from '../components/shared/GlobalPartners';
 import ScrollAnimation from '../components/ScrollAnimation';
+import { CONTACT } from '../seo/siteConfig';
 
 const initialForm = {
   name: '',
@@ -31,6 +32,18 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const subjectLine = form.subject || 'Website Contact Inquiry';
+    const emailBody = `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone || 'N/A'}\n\nMessage:\n${form.message}`;
+
+    // Gmail Web Compose URL
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT.email}&su=${encodeURIComponent(
+      subjectLine
+    )}&body=${encodeURIComponent(emailBody)}`;
+
+    // Open Gmail compose directly in a new browser tab
+    window.open(gmailUrl, '_blank');
+
     setSubmitted(true);
     setForm(initialForm);
   };
@@ -49,21 +62,21 @@ export default function Contact() {
             <div className="contact-info">
               <h2>We&apos;re Here to Help</h2>
               <p>
-                Contact RV Testing Machines for sales, service, calibration, and expert guidance on
+                Contact RV Private Limited for sales, service, calibration, and expert guidance on
                 material testing solutions.
               </p>
               <div className="contact-cards">
                 <div className="contact-card">
                   <strong>Address</strong>
-                  <span>Chennai, Tamil Nadu, India</span>
+                  <span>{CONTACT.address.streetAddress}, {CONTACT.address.addressLocality}, {CONTACT.address.addressRegion}, India</span>
                 </div>
                 <div className="contact-card">
                   <strong>Phone</strong>
-                  <a href="tel:+919876543210">+91 98765 43210</a>
+                  <a href={`tel:${CONTACT.phone.replace(/[-\s]/g, '')}`}>{CONTACT.phone}</a>
                 </div>
                 <div className="contact-card">
                   <strong>Email</strong>
-                  <a href="mailto:info@rvtestingmachines.com">info@rvtestingmachines.com</a>
+                  <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
                 </div>
                 <div className="contact-card">
                   <strong>Working Hours</strong>
@@ -78,7 +91,7 @@ export default function Contact() {
               <h3>Send Us a Message</h3>
               {submitted ? (
                 <p className="form-success" role="status">
-                  Thank you! Your message has been received. We will contact you shortly.
+                  Thank you! Redirecting you to Gmail to send your message...
                 </p>
               ) : null}
               <form className="contact-form" onSubmit={handleSubmit}>
@@ -96,7 +109,7 @@ export default function Contact() {
                     />
                   </label>
                   <label>
-                    Work Email
+                    Your Email
                     <input
                       type="email"
                       name="email"
@@ -121,7 +134,7 @@ export default function Contact() {
                     />
                   </label>
                   <label>
-                    Enquiry Type
+                    Subject
                     <input
                       type="text"
                       name="subject"

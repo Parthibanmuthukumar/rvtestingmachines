@@ -88,7 +88,7 @@ video {
 
 @media (max-width: 480px) {
   .prem-hero-text {
-    padding: 48px 1.25rem 100px;
+    padding: 60px 1.25rem;
   }
 
   .prem-hero-ctas {
@@ -101,7 +101,7 @@ video {
     text-align: center;
   }
 
-  .home-expertise__tags li {
+  .marquee-tag {
     font-size: 0.72rem;
   }
 }

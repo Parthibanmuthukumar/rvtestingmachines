@@ -60,7 +60,7 @@ export function SeoManager() {
     upsertMeta('name', 'description', description);
     upsertMeta('name', 'keywords', keywords);
     upsertMeta('name', 'coverage', 'India');
-    upsertMeta('name', 'subject', 'Material testing machines, calibration, RV Testing Machines');
+    upsertMeta('name', 'subject', 'Material testing machines, calibration, RV Private Limited');
     upsertMeta('name', 'author', SITE_NAME);
     upsertMeta('name', 'robots', 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1');
     upsertMeta('name', 'googlebot', 'index, follow');

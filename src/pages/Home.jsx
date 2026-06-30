@@ -28,7 +28,7 @@ const featureCards = [
     src: featureImg1,
     alt: 'Material testing equipment',
     title: 'Material Testing',
-    text: 'Universal testing systems for tensile, compression, and quality validation across industrial applications.',
+    text: 'Universal testing machines for tensile, compression, and quality validation and for various industrial applications.',
   },
   {
     src: featureImg2,
@@ -125,6 +125,10 @@ export default function Home() {
     }, 5000);
   };
 
+  const half = Math.ceil(HOME_EXPERTISE_TAGS.length / 2);
+  const row1Tags = HOME_EXPERTISE_TAGS.slice(0, half);
+  const row2Tags = HOME_EXPERTISE_TAGS.slice(half);
+
   return (
     <main id="main-content" className="home-page">
       <section ref={heroSectionRef} id="home" className="prem-hero">
@@ -186,18 +190,18 @@ export default function Home() {
           <ScrollAnimation>
             <HomeBrandLogo
               logoSrc={logoPdf}
-              title="RV TESTING MACHINES"
+              title="RV PRIVATE LIMITED"
               subtitle="ISO/IEC 17025 Accredited Calibration Laboratory"
             />
           </ScrollAnimation>
           <ScrollAnimation>
             <div className="description-box">
               <h2 id="home-brand-heading" className="sr-only">
-                About RV Testing Machines
+                About RV Private Limited
               </h2>
               <p>
                 With over 20 years of expertise in the sales, service, and calibration of material
-                testing machines in India, <strong>RV Testing Machines</strong> is a trusted partner for
+                testing machines in India, <strong>RV Private Limited</strong> is a trusted partner for
                 universal testing machines (UTM), rubber and metal testing equipment, hardness testers,
                 durometers, and ISO/IEC 17025 accredited calibration. We serve automotive, aerospace,
                 construction, polymer, and quality laboratories with precision instruments, installation,
@@ -211,13 +215,26 @@ export default function Home() {
             </div>
           </ScrollAnimation>
         </div>
-        <div className="home-expertise">
+        <div className="home-expertise-section">
           <p className="home-expertise__label">Areas of expertise</p>
-          <ul className="home-expertise__tags" aria-label="Material testing and calibration services">
-            {HOME_EXPERTISE_TAGS.map((tag) => (
-              <li key={tag}>{tag}</li>
-            ))}
-          </ul>
+          <div className="marquee-wrapper">
+            <div className="marquee-track marquee-track--left">
+              {row1Tags.map((tag, idx) => (
+                <span key={`r1-${idx}`} className="marquee-tag">{tag}</span>
+              ))}
+              {row1Tags.map((tag, idx) => (
+                <span key={`r1-dup-${idx}`} className="marquee-tag">{tag}</span>
+              ))}
+            </div>
+            <div className="marquee-track marquee-track--right">
+              {row2Tags.map((tag, idx) => (
+                <span key={`r2-${idx}`} className="marquee-tag">{tag}</span>
+              ))}
+              {row2Tags.map((tag, idx) => (
+                <span key={`r2-dup-${idx}`} className="marquee-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

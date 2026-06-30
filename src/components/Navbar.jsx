@@ -47,10 +47,12 @@ const Navbar = () => {
     return () => document.body.classList.remove('nav-menu-open');
   }, [menuOpen]);
 
-  // Detect scroll to toggle fixed header
+  // Toggle scrolled class when user scrolls down
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 0);
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -58,18 +60,29 @@ const Navbar = () => {
   const closeMenu = () => setMenuOpen(false);
   const toggleMenu = () => setMenuOpen((open) => !open);
 
+  const handleNavClick = (e, to) => {
+    closeMenu();
+    if (pathname === to) {
+      e.preventDefault(); // Prevent route reload/update if already active
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   return (
     <>
-      <header className={`site-header${scrolled ? ' fixed' : ''}`}>
+      <header className={`site-header${scrolled ? ' scrolled' : ''}`}>
         <nav className="navbar" aria-label="Main navigation">
           <NavLink
             to="/"
             className="nav-logo"
-            aria-label="RV Testing Machines — Home"
-            onClick={closeMenu}
+            aria-label="RV Private Limited — Home"
+            onClick={(e) => handleNavClick(e, '/')}
           >
             <img src={logoPdf} alt="" className="nav-logo-img" />
-            <span className="nav-brand-text">RV Testing Machines</span>
+            <span className="nav-brand-text">RV Private Limited</span>
           </NavLink>
 
           <button
@@ -97,6 +110,7 @@ const Navbar = () => {
                     const base = item.enquiry ? 'enquiry-btn' : '';
                     return isActive ? `${base} active`.trim() : base;
                   }}
+                  onClick={(e) => handleNavClick(e, item.to)}
                 >
                   {item.label}
                 </NavLink>
@@ -126,9 +140,9 @@ const Navbar = () => {
           <NavLink
             to="/"
             className="nav-drawer-logo"
-            onClick={closeMenu}
+            onClick={(e) => handleNavClick(e, '/')}
           >
-            <img src={logoPdf} alt="RV Testing Machines" className="nav-drawer-logo-img" />
+            <img src={logoPdf} alt="RV Private Limited" className="nav-drawer-logo-img" />
           </NavLink>
           <button
             type="button"
@@ -154,7 +168,7 @@ const Navbar = () => {
                   const base = item.enquiry ? 'drawer-enquiry-btn' : 'drawer-link';
                   return isActive ? `${base} active` : base;
                 }}
-                onClick={closeMenu}
+                onClick={(e) => handleNavClick(e, item.to)}
               >
                 {item.label}
               </NavLink>

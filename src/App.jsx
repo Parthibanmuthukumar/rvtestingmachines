@@ -29,8 +29,8 @@ function App() {
         {showSplash && (
           <div className="splash-section">
             <div className="splash-content">
-              <img src={logoPdf} alt="RV Testing Machines" className="splash-logo" />
-              <div className="splash-title">RV TESTING MACHINES</div>
+              <img src={logoPdf} alt="RV Private Limited" className="splash-logo" />
+              <div className="splash-title">RV PRIVATE LIMITED</div>
             </div>
           </div>
         )}

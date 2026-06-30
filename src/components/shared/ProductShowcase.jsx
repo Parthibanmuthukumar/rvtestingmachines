@@ -37,9 +37,6 @@ export function ProductShowcase({ product, reverse = false }) {
                 ))}
               </ul>
             ) : null}
-            <Link to="/contact" className="about-cta-btn">
-              Learn More
-            </Link>
           </div>
         </ScrollAnimation>
       </div>

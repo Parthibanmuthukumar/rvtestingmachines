@@ -56,15 +56,14 @@
   overflow: hidden;
   background: #fff;
   border: 1px solid rgba(26, 60, 107, 0.08);
-  box-shadow: var(--shadow-md);
+  box-shadow: none;
   margin-top: var(--media-my);
   margin-bottom: var(--media-my);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .media-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 .media-card img,
@@ -108,7 +107,7 @@
   padding: 0.65rem;
   background: linear-gradient(145deg, #fff 0%, #f3f6fa 100%);
   border: 1px solid rgba(26, 60, 107, 0.1);
-  box-shadow: var(--shadow-md);
+  box-shadow: none;
   display: flex;
   align-items: center;
   justify-content: center;

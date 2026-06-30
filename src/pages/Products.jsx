@@ -26,7 +26,7 @@ export default function Products() {
           <div className="page-intro-inner">
             <p>
               Explore our precision testing solutions for rubber, elastomers, and metals — engineered
-              for laboratories, manufacturing units, and quality teams that demand accredited performance.
+              to support laboratories, manufacturing units, and quality teams that demand accredited performance.
             </p>
           </div>
         </ScrollAnimation>
@@ -46,7 +46,7 @@ export default function Products() {
       <section className="page-category-band">
         <ScrollAnimation>
           <h2>Metal Testing</h2>
-          <p>Universal testing machines and precision hardness systems</p>
+          <p>Universal testing machines and precision hardness testing systems</p>
         </ScrollAnimation>
       </section>
 

@@ -4,33 +4,50 @@
   min-height: 100vh;
   overflow: hidden;
   background: #1a1a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .prem-hero-text {
-  position: absolute;
+  position: relative;
   z-index: 5;
-  left: 0;
-  bottom: 0;
-  padding: 72px 60px 120px;
-  max-width: 680px;
+  padding: 100px 24px;
+  max-width: 880px;
   color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .prem-hero-eyebrow {
-  display: block;
+  display: inline-block;
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px 18px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .prem-hero-title {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 800;
-  line-height: 1.05;
-  margin-bottom: 16px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+  letter-spacing: -0.01em;
 }
 
 .prem-hero-title-line {
@@ -38,47 +55,59 @@
 }
 
 .prem-hero-sub {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.88);
-  margin-bottom: 28px;
-  max-width: 420px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.92);
+  margin-bottom: 36px;
+  max-width: 620px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
 .prem-hero-ctas {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 16px;
 }
 
 .prem-btn-primary,
 .prem-btn-secondary {
   display: inline-block;
-  padding: 12px 24px;
-  border-radius: 4px;
-  font-size: 0.9rem;
+  padding: 14px 32px;
+  border-radius: 30px; /* Pill shaped */
+  font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .prem-btn-primary {
   background: var(--accent);
   color: var(--text-dark);
+  box-shadow: 0 4px 15px rgba(240, 192, 64, 0.25);
 }
 
 .prem-btn-primary:hover {
-  background: #f0c040;
+  background: #f5cb5c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(240, 192, 64, 0.4);
 }
 
 .prem-btn-secondary {
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(255, 255, 255, 0.08);
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .prem-btn-secondary:hover {
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.55);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .prem-slider-wrap {
@@ -116,7 +145,7 @@
 .prem-slider-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.55) 0%, transparent 70%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.5) 100%);
   z-index: 1;
 }
 
@@ -147,9 +176,11 @@
 .prem-dots {
   position: absolute;
   bottom: 100px;
-  left: 60px;
+  left: 0;
+  right: 0;
   z-index: 6;
   display: flex;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -171,11 +202,49 @@
 
 @media (max-width: 768px) {
   .prem-hero-text {
-    padding: 48px 24px 100px;
+    padding: 80px 16px;
   }
 
   .prem-dots {
-    left: 24px;
     bottom: 88px;
   }
 }
+
+/* ===== HERO ANIMATION ENHANCEMENTS ===== */
+.prem-hero-eyebrow {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.prem-hero-title {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+.prem-hero-sub {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+.prem-hero-ctas {
+  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both;
+}
+
+.prem-dot {
+  transition: background 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+
+.prem-dot.active {
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.prem-dot:hover {
+  transform: scale(1.3);
+}
+
+.prem-arrow-btn {
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.prem-arrow-btn:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transform: translateX(-50%) translateY(-2px);
+}
+
