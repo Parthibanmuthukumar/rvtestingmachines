@@ -137,16 +137,34 @@
   margin-bottom: 16px;
 }
 
-.about-overview-text p,
-.overview-list {
+.about-overview-text p {
   color: var(--text-mid);
   line-height: 1.85;
 }
 
 .overview-list {
   margin: 20px 0 28px;
-  padding-left: 20px;
+  padding: 0;
+  list-style: none;
   text-align: left;
+}
+
+.overview-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  color: var(--text-mid);
+  line-height: 1.85;
+}
+
+.overview-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: -2px;
+  color: var(--accent);
+  font-size: 1.4rem;
+  line-height: 1;
 }
 
 /* About RV Private Limited — company logo showcase */
@@ -472,20 +490,8 @@
 }
 
 @media (max-width: 980px) {
-  .about-overview-inner,
   .about-why-inner {
     grid-template-columns: 1fr;
-  }
-
-  .about-overview-inner {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .about-company-logo {
-    order: -1;
-    max-width: 360px;
-    margin: 0 auto 1.5rem;
   }
 
   .about-highlights,
