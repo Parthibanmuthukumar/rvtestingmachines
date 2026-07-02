@@ -81,7 +81,7 @@ const Footer = () => (
           <li>
             <span className="footer-icon">💬</span>
             <a
-              href={`https://wa.me/${CONTACT.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hi, I am interested in RV Testing Machines and would like to make an enquiry.')}`}
+              href={`https://wa.me/${CONTACT.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello RV TESTING MACHINES PRIVATE LIMITED, I would like to enquire about your material testing machines and NABL accredited calibration services. Please connect with me to discuss our requirements.')}`}
               target="_blank"
               rel="noopener noreferrer"
             >
