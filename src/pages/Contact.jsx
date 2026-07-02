@@ -93,7 +93,7 @@ export default function Contact() {
                 material testing solutions.
               </p>
               <div className="contact-cards">
-                <div className="contact-card address-card-container">
+                <div className={`contact-card address-card-container ${activeTooltip === 'address' ? 'active-card' : ''}`}>
                   <strong>Address</strong>
                   <a
                     href="https://www.google.com/maps/search/?api=1&query=RV+Testing+Machines+Private+Limited+Chennai"
@@ -121,11 +121,11 @@ export default function Contact() {
                     </div>
                   )}
                 </div>
-                <div className="contact-card address-card-container">
+                <div className={`contact-card address-card-container ${activeTooltip === 'phone' ? 'active-card' : ''}`}>
                   <strong>Phone</strong>
                   <div className="contact-link-group" style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '4px' }}>
                     <a
-                      href={`https://wa.me/${CONTACT.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hello RV TESTING MACHINES PRIVATE LIMITED, I would like to enquire about your material testing machines and NABL accredited calibration services. Please connect with me to discuss our requirements.')}`}
+                      href={`https://wa.me/${CONTACT.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hi, I am interested in RV TESTING MACHINES PRIVATE LIMITED and would like to make an enquiry.')}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={dismissTour}
@@ -159,7 +159,7 @@ export default function Contact() {
                     </div>
                   )}
                 </div>
-                <div className="contact-card address-card-container">
+                <div className={`contact-card address-card-container ${activeTooltip === 'email' ? 'active-card' : ''}`}>
                   <strong>Email</strong>
                   <a
                     href={`https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT.email}&su=${encodeURIComponent('Enquiry to RV Testing Machines')}`}

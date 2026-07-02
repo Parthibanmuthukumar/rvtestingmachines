@@ -779,12 +779,18 @@
 /* ===== CONTACT PAGE ADDRESS TOOLTIP ===== */
 .address-card-container {
   position: relative;
+  z-index: 1; /* Default lower stack level */
+}
+
+.address-card-container.active-card {
+  z-index: 25; /* Stacks active card above other sibling cards to prevent overlay clip */
 }
 
 .address-tooltip-bubble {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   margin-top: 10px;
   background: var(--primary, #1a3c6b);
   color: #fff !important;
@@ -796,9 +802,12 @@
   align-items: center;
   gap: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  z-index: 10;
-  white-space: nowrap;
-  animation: tooltipFloat 2s ease-in-out infinite;
+  z-index: 30; /* Stacks above siblings */
+  width: max-content;
+  max-width: 95%; /* Fits perfectly within card boundaries on small screens */
+  white-space: normal;
+  text-align: center;
+  animation: tooltipFloatCentred 2s ease-in-out infinite;
 }
 
 .address-tooltip-bubble span {
@@ -808,10 +817,12 @@
 .address-tooltip-arrow {
   position: absolute;
   bottom: 100%;
-  left: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   border-width: 6px;
   border-style: solid;
   border-color: transparent transparent var(--primary, #1a3c6b) transparent;
+  z-index: 31;
 }
 
 .address-tooltip-close-btn {
@@ -831,11 +842,11 @@
   color: #fff;
 }
 
-@keyframes tooltipFloat {
+@keyframes tooltipFloatCentred {
   0%, 100% {
-    transform: translateY(0);
+    transform: translate(-50%, 0);
   }
   50% {
-    transform: translateY(-4px);
+    transform: translate(-50%, -4px);
   }
 }
