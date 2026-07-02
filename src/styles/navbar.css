@@ -62,10 +62,26 @@
 .nav-brand-text {
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--text-dark);
   letter-spacing: 0.02em;
   line-height: 1.2;
-  max-width: 180px;
+  max-width: 320px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.nav-brand-text .brand-text-main {
+  font-weight: 700;
+  color: var(--text-dark);
+  white-space: nowrap;
+}
+
+.nav-brand-text .brand-text-sub {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  color: var(--text-dark); /* Match main color as requested */
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 /* =============================================

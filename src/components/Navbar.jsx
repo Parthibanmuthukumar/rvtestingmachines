@@ -78,11 +78,14 @@ const Navbar = () => {
           <NavLink
             to="/"
             className="nav-logo"
-            aria-label="RV Private Limited — Home"
+            aria-label="RV Testing Machines Private Limited — Home"
             onClick={(e) => handleNavClick(e, '/')}
           >
             <img src={logoPdf} alt="" className="nav-logo-img" />
-            <span className="nav-brand-text">RV Private Limited</span>
+            <span className="nav-brand-text">
+              <span className="brand-text-main">RV Testing Machines</span>
+              <span className="brand-text-sub">Private Limited</span>
+            </span>
           </NavLink>
 
           <button
@@ -142,7 +145,7 @@ const Navbar = () => {
             className="nav-drawer-logo"
             onClick={(e) => handleNavClick(e, '/')}
           >
-            <img src={logoPdf} alt="RV Private Limited" className="nav-drawer-logo-img" />
+            <img src={logoPdf} alt="RV Testing Machines Private Limited" className="nav-drawer-logo-img" />
           </NavLink>
           <button
             type="button"

@@ -1,6 +1,6 @@
 import { buildAllKeywords } from './generateKeywords';
 
-/** 800+ researched keywords for RV Private Limited & material testing industry */
+/** 800+ researched keywords for RV Testing Machines Private Limited & material testing industry */
 export const SEO_KEYWORDS = buildAllKeywords();
 
 export const SEO_KEYWORD_COUNT = SEO_KEYWORDS.length;

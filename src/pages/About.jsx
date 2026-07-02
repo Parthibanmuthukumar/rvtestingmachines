@@ -23,7 +23,7 @@ function About() {
           <div className="about-ceo-text">
             <h2>Meet Our Founder</h2>
             <p>
-              RV Private Limited (RVTMPL), founded in 2015 by Mr. K. Ravichandran, blends technical leadership with
+              RV Testing Machines Private Limited (RVTMPL), founded in 2015 by Mr. K. Ravichandran, blends technical leadership with
               practical field experience. Our founder has led the company through breakthrough service, calibration,
               and R&D work focused testing machines principles.
             </p>
@@ -42,7 +42,7 @@ function About() {
       <section className="about-overview">
         <div className="about-overview-inner">
           <div className="about-overview-text">
-            <h2>About RV Private Limited</h2>
+            <h2>About RV Testing Machines Private Limited</h2>
             <p>
               RVTMPL is a trusted provider of high-performance material testing machines, accredited calibration,
               and expert technical support. We focus on RVTMPL by combining global

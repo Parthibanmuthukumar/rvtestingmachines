@@ -4,7 +4,7 @@ import mega from '../assets/images/MEGA-11-350-SD.png';
 import up50 from '../assets/images/UP-50-HK-2-DH.png';
 
 export const productsIntro =
-  'RV Private Limited delivers precision material testing machines and equipment for rubber, plastics, metals, and other materials like wood, ceramic, glass, and textiles.';
+  'RV Testing Machines Private Limited delivers precision material testing machines and equipment for rubber, plastics, metals, and other materials like wood, ceramic, glass, and textiles.';
 
 export const productItems = [
   {

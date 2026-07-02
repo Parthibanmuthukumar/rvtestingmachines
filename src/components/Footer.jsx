@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import logoPdf from '../assets/images/RVTMPL LOGO_page-0001.jpg';
 import nablLogo from '../assets/images/nabl-logo.png';
+import { CONTACT } from '../seo/siteConfig';
 
 const Footer = () => (
   <footer className="site-footer">
@@ -10,9 +11,12 @@ const Footer = () => (
       {/* Col 1: Brand */}
       <div className="footer-col footer-col-brand">
         <div className="footer-brand-header">
-          <img src={logoPdf} alt="RV Private Limited" className="footer-logo" />
+          <img src={logoPdf} alt="RV Testing Machines Private Limited" className="footer-logo" />
           <div className="footer-brand-text">
-            <span className="footer-brand-name">RV Private Limited</span>
+            <span className="footer-brand-name">
+              <span className="brand-text-main">RV Testing Machines</span>{' '}
+              <span className="brand-text-sub">Private Limited</span>
+            </span>
             <span className="footer-brand-sub">ISO/IEC 17025 Accredited Lab</span>
           </div>
         </div>
@@ -59,7 +63,6 @@ const Footer = () => (
         <ul className="footer-col-list">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/products">Our Products</Link></li>
-          <li><Link to="/enquiry">Enquiry</Link></li>
           <li><Link to="/services">Calibration Services</Link></li>
           <li><Link to="/contact">Technical Support</Link></li>
         </ul>
@@ -71,23 +74,47 @@ const Footer = () => (
         <ul className="footer-col-list footer-contact-list">
           <li>
             <span className="footer-icon">📍</span>
-            Chennai, Tamil Nadu, India
+            <a href="https://www.google.com/maps/search/?api=1&query=RV+Testing+Machines+Private+Limited+Ramapuram+Chennai" target="_blank" rel="noopener noreferrer">
+              {CONTACT.address.streetAddress}, Chennai - {CONTACT.address.postalCode}, India
+            </a>
+          </li>
+          <li>
+            <span className="footer-icon">💬</span>
+            <a
+              href={`https://wa.me/${CONTACT.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hi, I am interested in RV Testing Machines and would like to make an enquiry.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp: {CONTACT.phone}
+            </a>
           </li>
           <li>
             <span className="footer-icon">📞</span>
-            +91 98765 43210
+            <a href={`tel:${CONTACT.phoneLandline.replace(/[^0-9+]/g, '')}`}>
+              Landline: {CONTACT.phoneLandline}
+            </a>
           </li>
           <li>
             <span className="footer-icon">✉️</span>
-            info@rvtestingmachines.com
+            <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
           </li>
         </ul>
+        <iframe
+          src={`https://maps.google.com/maps?q=${encodeURIComponent('Plot No 89, Natesan Nagar, Ramapuram, Chennai - 600089')}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
+          width="100%"
+          height="110"
+          style={{ border: 0, borderRadius: '8px', marginTop: '12px', display: 'block' }}
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Google Maps Location"
+        ></iframe>
       </div>
 
     </div>
 
     <div className="footer-bottom">
-      <p className="footer-copy">© {new Date().getFullYear()} RV Private Limited All rights reserved.</p>
+      <p className="footer-copy">© {new Date().getFullYear()} RV Testing Machines Private Limited All rights reserved.</p>
     </div>
 
   </footer>

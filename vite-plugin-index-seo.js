@@ -3,6 +3,8 @@ import { buildAllKeywords } from './src/seo/generateKeywords.js';
 import { buildIndexSeoHtml, selectIndexKeywords } from './src/seo/selectIndexKeywords.js';
 
 const MARKER = '<!-- SEO_KEYWORDS_INJECT -->';
+const START_MARKER = '<!-- SEO_KEYWORDS_INJECT_START -->';
+const END_MARKER = '<!-- SEO_KEYWORDS_INJECT_END -->';
 const TARGET = 650;
 
 function getKeywords() {
@@ -21,10 +23,17 @@ export function indexSeoPlugin() {
     transformIndexHtml(html) {
       const keywords = getKeywords();
       const block = buildIndexSeoHtml(keywords);
-      if (!html.includes(MARKER)) {
-        return html;
+      
+      const injectBlock = `${START_MARKER}\n${block}\n    ${END_MARKER}`;
+      const existingRegex = new RegExp(`${START_MARKER}[\\s\\S]*?${END_MARKER}`);
+      
+      if (html.includes(START_MARKER) && html.includes(END_MARKER)) {
+        return html.replace(existingRegex, injectBlock);
       }
-      return html.replace(MARKER, block);
+      if (html.includes(MARKER)) {
+        return html.replace(MARKER, injectBlock);
+      }
+      return html;
     },
     closeBundle() {
       try {
@@ -35,7 +44,7 @@ export function indexSeoPlugin() {
             {
               '@context': 'https://schema.org',
               '@type': 'Organization',
-              name: 'RV Private Limited',
+              name: 'RV Testing Machines Private Limited',
               keywordCount: keywords.length,
               knowsAbout: keywords,
             },
@@ -56,14 +65,22 @@ export function writeKeywordsToIndexHtml(indexPath = 'index.html') {
   const keywords = getKeywords();
   let html = readFileSync(indexPath, 'utf8');
   const block = buildIndexSeoHtml(keywords);
-  if (html.includes(MARKER)) {
-    html = html.replace(MARKER, block);
+  
+  const injectBlock = `${START_MARKER}\n${block}\n    ${END_MARKER}`;
+  const existingRegex = new RegExp(`${START_MARKER}[\\s\\S]*?${END_MARKER}`);
+  
+  if (html.includes(START_MARKER) && html.includes(END_MARKER)) {
+    html = html.replace(existingRegex, injectBlock);
+  } else if (html.includes(MARKER)) {
+    html = html.replace(MARKER, injectBlock);
   } else {
+    // fallback
     html = html.replace(
       /<meta\s+name="keywords"[\s\S]*?\/>/,
-      block,
+      injectBlock,
     );
   }
+  
   writeFileSync(indexPath, html, 'utf8');
   return keywords.length;
 }

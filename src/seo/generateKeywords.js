@@ -1,10 +1,10 @@
-/** Builds 800+ unique SEO keywords for RV Private Limited (material testing industry) */
+/** Builds 800+ unique SEO keywords for RV Testing Machines Private Limited (material testing industry) */
 
 const BRAND = [
   'RV testing machines',
-  'rv private limited',
+  'rv testing machines private limited',
   'RVTM',
-  'RV Private Limited',
+  'RV Testing Machines Private Limited',
   'RV machine testing',
   'RV testing machines India',
   'RV testing machines Chennai',

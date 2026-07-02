@@ -1,4 +1,4 @@
-export function HomeBrandLogo({ logoSrc, title = 'RV PRIVATE LIMITED', subtitle }) {
+export function HomeBrandLogo({ logoSrc, title = 'RV TESTING MACHINES PRIVATE LIMITED', subtitle }) {
   return (
     <div className="home-brand-logo">
       <div className="home-brand-logo__frame">

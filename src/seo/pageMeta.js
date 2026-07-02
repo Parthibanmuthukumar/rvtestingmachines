@@ -13,7 +13,7 @@ export const PAGE_META = {
   '/about': {
     title: `About Us | ${SITE_NAME}`,
     description:
-      'Learn about RV Private Limited — founder-led expertise in RV machine testing, accredited calibration, R&D, and end-to-end support for quality labs and manufacturing.',
+      'Learn about RV Testing Machines Private Limited — founder-led expertise in RV machine testing, accredited calibration, R&D, and end-to-end support for quality labs and manufacturing.',
     keywords:
       'about RV testing machines, material testing company India, NABL accredited lab, testing machine service',
     path: '/about',
@@ -45,7 +45,7 @@ export const PAGE_META = {
   '/contact': {
     title: `Contact Us | ${SITE_NAME}`,
     description:
-      'Contact RV Private Limited for quotes, calibration scheduling, technical support, and product enquiries. Chennai, Tamil Nadu, India.',
+      'Contact RV Testing Machines Private Limited for quotes, calibration scheduling, technical support, and product enquiries. Chennai, Tamil Nadu, India.',
     keywords:
       'contact RV testing machines, calibration enquiry, material testing quote India',
     path: '/contact',

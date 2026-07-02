@@ -775,3 +775,67 @@
     height: 280px;
   }
 }
+
+/* ===== CONTACT PAGE ADDRESS TOOLTIP ===== */
+.address-card-container {
+  position: relative;
+}
+
+.address-tooltip-bubble {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 10px;
+  background: var(--primary, #1a3c6b);
+  color: #fff !important;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  white-space: nowrap;
+  animation: tooltipFloat 2s ease-in-out infinite;
+}
+
+.address-tooltip-bubble span {
+  color: #fff !important;
+}
+
+.address-tooltip-arrow {
+  position: absolute;
+  bottom: 100%;
+  left: 20px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent var(--primary, #1a3c6b) transparent;
+}
+
+.address-tooltip-close-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.address-tooltip-close-btn:hover {
+  color: #fff;
+}
+
+@keyframes tooltipFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}

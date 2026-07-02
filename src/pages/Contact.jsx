@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PageHero } from '../components/shared/PageHero';
 import { GlobalPartners } from '../components/shared/GlobalPartners';
 import ScrollAnimation from '../components/ScrollAnimation';
@@ -24,6 +24,33 @@ const FIELD_PLACEHOLDERS = {
 export default function Contact() {
   const [form, setForm] = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
+  const [activeTooltip, setActiveTooltip] = useState(null);
+
+  useEffect(() => {
+    setActiveTooltip('address');
+    
+    const timer1 = setTimeout(() => {
+      setActiveTooltip('phone');
+    }, 3000);
+
+    const timer2 = setTimeout(() => {
+      setActiveTooltip('email');
+    }, 6000);
+
+    const timer3 = setTimeout(() => {
+      setActiveTooltip(null);
+    }, 9000);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+    };
+  }, []);
+
+  const dismissTour = () => {
+    setActiveTooltip(null);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -62,21 +89,96 @@ export default function Contact() {
             <div className="contact-info">
               <h2>We&apos;re Here to Help</h2>
               <p>
-                Contact RV Private Limited for sales, service, calibration, and expert guidance on
+                Contact RV Testing Machines Private Limited for sales, service, calibration, and expert guidance on
                 material testing solutions.
               </p>
               <div className="contact-cards">
-                <div className="contact-card">
+                <div className="contact-card address-card-container">
                   <strong>Address</strong>
-                  <span>{CONTACT.address.streetAddress}, {CONTACT.address.addressLocality}, {CONTACT.address.addressRegion}, India</span>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=RV+Testing+Machines+Private+Limited+Chennai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={dismissTour}
+                  >
+                    RV Testing Machines Private Limited, Chennai, India
+                  </a>
+                  {activeTooltip === 'address' && (
+                    <div className="address-tooltip-bubble">
+                      <span className="address-tooltip-arrow" />
+                      <span className="address-tooltip-text">💡 Click here to view address on map</span>
+                      <button 
+                        className="address-tooltip-close-btn" 
+                        onClick={(e) => { 
+                          e.stopPropagation(); 
+                          e.preventDefault(); 
+                          dismissTour(); 
+                        }} 
+                        aria-label="Dismiss info"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  )}
                 </div>
-                <div className="contact-card">
+                <div className="contact-card address-card-container">
                   <strong>Phone</strong>
-                  <a href={`tel:${CONTACT.phone.replace(/[-\s]/g, '')}`}>{CONTACT.phone}</a>
+                  <div className="contact-link-group" style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '4px' }}>
+                    <a
+                      href={`https://wa.me/${CONTACT.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hi, I am interested in RV Testing Machines and would like to make an enquiry.')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={dismissTour}
+                      style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                    >
+                      💬 WhatsApp: {CONTACT.phone}
+                    </a>
+                    <a
+                      href={`tel:${CONTACT.phoneLandline.replace(/[^0-9+]/g, '')}`}
+                      onClick={dismissTour}
+                      style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                    >
+                      📞 Landline: {CONTACT.phoneLandline}
+                    </a>
+                  </div>
+                  {activeTooltip === 'phone' && (
+                    <div className="address-tooltip-bubble">
+                      <span className="address-tooltip-arrow" />
+                      <span className="address-tooltip-text">💬 Click here to message us on WhatsApp</span>
+                      <button 
+                        className="address-tooltip-close-btn" 
+                        onClick={(e) => { 
+                          e.stopPropagation(); 
+                          e.preventDefault(); 
+                          dismissTour(); 
+                        }} 
+                        aria-label="Dismiss info"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  )}
                 </div>
-                <div className="contact-card">
+                <div className="contact-card address-card-container">
                   <strong>Email</strong>
-                  <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+                  <a href={`mailto:${CONTACT.email}`} onClick={dismissTour}>{CONTACT.email}</a>
+                  {activeTooltip === 'email' && (
+                    <div className="address-tooltip-bubble">
+                      <span className="address-tooltip-arrow" />
+                      <span className="address-tooltip-text">✉️ Click here to email us</span>
+                      <button 
+                        className="address-tooltip-close-btn" 
+                        onClick={(e) => { 
+                          e.stopPropagation(); 
+                          e.preventDefault(); 
+                          dismissTour(); 
+                        }} 
+                        aria-label="Dismiss info"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  )}
                 </div>
                 <div className="contact-card">
                   <strong>Working Hours</strong>

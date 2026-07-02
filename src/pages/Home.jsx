@@ -190,18 +190,18 @@ export default function Home() {
           <ScrollAnimation>
             <HomeBrandLogo
               logoSrc={logoPdf}
-              title="RV PRIVATE LIMITED"
+              title="RV TESTING MACHINES PRIVATE LIMITED"
               subtitle="ISO/IEC 17025 Accredited Calibration Laboratory"
             />
           </ScrollAnimation>
           <ScrollAnimation>
             <div className="description-box">
               <h2 id="home-brand-heading" className="sr-only">
-                About RV Private Limited
+                About RV Testing Machines Private Limited
               </h2>
               <p>
                 With over 20 years of expertise in the sales, service, and calibration of material
-                testing machines in India, <strong>RV Private Limited</strong> is a trusted partner for
+                testing machines in India, <strong>RV Testing Machines Private Limited</strong> is a trusted partner for
                 universal testing machines (UTM), rubber and metal testing equipment, hardness testers,
                 durometers, and ISO/IEC 17025 accredited calibration. We serve automotive, aerospace,
                 construction, polymer, and quality laboratories with precision instruments, installation,
