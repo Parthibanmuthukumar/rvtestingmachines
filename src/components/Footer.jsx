@@ -96,7 +96,13 @@ const Footer = () => (
           </li>
           <li>
             <span className="footer-icon">✉️</span>
-            <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+            <a
+              href={`https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT.email}&su=${encodeURIComponent('Enquiry to RV Testing Machines')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {CONTACT.email}
+            </a>
           </li>
         </ul>
         <iframe

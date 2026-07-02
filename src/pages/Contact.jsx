@@ -161,7 +161,14 @@ export default function Contact() {
                 </div>
                 <div className="contact-card address-card-container">
                   <strong>Email</strong>
-                  <a href={`mailto:${CONTACT.email}`} onClick={dismissTour}>{CONTACT.email}</a>
+                  <a
+                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${CONTACT.email}&su=${encodeURIComponent('Enquiry to RV Testing Machines')}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={dismissTour}
+                  >
+                    {CONTACT.email}
+                  </a>
                   {activeTooltip === 'email' && (
                     <div className="address-tooltip-bubble">
                       <span className="address-tooltip-arrow" />
