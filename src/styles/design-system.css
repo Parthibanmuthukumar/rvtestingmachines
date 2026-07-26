@@ -1,177 +1,41 @@
-/* ===== SPACING & LAYOUT TOKENS ===== */
+/* design-system.css — compat layer only */
 :root {
-  --container-max: 72rem;
-  --container-wide: 80rem;
-  --section-pad-y: clamp(4rem, 5vw, 6rem);
-  --section-pad-x: clamp(1.25rem, 4vw, 5rem);
-  --section-gap: clamp(2.5rem, 4vw, 3.5rem);
-  --media-my: clamp(1rem, 2vw, 1.5rem);
-  --shadow-sm: 0 4px 16px rgba(26, 60, 107, 0.06);
-  --shadow-md: 0 12px 32px rgba(26, 60, 107, 0.1);
-  --shadow-lg: 0 20px 50px rgba(26, 60, 107, 0.12);
-  --radius-md: 14px;
-  --radius-lg: 18px;
-  --slider-gap-y: clamp(2rem, 5vw, 3.5rem);
+  /* Legacy compat aliases (do not remove) */
+  --primary:          var(--navy);
+  --accent:           var(--gold);
+  --text-heading:     var(--txt-h);
+  --text-body:        var(--txt-b);
+  --text-muted:       var(--txt-m);
+  --text-white:       var(--txt-d);
+  --text-white-dim:   var(--txt-d2);
+  --bg-page:          var(--bg);
+  --bg-white:         var(--white);
+  --bg-section:       var(--bg-2);
+  --bg-dark:          var(--bg-dark);
+  --border:           var(--bdr);
+  --border-light:     var(--bdr2);
+  --shadow-xs:        var(--sh-xs);
+  --shadow-sm:        var(--sh-sm);
+  --shadow-md:        var(--sh-md);
+  --shadow-lg:        var(--sh-lg);
+  --shadow-xl:        var(--sh-xl);
+  --r-sm:             var(--r8);
+  --r-md:             var(--r12);
+  --r-lg:             var(--r16);
+  --r-xl:             var(--r24);
+  --r-full:           var(--r99);
+  --pad-x:            var(--gx);
+  --pad-y:            var(--gy);
+  --pad-y-sm:         var(--gy2);
+  --container:        var(--max);
+  --container-wide:   var(--max-w);
+  --ease-out:         var(--ease);
 }
 
-/* ===== LAYOUT UTILITIES ===== */
-.page-container {
-  width: 100%;
-  max-width: var(--container-max);
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: var(--section-pad-x);
-  padding-right: var(--section-pad-x);
-}
-
-.page-container--wide {
-  max-width: var(--container-wide);
-}
-
-.section-pad {
-  padding-top: var(--section-pad-y);
-  padding-bottom: var(--section-pad-y);
-}
-
-.section-pad-tight {
-  padding-top: calc(var(--section-pad-y) * 0.65);
-  padding-bottom: calc(var(--section-pad-y) * 0.65);
-}
-
-.split-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--section-gap);
-  align-items: center;
-}
-
-.split-grid--start {
-  align-items: start;
-}
-
-/* ===== MEDIA & IMAGE TREATMENT ===== */
-.media-card {
-  display: block;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: #fff;
-  border: 1px solid rgba(26, 60, 107, 0.08);
-  box-shadow: none;
-  margin-top: var(--media-my);
-  margin-bottom: var(--media-my);
-  transition: transform 0.3s ease;
-}
-
-.media-card:hover {
-  transform: translateY(-2px);
-}
-
-.media-card img,
-.media-card__img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.media-card:hover img,
-.media-card:hover .media-card__img {
-  transform: scale(1.04);
-}
-
-.media-card--contain img,
-.media-card--contain .media-card__img {
-  object-fit: contain;
-  background: linear-gradient(145deg, #f6f8fb 0%, #eef2f7 100%);
-  padding: 1.25rem;
-}
-
-.media-card--fixed-h {
-  height: clamp(260px, 32vw, 380px);
-}
-
-/* ===== BRAND LOGO MARK ===== */
-.brand-logo-mark {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.75rem;
-}
-
-.brand-logo-mark__frame {
-  width: clamp(88px, 12vw, 112px);
-  height: clamp(88px, 12vw, 112px);
-  border-radius: 50%;
-  padding: 0.65rem;
-  background: linear-gradient(145deg, #fff 0%, #f3f6fa 100%);
-  border: 1px solid rgba(26, 60, 107, 0.1);
-  box-shadow: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.brand-logo-mark__frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.brand-logo-mark__title {
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  font-weight: 700;
-  color: var(--primary);
-  letter-spacing: 0.04em;
-}
-
-.brand-logo-mark__subtitle {
-  font-size: 0.7rem;
-  color: var(--text-light);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  max-width: 280px;
-  line-height: 1.5;
-}
-
-/* ===== BUTTON CONSISTENCY ===== */
-.about-cta-btn,
-.prem-btn-primary,
-.contact-submit {
-  border-radius: 6px;
-}
-
-.prem-btn-primary,
-.prem-btn-secondary {
-  border-radius: 6px;
-}
-
-/* ===== SECTION SURFACES ===== */
-.surface-white {
-  background: #fff;
-}
-
-.surface-soft {
-  background: linear-gradient(180deg, #fafbfd 0%, #f4f6f9 100%);
-}
-
-.surface-muted {
-  background: var(--bg-light);
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-  .split-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .media-card {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-}
+/* Page container utility */
+.page-container { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gx); }
+.page-container--wide { max-width: var(--max-w); }
+.section { padding-block: var(--gy); }
+.section--sm { padding-block: var(--gy2); }
+.section-pad { padding-block: var(--gy); }
+.section-pad-tight { padding-block: var(--gy2); }

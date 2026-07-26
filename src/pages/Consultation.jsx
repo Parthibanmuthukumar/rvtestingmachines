@@ -1,9 +1,9 @@
-import { motion } from 'framer-motion';
-import { Sliders, ClipboardCheck, Award, Eye } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { PageHero } from '../components/shared/PageHero';
 import { ImageSlider } from '../components/shared/ImageSlider';
 import { GlobalPartners } from '../components/shared/GlobalPartners';
 import ScrollAnimation from '../components/ScrollAnimation';
+import TiltCard from '../components/TiltCard';
 import {
   consultationIntro,
   consultationSlides,
@@ -12,17 +12,22 @@ import {
   consultationGallery,
 } from '../data/consultationData';
 
-const highlightIcons = [Sliders, ClipboardCheck, Award, Eye];
+/*
+  ALL content from consultationData.js — nothing invented.
+  consultationStats: { '10+', '500+', 'ISO', '24/7' }
+*/
 
 export default function Consultation() {
   return (
     <main id="main-content" className="inner-page">
+
       <PageHero
         eyebrow="Expert Guidance"
         title="Consultation"
         subtitle={consultationIntro}
       />
 
+      {/* Image Slider */}
       <section className="consultation-slider-section">
         <ScrollAnimation>
           <div className="consultation-slider-wrap">
@@ -31,30 +36,24 @@ export default function Consultation() {
         </ScrollAnimation>
       </section>
 
+      {/* Highlight Cards — directly from consultationData.consultationHighlights */}
       <div className="consultation-cards-container">
-        {consultationHighlights.map((item, idx) => {
-          const Icon = highlightIcons[idx] || Sliders;
-          return (
-            <ScrollAnimation key={item.title}>
-              <motion.article
-                className="consultation-card-premium"
-                whileHover={{ y: -8, scale: 1.02 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              >
+        {consultationHighlights.map((item) => (
+          <ScrollAnimation key={item.title}>
+            <TiltCard intensity={8}>
+              <article className="consultation-card-premium">
                 <div className="card-accent-line" />
-                <div className="card-icon-wrapper">
-                  <Icon size={24} className="card-icon" />
-                </div>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
-              </motion.article>
-            </ScrollAnimation>
-          );
-        })}
+              </article>
+            </TiltCard>
+          </ScrollAnimation>
+        ))}
       </div>
 
-      <section className="consultation-stats" aria-label="Company highlights">
-        {consultationStats.map((stat) => (
+      {/* Stats — directly from consultationData.consultationStats */}
+      <section className="consultation-stats" aria-label="Company statistics">
+        {consultationStats.map(stat => (
           <ScrollAnimation key={stat.label}>
             <div className="stat-card">
               <strong>{stat.value}</strong>
@@ -64,15 +63,16 @@ export default function Consultation() {
         ))}
       </section>
 
-      <section className="consultation-gallery">
-        {consultationGallery.map((item) => (
-          <ScrollAnimation key={item.src}>
+      {/* Gallery — directly from consultationData.consultationGallery */}
+      <div className="consultation-gallery" style={{ maxWidth: 'var(--max)', marginInline: 'auto' }}>
+        {consultationGallery.map(item => (
+          <ScrollAnimation key={item.alt}>
             <div className="media-card">
               <img src={item.src} alt={item.alt} className="media-card__img" loading="lazy" />
             </div>
           </ScrollAnimation>
         ))}
-      </section>
+      </div>
 
       <GlobalPartners />
     </main>

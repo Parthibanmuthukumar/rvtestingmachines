@@ -6,14 +6,14 @@ export const PAGE_META = {
   '/': {
     title: `${SITE_NAME} | Material Testing & NABL Calibration Lab India`,
     description:
-      'ISO/IEC 17025 accredited laboratory for material testing machines, calibration, rubber & metal testing equipment sales and service across India. 20+ years of expertise.',
+      'ISO/IEC 17025 accredited laboratory for material testing machines, calibration, rubber & metal testing equipment sales and service across India. 10+ years of expertise.',
     keywords: null,
     path: '/',
   },
   '/about': {
     title: `About Us | ${SITE_NAME}`,
     description:
-      'Learn about RV Testing Machines Private Limited — founder-led expertise in RV machine testing, accredited calibration, R&D, and end-to-end support for quality labs and manufacturing.',
+      'Learn about RV Testing Machines Private Limited — founder-led expertise in RV testing machines, accredited calibration, R&D, and end-to-end support for quality labs and manufacturing.',
     keywords:
       'about RV testing machines, material testing company India, NABL accredited lab, testing machine service',
     path: '/about',

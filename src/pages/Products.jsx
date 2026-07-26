@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { PageHero } from '../components/shared/PageHero';
 import { ProductShowcase } from '../components/shared/ProductShowcase';
 import { GlobalPartners } from '../components/shared/GlobalPartners';
@@ -6,8 +5,8 @@ import ScrollAnimation from '../components/ScrollAnimation';
 import { productItems, productsIntro } from '../data/productsData';
 
 export default function Products() {
-  const rubberProducts = productItems.filter((p) => p.category === 'Rubber Testing');
-  const metalProducts = productItems.filter((p) => p.category === 'Metal Testing');
+  const rubberProducts = productItems.filter(p => p.category === 'Rubber Testing');
+  const metalProducts  = productItems.filter(p => p.category === 'Metal Testing');
 
   return (
     <main id="main-content" className="inner-page">
@@ -15,25 +14,12 @@ export default function Products() {
         eyebrow="Our Product Range"
         title="Our Products"
         subtitle={productsIntro}
-      >
-        <Link to="/contact" className="about-cta-btn" style={{ marginTop: 20 }}>
-          Request a Quote
-        </Link>
-      </PageHero>
+      />
 
-      <section className="page-intro">
+      {/* Rubber Testing Category */}
+      <section className="cat-band">
         <ScrollAnimation>
-          <div className="page-intro-inner">
-            <p>
-              Explore our precision testing solutions for rubber, elastomers, and metals — engineered
-              to support laboratories, manufacturing units, and quality teams that demand accredited performance.
-            </p>
-          </div>
-        </ScrollAnimation>
-      </section>
-
-      <section className="page-category-band">
-        <ScrollAnimation>
+          <span className="label" style={{ justifyContent: 'center' }}>Rubber &amp; Elastomers</span>
           <h2>Rubber Testing</h2>
           <p>Hardness, IRHD, and elastomer evaluation systems</p>
         </ScrollAnimation>
@@ -43,19 +29,17 @@ export default function Products() {
         <ProductShowcase key={product.id} product={product} reverse={index % 2 === 1} />
       ))}
 
-      <section className="page-category-band">
+      {/* Metal Testing Category */}
+      <section className="cat-band cat-band--dark">
         <ScrollAnimation>
+          <span className="label label--gold" style={{ justifyContent: 'center' }}>Metals &amp; Alloys</span>
           <h2>Metal Testing</h2>
           <p>Universal testing machines and precision hardness testing systems</p>
         </ScrollAnimation>
       </section>
 
       {metalProducts.map((product, index) => (
-        <ProductShowcase
-          key={product.id}
-          product={product}
-          reverse={index % 2 === 1}
-        />
+        <ProductShowcase key={product.id} product={product} reverse={index % 2 === 1} />
       ))}
 
       <GlobalPartners

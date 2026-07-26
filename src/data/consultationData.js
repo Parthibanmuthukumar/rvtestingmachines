@@ -36,7 +36,7 @@ export const consultationHighlights = [
 ];
 
 export const consultationStats = [
-  { value: '20+', label: 'Years Industry Experience' },
+  { value: '10+', label: 'Years Industry Experience' },
   { value: '500+', label: 'Machines Supported' },
   { value: 'ISO', label: '17025 Accredited Lab' },
   { value: '24/7', label: 'Technical Assistance' },

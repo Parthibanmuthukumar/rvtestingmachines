@@ -1,219 +1,129 @@
-/* ===== GLOBAL TECHNOLOGY PARTNERS ===== */
+/* ============================================================
+   GLOBAL PARTNERS
+   ============================================================ */
+
 .global-partners {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  background: linear-gradient(180deg, #f6f8fb 0%, #eef2f7 50%, #f8fafc 100%);
-  border-top: 1px solid rgba(26, 60, 107, 0.08);
-  border-bottom: 1px solid rgba(26, 60, 107, 0.06);
-}
-
-.global-partners__bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse 70% 50% at 15% 20%, rgba(232, 160, 32, 0.08) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 45% at 85% 75%, rgba(26, 60, 107, 0.06) 0%, transparent 50%);
-}
-
-.global-partners__inner {
-  position: relative;
-  z-index: 1;
-}
-
-.global-partners__header {
+  padding: var(--gy) var(--gx);
+  background: var(--bg);
   text-align: center;
-  max-width: 42rem;
-  margin: 0 auto clamp(2rem, 4vw, 3rem);
-}
-
-.global-partners__header h2 {
-  font-size: clamp(1.55rem, 3.2vw, 2.15rem);
-  font-weight: 700;
-  color: var(--primary);
-  line-height: 1.2;
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.02em;
-}
-
-.global-partners__subtitle {
-  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
-  color: var(--text-mid);
-  line-height: 1.85;
-  margin: 0;
-}
-
-/* --- INFINITE MARQUEE CAROUSEL --- */
-.global-partners__marquee-container {
   overflow: hidden;
-  width: 100%;
-  position: relative;
-  padding: 1rem 0 2rem;
-  /* Premium edge fades */
-  mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
 }
 
-.global-partners__marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee-scroll 25s linear infinite;
+.global-partners-title {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 900;
+  color: var(--navy);
+  letter-spacing: -0.025em;
+  margin-bottom: 0.6rem;
+  margin-top: 0.5rem;
 }
 
-/* Pause the marquee on hover */
-.global-partners__marquee-track:hover {
-  animation-play-state: paused;
+.global-partners-sub {
+  color: #374965;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  max-width: 500px;
+  margin-inline: auto;
+  margin-bottom: 3rem;
 }
 
-.global-partners__marquee-group {
-  display: flex;
-  align-items: center;
-  gap: clamp(1.25rem, 2.5vw, 2rem);
-  padding-right: clamp(1.25rem, 2.5vw, 2rem); /* Keeps gap identical between groups */
-  flex-shrink: 0;
+/* ── Grid: always 6 columns, never wraps ── */
+.global-partners-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  max-width: var(--max);
+  margin-inline: auto;
+  align-items: stretch;
 }
 
-.global-partners__card {
-  width: clamp(180px, 16vw, 240px);
-  min-height: clamp(88px, 12vw, 108px);
+/* ── Logo Card ── */
+.partner-logo-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(1.1rem, 2vw, 1.5rem) clamp(1.25rem, 2.5vw, 1.75rem);
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: var(--radius-md, 14px);
-  border: 1px solid rgba(26, 60, 107, 0.1);
-  box-shadow: none;
-  transition:
-    border-color 0.35s ease,
-    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  padding: 1rem;
+  background: var(--white);
+  border-radius: var(--r16);
+  border: 1px solid var(--bdr2);
+  box-shadow: var(--sh-xs);
+  height: 100px;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s;
   cursor: default;
-  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+
+  /* staggered fade-up entrance */
+  opacity: 0;
+  animation: partnerFadeUp 0.55s var(--ease) forwards;
 }
 
-.global-partners__card:hover {
-  border-color: rgba(232, 160, 32, 0.35);
-  transform: translateY(-6px) scale(1.02);
+.partner-logo-card:nth-child(1) { animation-delay: 0.05s; }
+.partner-logo-card:nth-child(2) { animation-delay: 0.12s; }
+.partner-logo-card:nth-child(3) { animation-delay: 0.19s; }
+.partner-logo-card:nth-child(4) { animation-delay: 0.26s; }
+.partner-logo-card:nth-child(5) { animation-delay: 0.33s; }
+.partner-logo-card:nth-child(6) { animation-delay: 0.40s; }
+
+/* gold shimmer line on hover */
+.partner-logo-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease);
 }
 
-.global-partners__logo {
-  display: block;
-  width: auto;
-  max-width: min(100%, 150px);
-  height: auto;
-  max-height: clamp(40px, 6vw, 56px);
-  min-height: 32px;
+.partner-logo-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: var(--sh-lg);
+  border-color: rgba(30,92,179,0.2);
+}
+
+.partner-logo-card:hover::after {
+  transform: scaleX(1);
+}
+
+.partner-logo-card img {
+  max-height: 68px;
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  object-position: center;
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 1;
+  transition: transform 0.35s var(--ease);
 }
 
-.global-partners__card:hover .global-partners__logo {
+.partner-logo-card:hover img {
   transform: scale(1.06);
 }
 
-/* --- ANIMATION --- */
-@keyframes marquee-scroll {
-  0% {
-    transform: translateX(0);
+/* ── Entrance keyframe ── */
+@keyframes partnerFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
   }
-  100% {
-    transform: translateX(-25%); /* Moves by exactly 1 group (since 4 groups are rendered) */
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* --- RESPONSIVENESS --- */
+/* ── Responsive ── */
 @media (max-width: 900px) {
-  .global-partners__marquee-container {
-    padding: 0.75rem 0 1.5rem;
-  }
-
-  .global-partners__card {
-    width: clamp(140px, 20vw, 180px);
-    min-height: 84px;
-    padding: 1rem 1.15rem;
-  }
-
-  .global-partners__logo {
-    height: 40px;
-    max-height: 40px;
+  .global-partners-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 600px) {
-  .global-partners__marquee-container {
-    padding: 0.5rem 0 1rem;
-    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+@media (max-width: 560px) {
+  .global-partners-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  .global-partners__card {
-    width: clamp(120px, 25vw, 140px);
-    min-height: 76px;
-    padding: 0.9rem 1rem;
-  }
-
-  .global-partners__logo {
-    height: 34px;
-    max-height: 34px;
-  }
+  .partner-logo-card { height: 80px; }
+  .partner-logo-card img { max-height: 52px; }
 }
-
-/* Prefers Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  .global-partners__marquee-track {
-    animation: none;
-    overflow-x: auto;
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .global-partners__marquee-group {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .global-partners__marquee-group:not(:first-child) {
-    display: none;
-  }
-
-  .global-partners__logo,
-  .global-partners__card {
-    transition: none;
-  }
-
-  .global-partners__card:hover {
-    transform: none;
-  }
-
-  .global-partners__card:hover .global-partners__logo {
-    transform: none;
-  }
-}
-
-/* ===== PARTNER LOGO — ANIMATION ENHANCEMENTS ===== */
-.global-partners__logo {
-  filter: grayscale(0.15) opacity(0.88);
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease, opacity 0.4s ease;
-}
-
-.global-partners__card:hover .global-partners__logo {
-  filter: grayscale(0) opacity(1);
-  transform: scale(1.06);
-}
-
-.global-partners__card {
-  transition:
-    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 0.35s ease,
-    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    background 0.35s ease;
-}
-
-.global-partners__card:hover {
-  background: rgba(255, 255, 255, 1);
-}
-

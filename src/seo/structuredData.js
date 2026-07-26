@@ -100,7 +100,7 @@ export function getDefaultStructuredData(pathname) {
     '/about': 'About Us',
     '/products': 'Our Products',
     '/consultation': 'Consultation',
-    '/services': 'Services',
+    '/services': 'Product & Calibration',
     '/contact': 'Contact',
   };
 

@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import ScrollAnimation from '../ScrollAnimation';
 import { PARTNER_LOGOS } from '../../data/partnerLogos';
 
@@ -5,52 +6,45 @@ const defaultSubtitle =
   'Representing leading international brands in material testing, calibration, and industrial quality assurance.';
 
 export function GlobalPartners({
-  title = 'Our Global Technology Partners',
+  title    = 'Our Global Technology Partners',
   subtitle = defaultSubtitle,
 }) {
-  return (
-    <section className="global-partners section-pad" aria-labelledby="global-partners-heading">
-      <div className="global-partners__bg" aria-hidden />
-      <div className="page-container global-partners__inner">
-        <ScrollAnimation>
-          <header className="global-partners__header">
-            <p className="eyebrow">Trusted Worldwide</p>
-            <h2 id="global-partners-heading">{title}</h2>
-            {subtitle ? <p className="global-partners__subtitle">{subtitle}</p> : null}
-          </header>
-        </ScrollAnimation>
+  const gridRef = useRef(null);
 
-        <ScrollAnimation>
-          <div className="global-partners__marquee-container">
-            <div className="global-partners__marquee-track" role="list">
-              {[0, 1, 2, 3].map((groupIndex) => (
-                <div
-                  key={groupIndex}
-                  className="global-partners__marquee-group"
-                  aria-hidden={groupIndex > 0 ? 'true' : undefined}
-                >
-                  {PARTNER_LOGOS.map((partner) => (
-                    <article
-                      key={`${partner.id}-${groupIndex}`}
-                      className="global-partners__card"
-                      role="listitem"
-                    >
-                      <img
-                        src={partner.src}
-                        alt={`${partner.alt} logo`}
-                        className="global-partners__logo"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                      <span className="sr-only">{partner.name}</span>
-                    </article>
-                  ))}
-                </div>
-              ))}
+  return (
+    <section className="global-partners" aria-labelledby="gp-heading">
+      <ScrollAnimation direction="up">
+        <p className="section-label" style={{ justifyContent: 'center', marginBottom: '0.5rem' }}>
+          Trusted Worldwide
+        </p>
+        <h2 id="gp-heading" className="global-partners-title">{title}</h2>
+        {subtitle && <p className="global-partners-sub">{subtitle}</p>}
+      </ScrollAnimation>
+
+      {/* Grid renders when in view, then staggered CSS animation fires per card */}
+      <ScrollAnimation direction="up">
+        <div className="global-partners-grid" ref={gridRef}>
+          {PARTNER_LOGOS.map((partner) => (
+            <div key={partner.id} className="partner-logo-card">
+              <img
+                src={partner.src}
+                alt={`${partner.name} logo`}
+                loading="lazy"
+                decoding="async"
+                onError={(e) => {
+                  /* fallback: hide broken image, show partner name text */
+                  e.target.style.display = 'none';
+                  const fallback = document.createElement('span');
+                  fallback.textContent = partner.name;
+                  fallback.style.cssText =
+                    'font-size:0.8rem;font-weight:800;color:var(--navy);letter-spacing:0.03em;text-align:center;';
+                  e.target.parentNode.appendChild(fallback);
+                }}
+              />
             </div>
-          </div>
-        </ScrollAnimation>
-      </div>
+          ))}
+        </div>
+      </ScrollAnimation>
     </section>
   );
 }

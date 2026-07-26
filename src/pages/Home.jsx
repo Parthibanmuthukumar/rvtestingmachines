@@ -1,256 +1,426 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import logoPdf from '../assets/images/RVTMPL LOGO_page-0001.jpg';
-import heroImg1 from '../assets/images/slider-1.jpg';
-import heroImg2 from '../assets/images/slider-2.jpg';
-import heroImg3 from '../assets/images/slider-3.jpg';
-import featureImg1 from '../assets/images/slider-1.jpg';
-import featureImg2 from '../assets/images/technical-support.jpg';
-import ScrollAnimation from '../components/ScrollAnimation';
-import { HomeBrandLogo } from '../components/shared/HomeBrandLogo';
-import { HOME_EXPERTISE_TAGS } from '../seo/keywords';
+import logoPdf     from '../assets/images/RVTMPL LOGO_page-0001.jpg';
+import heroImg1    from '../assets/images/hero-1.jpg';
+import heroImg2    from '../assets/images/hero-2.jpg';
+import heroImg3    from '../assets/images/hero-3.jpg';
+import nablImg     from '../assets/images/NIC_29221.jpg';
+/* feature cards served directly from public/images */
+import ScrollAnimation   from '../components/ScrollAnimation';
 import { GlobalPartners } from '../components/shared/GlobalPartners';
+import { HOME_EXPERTISE_TAGS } from '../seo/keywords';
+import { productItems } from '../data/productsData';
+import { calibrationSection, serviceBlocks } from '../data/servicesData';
 
-gsap.registerPlugin(ScrollTrigger);
-
-const heroImages = [heroImg1, heroImg2, heroImg3];
-const heroTitles = ['RV Testing\nMachines', 'Precision\nCalibration', 'Advanced\nMaterial Testing'];
-const heroSubs = [
-  'ISO/IEC 17025 Accredited Laboratory',
-  'Traceable to National Standards',
-  'Serving Industry Since 2004',
+/* ── Hero slides — text taken directly from original data / siteConfig ── */
+const slides = [
+  {
+    img:    heroImg1,
+    eyebrow:'ISO / IEC 17025 Accredited',
+    title:  'Precision Testing',
+    em:     'for Industry',
+    sub:    'World-class material testing machines, accredited calibration & expert technical support across India.',
+  },
+  {
+    img:    heroImg2,
+    eyebrow:'NABL Accredited Calibration Lab',
+    title:  'Traceable',
+    em:     'Calibration',
+    sub:    'Certified calibration traceable to national standards for load cells, hardness testers, and UTM systems.',
+  },
+  {
+    img:    heroImg3,
+    eyebrow:'Material Testing Solutions',
+    title:  'Rubber & Metal',
+    em:     'Testing Equipment',
+    sub:    'Comprehensive testing equipment for rubber, elastomers, metals, and engineering materials across India.',
+  },
 ];
 
+/*
+  Hero stats — verified from original data files:
+  consultationData.js → { '10+', '500+', 'ISO', '24/7' }
+  siteConfig.js       → "since 2015" (so 10+ is correct)
+*/
+const heroStats = [
+  { num: '10+',  label: 'Years Industry Experience' },
+  { num: '500+', label: 'Machines Supported' },
+  { num: 'ISO',  label: '17025 Accredited Lab' },
+];
+
+/* ── Feature cards ── */
 const featureCards = [
   {
-    src: featureImg1,
-    alt: 'Material testing equipment',
+    src:   '/images/material-testing-core.jpg',
+    tag:   'Core Capability',
     title: 'Material Testing',
-    text: 'Universal testing machines for tensile, compression, and quality validation and for various industrial applications.',
+    text:  'Universal testing machines for tensile, compression, hardness and quality validation across industrial applications.',
   },
   {
-    src: featureImg2,
-    alt: 'Calibration and technical support',
+    src:   '/images/Man with machine.png',
+    tag:   'Accredited Service',
     title: 'Calibration & Support',
-    text: 'NABL-accredited calibration and expert technical assistance to keep your lab compliant and productive.',
+    text:  'NABL-accredited calibration laboratory (Cert No: CC – 4232) and expert technical support to keep your lab compliant and production-ready.',
   },
 ];
 
-export default function Home() {
+/* ── Why Choose Us data ── */
+const whyCards = [
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <path d="m9 12 2 2 4-4"/>
+      </svg>
+    ),
+    title: 'NABL Accredited Lab',
+    text:  'ISO/IEC 17025 accredited calibration laboratory (Certificate No: CC – 4232) with direct traceability to national measurement standards.',
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+    ),
+    title: '10+ Years Experience',
+    text:  'Founded in 2015 by industry expert Mr. K. Ravichandran, bringing over two decades of hands-on material testing expertise.',
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+      </svg>
+    ),
+    title: 'End-to-End Support',
+    text:  'Complete lifecycle coverage — from machine sales and installation to commissioning, preventive maintenance, and certified calibration.',
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+      </svg>
+    ),
+    title: 'Multi-Material Expertise',
+    text:  'Deep domain knowledge across rubber, elastomers, metals, alloys, plastics, composites, wood, ceramic, glass, and textiles.',
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="2" y1="12" x2="22" y2="12"/>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+      </svg>
+    ),
+    title: 'Global Technology Partners',
+    text:  'Authorized distribution and technical alignment with leading international brands — Prescott, Hildebrand, Form+Test, and Fisher.',
+  },
+  {
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+        <circle cx="12" cy="10" r="3"/>
+      </svg>
+    ),
+    title: '500+ Machines Supported',
+    text:  'Nationwide on-site service footprint across India — supporting over 500 testing machines with 24/7 technical assistance.',
+  },
+];
+
+/* ── Split Hero Component ── */
+const Hero = () => {
   const [current, setCurrent] = useState(0);
-  const heroSectionRef = useRef(null);
-  const heroTextRef = useRef(null);
-  const heroImgRef = useRef(null);
-  const arrowBtnRef = useRef(null);
-  const intervalRef = useRef(null);
+  const timerRef = useRef(null);
 
-  useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
-    return () => clearInterval(intervalRef.current);
-  }, []);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        heroTextRef.current,
-        { opacity: 1, y: 0 },
-        {
-          opacity: 0,
-          y: -80,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: heroSectionRef.current,
-            start: 'top top',
-            end: '40% top',
-            scrub: true,
-          },
-        }
-      );
-
-      gsap.fromTo(
-        heroImgRef.current,
-        { scale: 1, y: 0 },
-        {
-          scale: 1.08,
-          y: -120,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: heroSectionRef.current,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true,
-          },
-        }
-      );
-
-      gsap.to(arrowBtnRef.current, {
-        y: 10,
-        duration: 1.2,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
-      });
-
-      gsap.fromTo(
-        arrowBtnRef.current,
-        { opacity: 1 },
-        {
-          opacity: 0,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: heroSectionRef.current,
-            start: 'top top',
-            end: '25% top',
-            scrub: true,
-          },
-        }
-      );
-    });
-
-    return () => {
-      ctx.revert();
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
-
-  const goTo = (idx) => {
-    clearInterval(intervalRef.current);
-    setCurrent(idx);
-    intervalRef.current = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
+  const goTo = (i) => {
+    clearInterval(timerRef.current);
+    setCurrent(i);
+    timerRef.current = setInterval(() => setCurrent(c => (c + 1) % slides.length), 5500);
   };
 
-  const half = Math.ceil(HOME_EXPERTISE_TAGS.length / 2);
-  const row1Tags = HOME_EXPERTISE_TAGS.slice(0, half);
-  const row2Tags = HOME_EXPERTISE_TAGS.slice(half);
+  useEffect(() => {
+    timerRef.current = setInterval(() => setCurrent(c => (c + 1) % slides.length), 5500);
+    return () => clearInterval(timerRef.current);
+  }, []);
+
+  const s = slides[current];
 
   return (
-    <main id="main-content" className="home-page">
-      <section ref={heroSectionRef} id="home" className="prem-hero">
-        <div ref={heroTextRef} className="prem-hero-text">
-          <span className="prem-hero-eyebrow">ISO / IEC 17025 Accredited</span>
-          <h1 className="prem-hero-title">
-            {heroTitles[current].split('\n').map((line, i) => (
-              <span key={i} className="prem-hero-title-line">{line}</span>
-            ))}
-          </h1>
-          <p className="prem-hero-sub">{heroSubs[current]}</p>
-          <div className="prem-hero-ctas">
-            <Link to="/contact" className="prem-btn-primary">Request a Quote</Link>
-            <Link to="/products" className="prem-btn-secondary">Our Products ↓</Link>
-          </div>
+    <section className="hero" aria-label="Hero banner">
+
+      {/* ── Left: dark text panel ── */}
+      <div className="hero-left">
+        <p className="hero-eyebrow" key={`ey-${current}`}>{s.eyebrow}</p>
+
+        <h1 className="hero-title" key={`ti-${current}`}>
+          {s.title}
+          <em>{s.em}</em>
+        </h1>
+
+        <p className="hero-sub" key={`su-${current}`}>{s.sub}</p>
+
+        <div className="hero-ctas">
+          <Link to="/contact" className="btn btn-gold">Request a Quote</Link>
+          <Link to="/products" className="btn btn-outline-white">Our Products →</Link>
         </div>
 
-        <div className="prem-slider-wrap">
-          <div ref={heroImgRef} className="prem-slider-inner">
-            {heroImages.map((img, i) => (
-              <img
-                key={i}
-                src={img}
-                alt={`Slide ${i + 1}`}
-                className={`prem-slide-img${i === current ? ' active' : ''}`}
-              />
-            ))}
-            <div className="prem-slider-overlay" />
-          </div>
-
-          <button
-            ref={arrowBtnRef}
-            className="prem-arrow-btn"
-            aria-label="Scroll down"
-            onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}
-            type="button"
-          >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="6 9 12 15 18 9" />
-            </svg>
-          </button>
-
-          <div className="prem-dots">
-            {heroImages.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                className={`prem-dot${i === current ? ' active' : ''}`}
-                onClick={() => goTo(i)}
-                aria-label={`Slide ${i + 1}`}
-              />
-            ))}
-          </div>
+        {/* Stats from original consultationData.js */}
+        <div className="hero-stats">
+          {heroStats.map(st => (
+            <div className="hero-stat" key={st.num}>
+              <span className="hero-stat-num">{st.num}</span>
+              <span className="hero-stat-label">{st.label}</span>
+            </div>
+          ))}
         </div>
-      </section>
 
-      <section className="brand-section section-pad surface-white" aria-labelledby="home-brand-heading">
-        <div className="page-container brand-section__inner">
-          <ScrollAnimation>
-            <HomeBrandLogo
-              logoSrc={logoPdf}
-              title="RV TESTING MACHINES PRIVATE LIMITED"
-              subtitle="ISO/IEC 17025 Accredited Calibration Laboratory"
+        <div className="hero-dots" role="tablist">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              role="tab"
+              aria-selected={i === current}
+              className={`hero-dot${i === current ? ' active' : ''}`}
+              onClick={() => goTo(i)}
+              aria-label={`Slide ${i + 1}`}
             />
+          ))}
+        </div>
+      </div>
+
+      {/* ── Right: 4K image panel ── */}
+      <div className="hero-right">
+        {slides.map((sl, i) => (
+          <div key={i} className={`hero-slide-img${i === current ? ' active' : ''}`}>
+            <img src={sl.img} alt="" aria-hidden="true" />
+          </div>
+        ))}
+      </div>
+
+    </section>
+  );
+};
+
+/* ── Home Page ── */
+export default function Home() {
+  const half = Math.ceil(HOME_EXPERTISE_TAGS.length / 2);
+  const row1 = HOME_EXPERTISE_TAGS.slice(0, half);
+  const row2 = HOME_EXPERTISE_TAGS.slice(half);
+
+  return (
+    <main id="main-content">
+      <Hero />
+
+      {/* ── Brand / About Section ── */}
+      <section className="brand-section" aria-labelledby="brand-h">
+        <div className="brand-section__inner">
+
+          <ScrollAnimation direction="left">
+            <div className="brand-logo-col">
+              <div className="brand-logo-frame">
+                <img
+                  src={logoPdf}
+                  alt="RV Testing Machines Private Limited logo"
+                  className="brand-logo-img"
+                />
+              </div>
+              <span className="brand-cert-text">ISO / IEC 17025 Accredited</span>
+            </div>
           </ScrollAnimation>
-          <ScrollAnimation>
-            <div className="description-box">
-              <h2 id="home-brand-heading" className="sr-only">
-                About RV Testing Machines Private Limited
+
+          <ScrollAnimation direction="right">
+            <div className="brand-text-col">
+              <span className="home-label">About Us</span>
+              <h2 id="brand-h">
+                RV Testing Machines<br />
+                <span className="brand-accent">Private Limited</span>
               </h2>
+              {/* Taken from DEFAULT_DESCRIPTION in siteConfig.js */}
               <p>
-                With over 20 years of expertise in the sales, service, and calibration of material
-                testing machines in India, <strong>RV Testing Machines Private Limited</strong> is a trusted partner for
-                universal testing machines (UTM), rubber and metal testing equipment, hardness testers,
-                durometers, and ISO/IEC 17025 accredited calibration. We serve automotive, aerospace,
-                construction, polymer, and quality laboratories with precision instruments, installation,
-                preventive maintenance, and traceable calibration across India.
+                NABL accredited material testing, universal testing machines, rubber &amp; metal
+                testing equipment, calibration and technical support across India since 2015.
               </p>
+              {/* From servicesIntro in servicesData.js */}
               <p>
-                Partnering with leading global brands from the UK, Europe, and worldwide markets, we deliver
-                cutting-edge testing solutions, technical consultation, and comprehensive after-sales support
-                so your laboratory stays compliant, accurate, and production-ready.
+                From installation and commissioning to preventive maintenance and performance
+                validation, RVTM provides complete product service support for material testing
+                machines across India.
               </p>
+            </div>
+          </ScrollAnimation>
+
+        </div>
+      </section>
+
+      {/* ── Featured Products ── */}
+      <section className="home-products" aria-labelledby="products-h">
+        <div className="home-products-inner">
+          <div className="home-products-header">
+            <ScrollAnimation direction="up">
+              <span className="home-label">Our Equipment</span>
+              <h2 id="products-h">Featured Products</h2>
+              <p>
+                Precision material testing machines for rubber, elastomers, metals, and
+                engineering materials — built for accuracy, compliance, and production reliability.
+              </p>
+            </ScrollAnimation>
+          </div>
+          <div className="product-grid">
+            {productItems.map((product, idx) => (
+              <ScrollAnimation key={product.id} direction="up" delay={idx * 100}>
+                <article className="product-card">
+                  <div className="product-card-img">
+                    <img src={product.image} alt={product.title} loading="lazy" />
+                  </div>
+                  <div className="product-card-body">
+                    <span className="product-card-cat">{product.category}</span>
+                    <h3>{product.title}</h3>
+                    <p>{product.description}</p>
+                    <Link to="/products" className="product-card-link">
+                      Learn More
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                      </svg>
+                    </Link>
+                  </div>
+                </article>
+              </ScrollAnimation>
+            ))}
+          </div>
+          <ScrollAnimation direction="up">
+            <div className="home-products-cta">
+              <Link to="/products" className="btn btn-outline">View All Products →</Link>
             </div>
           </ScrollAnimation>
         </div>
-        <div className="home-expertise-section">
-          <p className="home-expertise__label">Areas of expertise</p>
-          <div className="marquee-wrapper">
-            <div className="marquee-track marquee-track--left">
-              {row1Tags.map((tag, idx) => (
-                <span key={`r1-${idx}`} className="marquee-tag">{tag}</span>
-              ))}
-              {row1Tags.map((tag, idx) => (
-                <span key={`r1-dup-${idx}`} className="marquee-tag">{tag}</span>
-              ))}
-            </div>
-            <div className="marquee-track marquee-track--right">
-              {row2Tags.map((tag, idx) => (
-                <span key={`r2-${idx}`} className="marquee-tag">{tag}</span>
-              ))}
-              {row2Tags.map((tag, idx) => (
-                <span key={`r2-dup-${idx}`} className="marquee-tag">{tag}</span>
-              ))}
-            </div>
+      </section>
+
+      {/* ── Expertise Marquee ── */}
+      <section className="marquee-section" aria-label="Areas of expertise">
+        <p className="marquee-label-row">Areas of Expertise</p>
+        <div className="marquee-track-wrap">
+          <div className="marquee-track marquee-track--l">
+            {[...row1, ...row1].map((t, i) => (
+              <span key={`r1-${i}`} className="marquee-pill">
+                <span className="marquee-pill-dot" />{t}
+              </span>
+            ))}
+          </div>
+          <div className="marquee-track marquee-track--r">
+            {[...row2, ...row2].map((t, i) => (
+              <span key={`r2-${i}`} className="marquee-pill">
+                <span className="marquee-pill-dot" />{t}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="features-section section-pad">
-        <div className="page-container">
-          {featureCards.map((card, index) => (
-            <ScrollAnimation key={card.title} direction={index === 0 ? 'left' : 'right'}>
-              <article className="feature-card media-card">
-                <img src={card.src} alt={card.alt} className="media-card__img" loading="lazy" />
-                <div className="feature-card-caption">
+      {/* ── Feature Cards (original 2 only) ── */}
+      <section className="home-services" aria-labelledby="feat-h">
+        <div className="home-services-inner">
+          <div className="home-services-header">
+            <span className="home-label">Our Services</span>
+            <h2 id="feat-h">What We Deliver</h2>
+            {/* From servicesIntro */}
+            <p>
+              Complete product service support — from installation and commissioning to
+              preventive maintenance, performance validation, and NABL accredited calibration.
+            </p>
+          </div>
+          <div className="feat-cards-grid">
+            {featureCards.map((card, idx) => (
+              <ScrollAnimation key={card.title} direction={idx === 0 ? 'left' : 'right'}>
+                <article className="feat-card">
+                  <div className="feat-card-img">
+                    <img src={card.src} alt={card.title} loading="lazy" />
+                  </div>
+                  <div className="feat-card-body">
+                    <span className="feat-card-tag">{card.tag}</span>
+                    <h3>{card.title}</h3>
+                    <p>{card.text}</p>
+                  </div>
+                </article>
+              </ScrollAnimation>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Service & Calibration ── */}
+      <section className="home-calibration" aria-labelledby="calib-h">
+        <div className="home-calibration-inner">
+          <div className="home-calibration-header">
+            <ScrollAnimation direction="up">
+              <span className="home-label">Service &amp; Calibration</span>
+              <h2 id="calib-h">{calibrationSection.title}</h2>
+            </ScrollAnimation>
+          </div>
+
+          <div className="calibration-showcase">
+            <ScrollAnimation direction="left">
+              <div className="calibration-text">
+                <span className="calibration-badge">
+                  NABL Cert No: CC – 4232
+                </span>
+                {calibrationSection.paragraphs.map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
+                <Link to="/contact" className="btn btn-gold calibration-cta">
+                  Schedule Calibration
+                </Link>
+              </div>
+            </ScrollAnimation>
+            <ScrollAnimation direction="right">
+              <div className="calibration-img-wrap">
+                <img src={nablImg} alt="NABL accredited calibration laboratory" loading="lazy" />
+              </div>
+            </ScrollAnimation>
+          </div>
+
+          {/* Service highlight cards */}
+          <div className="service-highlights">
+            {serviceBlocks.map((block, idx) => (
+              <ScrollAnimation key={block.id} direction="up" delay={idx * 100}>
+                <article className="service-highlight-card">
+                  <span className="service-highlight-num">0{idx + 1}</span>
+                  <h3>{block.title}</h3>
+                  <p>{block.description}</p>
+                </article>
+              </ScrollAnimation>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Why Choose Us ── */}
+      <section className="home-why" aria-labelledby="why-h">
+        <div className="home-why-inner">
+          <div className="home-why-header">
+            <ScrollAnimation direction="up">
+              <span className="home-label">Why Choose Us</span>
+              <h2 id="why-h">The RVTMPL Advantage</h2>
+              <p>
+                Trusted by laboratories, manufacturers, and R&amp;D facilities across India for
+                precision testing equipment, accredited calibration, and reliable technical support.
+              </p>
+            </ScrollAnimation>
+          </div>
+          <div className="why-grid">
+            {whyCards.map((card, idx) => (
+              <ScrollAnimation key={card.title} direction="up" delay={idx * 80}>
+                <article className="why-card">
+                  <div className="why-card-icon">
+                    {card.icon}
+                  </div>
                   <h3>{card.title}</h3>
                   <p>{card.text}</p>
-                </div>
-              </article>
-            </ScrollAnimation>
-          ))}
+                </article>
+              </ScrollAnimation>
+            ))}
+          </div>
         </div>
       </section>
 

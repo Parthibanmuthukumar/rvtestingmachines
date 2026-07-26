@@ -1,16 +1,9 @@
-import prescottLogo from '../assets/logos/Oprescot.png';
-import kobelcoLogo from '../assets/logos/logo-2.png';
-import fischerLogo from '../assets/logos/Ofischer.png';
-import nubatecoLogo from '../assets/logos/Onubateco.png';
-import cisamLogo from '../assets/logos/LOGO-1.png';
-import utmLogo from '../assets/logos/OUTM.png';
-
-/** All 6 partner logos from src/assets/logos */
+/** All 6 partner logos from public/images */
 export const PARTNER_LOGOS = [
-  { id: 'prescott', src: prescottLogo, alt: 'Prescott', name: 'Prescott' },
-  { id: 'kobelco', src: kobelcoLogo, alt: 'KOBELCO', name: 'KOBELCO' },
-  { id: 'fischer', src: fischerLogo, alt: 'Fischer', name: 'Fischer' },
-  { id: 'nubateco', src: nubatecoLogo, alt: 'Nubateco', name: 'Nubateco' },
-  { id: 'cisam', src: cisamLogo, alt: 'CISAM', name: 'CISAM' },
-  { id: 'utm', src: utmLogo, alt: 'UTM', name: 'UTM' },
+  { id: 'fisher', src: '/images/Fisher.png', alt: 'Fisher', name: 'Fisher' },
+  { id: 'formtest', src: '/images/Form+Test.png', alt: 'Form+Test', name: 'Form+Test' },
+  { id: 'hildebrand', src: '/images/Hilde Brand.png', alt: 'Hilde Brand', name: 'Hilde Brand' },
+  { id: 'prescott', src: '/images/Prescott.png', alt: 'Prescott', name: 'Prescott' },
+  { id: 'utmtesting', src: '/images/UTM Testing.png', alt: 'UTM Testing', name: 'UTM Testing' },
+  { id: 'unconventional', src: '/images/Unconventional Testing.png', alt: 'Unconventional Testing', name: 'Unconventional Testing' },
 ];

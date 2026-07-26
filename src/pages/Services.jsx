@@ -9,7 +9,7 @@ export default function Services() {
     <main id="main-content" className="inner-page">
       <PageHero
         eyebrow="Complete Lifecycle Support"
-        title="Product Service"
+        title="Product & Calibration"
         subtitle={servicesIntro}
       >
         <Link to="/contact" className="about-cta-btn" style={{ marginTop: 20 }}>
@@ -22,56 +22,57 @@ export default function Services() {
           key={block.id}
           className={`service-block${index % 2 === 1 ? ' service-block--alt' : ''}`}
         >
-          <div className="service-block-inner">
-            <ScrollAnimation direction="left">
-              <div className="service-block-text">
-                <h2>{block.title}</h2>
-                <p>{block.description}</p>
-              </div>
+          <div className="service-block-container">
+            <ScrollAnimation direction="up">
+              <span className="label">0{index + 1}</span>
+              <h2 className="service-block-main-title">{block.title}</h2>
             </ScrollAnimation>
-            <ScrollAnimation direction="right">
-              <div className="service-images-grid">
-                {block.images.map((img, i) => (
-                  <div key={i} className="media-card">
-                    <img src={img} alt={`${block.title} ${i + 1}`} className="media-card__img" loading="lazy" />
-                  </div>
-                ))}
-              </div>
-            </ScrollAnimation>
+            <div className="service-block-inner">
+              <ScrollAnimation direction="left">
+                <div className="service-block-text">
+                  <p>{block.description}</p>
+                </div>
+              </ScrollAnimation>
+              <ScrollAnimation direction="right">
+                <div className="service-images-grid">
+                  {block.images.map((img, i) => (
+                    <div key={i} className="media-card">
+                      <img src={img} alt={`${block.title} ${i + 1}`} className="media-card__img" loading="lazy" />
+                    </div>
+                  ))}
+                </div>
+              </ScrollAnimation>
+            </div>
           </div>
         </section>
       ))}
 
+      {/* Calibration Section — data from servicesData.js only */}
       <section className="calibration-section" id="calibration">
         <div className="calibration-inner">
-          <ScrollAnimation direction="left">
-            <div className="calibration-images">
-              {calibrationSection.images.map((img, i) => (
-                <div key={i} className="media-card media-card--contain">
-                  <img
-                    src={img}
-                    alt={`Calibration ${i + 1}`}
-                    className="media-card__img"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </div>
+          <ScrollAnimation direction="up">
+            <span className="label label--gold">NABL Accredited</span>
+            <h2 className="calibration-main-title">{calibrationSection.title}</h2>
           </ScrollAnimation>
-          <ScrollAnimation direction="right">
-            <div className="calibration-content">
-              <h2>{calibrationSection.title}</h2>
-              <p>{calibrationSection.description}</p>
-              <ul className="calibration-list">
-                {calibrationSection.points.map((point) => (
-                  <li key={point}>{point}</li>
+          <div className="calibration-grid-container">
+            <ScrollAnimation direction="left">
+              <div className="calibration-images">
+                {calibrationSection.images.map((img, i) => (
+                  <div key={i} className="media-card media-card--contain">
+                    <img src={img} alt={`Calibration ${i + 1}`} className="media-card__img" loading="lazy" />
+                  </div>
                 ))}
-              </ul>
-              <Link to="/contact" className="about-cta-btn">
-                Schedule Calibration
-              </Link>
-            </div>
-          </ScrollAnimation>
+              </div>
+            </ScrollAnimation>
+            <ScrollAnimation direction="right">
+              <div className="calibration-content">
+                {calibrationSection.paragraphs.map((para, i) => <p key={i}>{para}</p>)}
+                <Link to="/contact" className="about-cta-btn" style={{ marginTop: '8px' }}>
+                  Schedule Calibration
+                </Link>
+              </div>
+            </ScrollAnimation>
+          </div>
         </div>
       </section>
 

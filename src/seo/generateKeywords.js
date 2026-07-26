@@ -5,7 +5,7 @@ const BRAND = [
   'rv testing machines private limited',
   'RVTM',
   'RV Testing Machines Private Limited',
-  'RV machine testing',
+  'RV testing machines',
   'RV testing machines India',
   'RV testing machines Chennai',
 ];

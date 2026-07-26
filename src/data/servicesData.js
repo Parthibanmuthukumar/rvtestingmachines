@@ -2,7 +2,6 @@ import em400 from '../assets/images/EM-400.png';
 import alpha from '../assets/images/ALPHA-3-3000-AD.png';
 import em10 from '../assets/images/EM-10 image 1.png';
 import prescott from '../assets/images/prescott-mv.png';
-import nabl from '../assets/images/nabl-logo.png';
 import nic from '../assets/images/NIC_29221.jpg';
 
 export const servicesIntro =
@@ -33,14 +32,11 @@ export const serviceBlocks = [
 ];
 
 export const calibrationSection = {
-  title: 'Accredited Calibration Services',
-  description:
-    'NABL accredited calibration laboratory (Certificate No: CC – 2858) providing traceable calibration for load cells, extensometers, hardness testers, and complete UTM systems in accordance with ISO/IEC 17025 requirements.',
-  images: [nabl, nic],
-  points: [
-    'Traceable to national measurement standards',
-    'On-site and in-laboratory calibration options',
-    'Detailed calibration certificates and reports',
-    'Annual maintenance contracts available',
+  title: 'Service and Calibration',
+  paragraphs: [
+    'With regular maintenance, service and calibration, you can ensure your instruments run smoother for longer, and achieve the most reliable and accurate results.',
+    'RV Testing Machines Private Limited operates as an NABL accredited calibration laboratory (Certificate No: CC – 4232) providing traceable calibration for load cells, extensometers, hardness testers, and complete UTM systems in accordance with ISO/IEC 17025 requirements.',
+    'We are able to service and calibrate a wide range of laboratory testing equipment. All calibration procedures are traceable to national measurement standards, with both on-site and in-laboratory calibration options, detailed calibration certificates, and comprehensive annual maintenance contracts (AMC) available.'
   ],
+  images: [nic],
 };
