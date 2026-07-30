@@ -26,23 +26,30 @@ export default function Contact() {
   const [form, setForm]           = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
   const [activeTip, setActiveTip] = useState('address');
+  const [dismissedTips, setDismissedTips] = useState({});
   const timerRef                  = useRef(null);
 
   const showTip = (key) => {
+    if (dismissedTips[key]) return; // If manually dismissed, stay hidden
     if (timerRef.current) clearTimeout(timerRef.current);
     setActiveTip(key);
     timerRef.current = setTimeout(() => {
       setActiveTip(null);
-    }, 3000); // Auto disappear after 3 seconds
+    }, 4000);
   };
 
-  const dismiss = () => {
+  const dismissTip = (e, key) => {
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
     if (timerRef.current) clearTimeout(timerRef.current);
+    setDismissedTips((prev) => ({ ...prev, [key]: true }));
     setActiveTip(null);
   };
 
   useEffect(() => {
-    // Automatically show address tooltip for 3 seconds on load
+    // Automatically show address tooltip for 4 seconds on initial page load
     showTip('address');
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
@@ -57,15 +64,39 @@ export default function Contact() {
   const handleSubmit = e => {
     e.preventDefault();
     const subject = form.subject || 'Website Contact Inquiry';
-    const body    = `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone || 'N/A'}\n\nMessage:\n${form.message}`;
-    const mailtoUrl = `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const body = `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone || 'N/A'}\n\nMessage:\n${form.message}`;
+    
+    // Check if device is mobile (iOS or Android)
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-    // Triggers native mobile Mail / Gmail app or desktop default email client
-    window.location.href = mailtoUrl;
+    const mailtoUrl = `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT.email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    if (isMobile) {
+      // On mobile, trigger mailto to open native Gmail app
+      window.location.href = mailtoUrl;
+    } else {
+      // On laptop/desktop, open Gmail Web directly in a new browser tab
+      window.open(gmailWebUrl, '_blank', 'noopener,noreferrer');
+    }
 
     setSubmitted(true);
     setForm(initialForm);
   };
+
+  const renderCloseBtn = (key) => (
+    <button
+      type="button"
+      className="address-tooltip-close-btn"
+      onClick={(e) => dismissTip(e, key)}
+      aria-label="Dismiss tooltip"
+    >
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+  );
 
   return (
     <main id="main-content" className="inner-page">
@@ -91,7 +122,7 @@ export default function Contact() {
                   {/* Address */}
                   <TiltCard
                     intensity={5}
-                    className={`contact-card address-card-container${activeTip === 'address' ? ' active-card' : ''}`}
+                    className={`contact-card address-card-container${activeTip === 'address' && !dismissedTips.address ? ' active-card' : ''}`}
                     onMouseEnter={() => showTip('address')}
                   >
                     <strong>Address</strong>
@@ -99,24 +130,23 @@ export default function Contact() {
                       href="https://www.google.com/maps/search/?api=1&query=RV+Testing+Machines+Private+Limited+Chennai"
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={dismiss}
                     >
                       Plot No 89, Door No 5/49 A,<br />
                       Vanavil Flats - A2, Natesan Nagar,<br />
                       Ramapuram, Chennai - 600 089, India
                     </a>
-                    {activeTip === 'address' && (
+                    {activeTip === 'address' && !dismissedTips.address && (
                       <div className="address-tooltip-bubble">
                         <span className="address-tooltip-arrow" />
                         <span className="address-tooltip-text">{TOOLTIPS.address}</span>
-                        <button className="address-tooltip-close-btn" onClick={e => { e.stopPropagation(); e.preventDefault(); dismiss(); }} aria-label="Dismiss">×</button>
+                        {renderCloseBtn('address')}
                       </div>
                     )}
                   </TiltCard>
 
                   {/* Phone */}
                   <div
-                    className={`contact-card${activeTip === 'phone' ? ' active-card' : ''}`}
+                    className={`contact-card${activeTip === 'phone' && !dismissedTips.phone ? ' active-card' : ''}`}
                     onMouseEnter={() => showTip('phone')}
                   >
                     <strong>Phone</strong>
@@ -125,56 +155,54 @@ export default function Contact() {
                         href={`https://wa.me/${CONTACT.phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hi, I am interested in RV Testing Machines and would like to make an enquiry.')}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={dismiss}
                       >
                         💬 WhatsApp: {CONTACT.phone}
                       </a>
-                      <a href={`tel:${CONTACT.phoneLandline.replace(/[^0-9+]/g, '')}`} onClick={dismiss}>
+                      <a href={`tel:${CONTACT.phoneLandline.replace(/[^0-9+]/g, '')}`}>
                         📞 Landline: {CONTACT.phoneLandline}
                       </a>
                     </div>
-                    {activeTip === 'phone' && (
+                    {activeTip === 'phone' && !dismissedTips.phone && (
                       <div className="address-tooltip-bubble">
                         <span className="address-tooltip-arrow" />
                         <span className="address-tooltip-text">{TOOLTIPS.phone}</span>
-                        <button className="address-tooltip-close-btn" onClick={e => { e.stopPropagation(); e.preventDefault(); dismiss(); }} aria-label="Dismiss">×</button>
+                        {renderCloseBtn('phone')}
                       </div>
                     )}
                   </div>
 
                   {/* Email */}
                   <div
-                    className={`contact-card${activeTip === 'email' ? ' active-card' : ''}`}
+                    className={`contact-card${activeTip === 'email' && !dismissedTips.email ? ' active-card' : ''}`}
                     onMouseEnter={() => showTip('email')}
                   >
                     <strong>Email</strong>
                     <a
                       href={`mailto:${CONTACT.email}?subject=${encodeURIComponent('Enquiry to RV Testing Machines')}`}
-                      onClick={dismiss}
                     >
                       {CONTACT.email}
                     </a>
-                    {activeTip === 'email' && (
+                    {activeTip === 'email' && !dismissedTips.email && (
                       <div className="address-tooltip-bubble">
                         <span className="address-tooltip-arrow" />
                         <span className="address-tooltip-text">{TOOLTIPS.email}</span>
-                        <button className="address-tooltip-close-btn" onClick={e => { e.stopPropagation(); e.preventDefault(); dismiss(); }} aria-label="Dismiss">×</button>
+                        {renderCloseBtn('email')}
                       </div>
                     )}
                   </div>
 
                   {/* Hours */}
                   <div
-                    className={`contact-card${activeTip === 'hours' ? ' active-card' : ''}`}
+                    className={`contact-card${activeTip === 'hours' && !dismissedTips.hours ? ' active-card' : ''}`}
                     onMouseEnter={() => showTip('hours')}
                   >
                     <strong>Working Hours</strong>
                     <span>Mon – Sat: 9:00 AM – 6:00 PM</span>
-                    {activeTip === 'hours' && (
+                    {activeTip === 'hours' && !dismissedTips.hours && (
                       <div className="address-tooltip-bubble">
                         <span className="address-tooltip-arrow" />
                         <span className="address-tooltip-text">{TOOLTIPS.hours}</span>
-                        <button className="address-tooltip-close-btn" onClick={e => { e.stopPropagation(); e.preventDefault(); dismiss(); }} aria-label="Dismiss">×</button>
+                        {renderCloseBtn('hours')}
                       </div>
                     )}
                   </div>
@@ -198,50 +226,59 @@ export default function Contact() {
                       <input type="email" name="email" value={form.email} onChange={handleChange} required autoComplete="email" placeholder={PLACEHOLDERS.email} />
                     </label>
                   </div>
+
                   <div className="form-row">
                     <label>
-                      Mobile Number
+                      Phone Number
                       <input type="tel" name="phone" value={form.phone} onChange={handleChange} autoComplete="tel" placeholder={PLACEHOLDERS.phone} />
                     </label>
                     <label>
                       Subject
-                      <input type="text" name="subject" value={form.subject} onChange={handleChange} required placeholder={PLACEHOLDERS.subject} />
+                      <input type="text" name="subject" value={form.subject} onChange={handleChange} placeholder={PLACEHOLDERS.subject} />
                     </label>
                   </div>
-                  <label>
-                    Your Message
-                    <textarea name="message" value={form.message} onChange={handleChange} required rows={5} placeholder={PLACEHOLDERS.message} />
+
+                  <label className="form-full">
+                    Your Message / Requirement Details
+                    <textarea name="message" rows="5" value={form.message} onChange={handleChange} required placeholder={PLACEHOLDERS.message} />
                   </label>
-                  <button type="submit" className="contact-submit">Submit Enquiry →</button>
+
+                  <button type="submit" className="form-submit-btn">
+                    Send Enquiry via Email &rarr;
+                  </button>
                 </form>
               </div>
             </ScrollAnimation>
           </div>
         </div>
+      </section>
 
-        {/* ── Google Maps Embed ── */}
+      {/* Google Map Section */}
+      <section className="contact-map-wrap">
         <ScrollAnimation direction="up">
-          <div className="contact-map-wrap">
-            <div className="contact-map-header">
-              <span className="home-label">Find Us</span>
-              <h3>Our Location</h3>
-              <p>
-                Plot No 89, Door No 5/49 A, Vanavil Flats - A2,<br />
-                Natesan Nagar, Ramapuram, Chennai - 600 089, India
-              </p>
+          <div className="contact-map-header">
+            <span className="home-label">Our Location</span>
+            <h3>Visit Our Laboratory &amp; Office</h3>
+            <p>Plot No 89, Door No 5/49 A, Vanavil Flats - A2, Natesan Nagar, Ramapuram, Chennai - 600 089, Tamil Nadu, India.</p>
+            <div style={{ marginTop: '0.75rem' }}>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=RV+Testing+Machines+Private+Limited+Ramapuram+Chennai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-map-direct-link"
+              >
+                📍 Open "RV Testing Machines Private Limited" in Google Maps &rarr;
+              </a>
             </div>
-            <div className="contact-map-frame">
-              <iframe
-                title="RV Testing Machines Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.1234567890!2d80.1761!3d13.0329!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5260e9f7e4c5c5%3A0x0!2sRV+Testing+Machines+Private+Limited+Ramapuram+Chennai!5e0!3m2!1sen!2sin!4v1690000000000"
-                width="100%"
-                height="340"
-                style={{ border: 0, borderRadius: '16px', display: 'block' }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+          </div>
+          <div className="contact-map-frame">
+            <iframe
+              title="RV Testing Machines Private Limited Location Map"
+              src="https://maps.google.com/maps?q=RV+Testing+Machines+Private+Limited,+Natesan+Nagar,+Ramapuram,+Chennai,+Tamil+Nadu&t=&z=16&ie=UTF8&iwloc=near&output=embed"
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
           </div>
         </ScrollAnimation>
       </section>

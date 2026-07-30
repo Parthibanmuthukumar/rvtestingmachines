@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import logoPdf from '../assets/images/RVTMPL LOGO_page-0001.jpg';
+import logoPng from '../assets/images/logo_equal_padding.png';
 import { CONTACT } from '../seo/siteConfig';
 
 export default function Footer() {
@@ -10,7 +10,7 @@ export default function Footer() {
         {/* Brand */}
         <div className="footer-brand">
           <div className="footer-logo-row">
-            <img src={logoPdf} alt="RV Testing Machines" className="footer-logo-img" />
+            <img src={logoPng} alt="RV Testing Machines" className="footer-logo-img" />
             <div className="footer-brand-name">
               <span className="nm">RV Testing Machines</span>
               <span className="sub">Private Limited</span>
@@ -44,8 +44,6 @@ export default function Footer() {
             <li><Link to="/about">Company Overview</Link></li>
             <li><Link to="/about">Our Vision &amp; Mission</Link></li>
             <li><Link to="/about">10+ Years Experience</Link></li>
-            <li><Link to="/about">Accreditation</Link></li>
-            <li><Link to="/about">Global Partners</Link></li>
           </ul>
         </div>
 
@@ -55,7 +53,7 @@ export default function Footer() {
           <ul className="footer-links footer-contact">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/products">Our Products</Link></li>
-            <li><Link to="/services">Calibration Services</Link></li>
+            <li><Link to="/services">Services &amp; Calibration</Link></li>
             <li><Link to="/consultation">Consultation</Link></li>
             <li><Link to="/contact">Technical Support</Link></li>
           </ul>

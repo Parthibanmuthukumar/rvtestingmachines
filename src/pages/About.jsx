@@ -72,33 +72,40 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── Overview — text from DEFAULT_DESCRIPTION & productsIntro ── */}
+      {/* ── Overview — 2-column layout with right-side CTA card ── */}
       <section className="about-overview">
         <div className="about-overview-inner">
-          <ScrollAnimation direction="up">
-            <span className="home-label">About RVTMPL</span>
-          </ScrollAnimation>
-          <ScrollAnimation direction="up">
+          <ScrollAnimation direction="left">
             <div className="about-overview-text">
+              <span className="home-label">About RVTMPL</span>
               <h2>About RV Testing Machines Private Limited</h2>
-              {/* siteConfig DEFAULT_DESCRIPTION */}
               <p>
                 RV Testing Machines Private Limited — NABL accredited material testing, universal
                 testing machines, rubber &amp; metal testing equipment, calibration and technical
                 support across India since 2015.
               </p>
-              {/* productsIntro */}
               <p>
                 We deliver precision material testing machines and equipment for rubber, plastics,
                 metals, and other materials like wood, ceramic, glass, and textiles.
               </p>
-              {/* servicesIntro */}
               <p>
                 From installation and commissioning to preventive maintenance and performance
                 validation, RVTM provides complete product service support for material testing
                 machines across India.
               </p>
-              <Link to="/contact" className="about-cta-btn">Schedule a Visit</Link>
+            </div>
+          </ScrollAnimation>
+
+          <ScrollAnimation direction="right">
+            <div className="about-cta-card">
+              <span className="about-cta-card-tag">Direct Lab Visit</span>
+              <h3>Schedule a Visit to Our Facility</h3>
+              <p>
+                Tour our Chennai calibration laboratory, inspect active machine setups, or discuss custom testing requirements directly with our technical team.
+              </p>
+              <Link to="/contact" className="btn-about-cta-action">
+                Schedule a Visit &rarr;
+              </Link>
             </div>
           </ScrollAnimation>
         </div>
@@ -164,7 +171,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── Why RVTMPL — calibrationSection paragraphs from servicesData.js ── */}
+      {/* ── Why RVTMPL — 2-column layout filling right side ── */}
       <section className="about-why">
         <div className="about-why-inner">
           <ScrollAnimation direction="left">
@@ -193,6 +200,19 @@ export default function About() {
                   </li>
                 ))}
               </ul>
+            </div>
+          </ScrollAnimation>
+
+          <ScrollAnimation direction="right">
+            <div className="about-why-cta-card">
+              <span className="why-cta-card-tag">Technical Consultation</span>
+              <h3>Need Expert Guidance or Quotation?</h3>
+              <p>
+                Connect with our technical engineers for customized machine recommendations, NABL calibration intervals, and annual maintenance contract support.
+              </p>
+              <Link to="/contact" className="btn-about-why-action">
+                Get Technical Guidance &amp; Quote &rarr;
+              </Link>
             </div>
           </ScrollAnimation>
         </div>

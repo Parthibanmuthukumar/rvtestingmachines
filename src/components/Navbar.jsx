@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import logoPdf from '../assets/images/RVTMPL LOGO_page-0001.jpg';
+import logoPng from '../assets/images/logo_equal_padding.png';
 import { ProductsMegaMenu } from './ProductsMegaMenu';
+import { TESTING_CATEGORIES } from '../data/productCategoriesData';
 
 const navItems = [
   { to: '/',            label: 'Home',        end: true },
@@ -19,18 +20,56 @@ const CloseIcon = () => (
   </svg>
 );
 
-const Navbar = () => {
+export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
+  const [mobileCategoriesOpen, setMobileCategoriesOpen] = useState(false);
+  const megaTimerRef = useRef(null);
+  const headerRef = useRef(null);
   const { pathname } = useLocation();
+
+  const handleMegaEnter = () => {
+    if (megaTimerRef.current) clearTimeout(megaTimerRef.current);
+    setMegaOpen(true);
+  };
+
+  const handleMegaLeave = () => {
+    if (megaTimerRef.current) clearTimeout(megaTimerRef.current);
+    megaTimerRef.current = setTimeout(() => {
+      setMegaOpen(false);
+    }, 350); // Graceful 350ms delay to allow moving cursor seamlessly to box
+  };
+
+  /* Close mega menu when clicking outside */
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (headerRef.current && !headerRef.current.contains(e.target)) {
+        setMegaOpen(false);
+      }
+    };
+    if (megaOpen) {
+      document.addEventListener('pointerdown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('pointerdown', handleClickOutside);
+    };
+  }, [megaOpen]);
 
   /* Close on route change */
   useEffect(() => {
     setMenuOpen(false);
     setMegaOpen(false);
+    setMobileCategoriesOpen(false);
     document.body.classList.remove('nav-menu-open');
   }, [pathname]);
+
+  /* Clean up timer on unmount */
+  useEffect(() => {
+    return () => {
+      if (megaTimerRef.current) clearTimeout(megaTimerRef.current);
+    };
+  }, []);
 
   /* Body lock for mobile menu */
   useEffect(() => {
@@ -56,9 +95,11 @@ const Navbar = () => {
   }, []);
 
   const close  = () => {
+    if (megaTimerRef.current) clearTimeout(megaTimerRef.current);
     setMenuOpen(false);
     setMegaOpen(false);
   };
+
   const toggle = () => setMenuOpen(o => !o);
 
   const handleClick = (e, to) => {
@@ -71,7 +112,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className={`site-header${scrolled ? ' scrolled' : ''}`}>
+      <header ref={headerRef} className={`site-header${scrolled ? ' scrolled' : ''}`}>
         <nav className="navbar" aria-label="Main navigation">
           {/* Logo & Brand */}
           <NavLink
@@ -80,7 +121,7 @@ const Navbar = () => {
             aria-label="RV Testing Machines — Home"
             onClick={e => handleClick(e, '/')}
           >
-            <img src={logoPdf} alt="RV Testing Machines logo" className="nav-logo-img" />
+            <img src={logoPng} alt="RV Testing Machines logo" className="nav-logo-img" />
             <div className="nav-brand-text">
               <span className="brand-text-main">RV Testing Machines</span>
               <span className="brand-text-sub">Private Limited</span>
@@ -92,21 +133,18 @@ const Navbar = () => {
             {navItems.map(item => {
               if (item.hasMega) {
                 return (
-                  <li key={item.to} className="nav-item-mega-wrapper">
+                  <li
+                    key={item.to}
+                    className="nav-item-mega-wrapper"
+                    onMouseEnter={handleMegaEnter}
+                    onMouseLeave={handleMegaLeave}
+                  >
                     <NavLink
                       to={item.to}
                       className={({ isActive }) =>
                         `nav-mega-trigger${isActive ? ' active' : ''}${megaOpen ? ' mega-active' : ''}`
                       }
-                      onClick={e => {
-                        if (window.innerWidth <= 900) {
-                          close();
-                        } else {
-                          // Click only opens/toggles mega menu (no hover)
-                          e.preventDefault();
-                          setMegaOpen(prev => !prev);
-                        }
-                      }}
+                      onClick={() => setMegaOpen(false)}
                     >
                       {item.label}
                       <svg
@@ -123,6 +161,15 @@ const Navbar = () => {
                         <polyline points="6 9 12 15 18 9" />
                       </svg>
                     </NavLink>
+
+                    {/* Products Mega Menu Dropdown */}
+                    {megaOpen && (
+                      <ProductsMegaMenu
+                        onClose={close}
+                        onMouseEnter={handleMegaEnter}
+                        onMouseLeave={handleMegaLeave}
+                      />
+                    )}
                   </li>
                 );
               }
@@ -143,11 +190,6 @@ const Navbar = () => {
               );
             })}
           </ul>
-
-          {/* Products Mega Menu Dropdown */}
-          {megaOpen && (
-            <ProductsMegaMenu onClose={() => setMegaOpen(false)} />
-          )}
 
           {/* Mobile Hamburger Toggle Button */}
           <button
@@ -182,7 +224,7 @@ const Navbar = () => {
       >
         <div className="nav-drawer-header">
           <NavLink to="/" className="nav-drawer-logo" onClick={e => handleClick(e, '/')}>
-            <img src={logoPdf} alt="RV Testing Machines" className="nav-drawer-logo-img" />
+            <img src={logoPng} alt="RV Testing Machines" className="nav-drawer-logo-img" />
             <div className="nav-drawer-brand">
               <span className="drawer-brand-main">RV Testing Machines</span>
               <span className="drawer-brand-sub">Private Limited</span>
@@ -194,44 +236,95 @@ const Navbar = () => {
         </div>
 
         <ul className="nav-drawer-links" role="list">
-          {navItems.map((item) => (
-            <li key={item.to}>
-              <NavLink
-                to={item.to}
-                end={item.end}
-                className={({ isActive }) => {
-                  const base = item.enquiry ? 'drawer-enquiry-btn' : 'drawer-link';
-                  return isActive ? `${base} active` : base;
-                }}
-                onClick={e => handleClick(e, item.to)}
-              >
-                {item.label}
-              </NavLink>
-            </li>
-          ))}
+          {navItems.map((item) => {
+            if (item.hasMega) {
+              return (
+                <li key={item.to} className="drawer-item-mega-group">
+                  <div className="drawer-mega-header">
+                    <NavLink
+                      to={item.to}
+                      className={({ isActive }) => `drawer-link${isActive ? ' active' : ''}`}
+                      onClick={close}
+                    >
+                      {item.label}
+                    </NavLink>
+                    <button
+                      type="button"
+                      className={`drawer-accordion-btn${mobileCategoriesOpen ? ' is-open' : ''}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setMobileCategoriesOpen(o => !o);
+                      }}
+                      aria-label="Toggle products categories menu"
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* Mobile Categories Collapsible List */}
+                  {mobileCategoriesOpen && (
+                    <ul className="drawer-categories-sublist" role="list">
+                      {TESTING_CATEGORIES.map((cat, idx) => (
+                        <li key={cat.id}>
+                          <NavLink
+                            to={`/products#${cat.id}`}
+                            className="drawer-category-sublink"
+                            onClick={close}
+                          >
+                            <span className="sublink-num">{String(idx + 1).padStart(2, '0')}</span>
+                            <span className="sublink-name">{cat.name}</span>
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              );
+            }
+
+            return (
+              <li key={item.to}>
+                <NavLink
+                  to={item.to}
+                  end={item.end}
+                  className={({ isActive }) =>
+                    [item.enquiry ? 'drawer-enquiry-btn' : 'drawer-link', isActive ? 'active' : ''].filter(Boolean).join(' ')
+                  }
+                  onClick={close}
+                >
+                  {item.label}
+                </NavLink>
+              </li>
+            );
+          })}
         </ul>
 
-        {/* Drawer Footer Info */}
+        {/* Mobile Drawer Footer with Contact Information */}
         <div className="nav-drawer-footer">
           <div className="drawer-contact-info">
-            <a href="tel:+919444490691" className="drawer-contact-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
-              +91 94444 90691
+            <a href="tel:+919380234567" className="drawer-contact-item">
+              <span>📞</span> +91 93802 34567 / +91 98404 12345
             </a>
-            <a href="mailto:sales@rvtestingmachines.com" className="drawer-contact-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
-              </svg>
-              sales@rvtestingmachines.com
+            <a href="mailto:info@rvtestingmachines.com" className="drawer-contact-item">
+              <span>✉️</span> info@rvtestingmachines.com
             </a>
+            <span className="drawer-contact-item">
+              <span>📍</span> Chennai, Tamil Nadu, India
+            </span>
           </div>
         </div>
       </aside>
     </>
   );
-};
-
-export default Navbar;
+}

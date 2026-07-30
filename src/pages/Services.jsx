@@ -1,82 +1,129 @@
 import { Link } from 'react-router-dom';
 import { PageHero } from '../components/shared/PageHero';
-import { GlobalPartners } from '../components/shared/GlobalPartners';
 import ScrollAnimation from '../components/ScrollAnimation';
-import { serviceBlocks, servicesIntro, calibrationSection } from '../data/servicesData';
+import {
+  servicesIntro,
+  serviceOverview,
+  comprehensiveSupport,
+  calibrationServicesData,
+} from '../data/servicesData';
+import '../styles/pages.css';
 
 export default function Services() {
   return (
     <main id="main-content" className="inner-page">
+      {/* 1. Page Hero Header */}
       <PageHero
-        eyebrow="Complete Lifecycle Support"
-        title="Product & Calibration"
+        eyebrow="Precision Maintenance & Technical Support"
+        title="Service and Calibration"
         subtitle={servicesIntro}
-      >
-        <Link to="/contact" className="about-cta-btn" style={{ marginTop: 20 }}>
-          Get Service Support
-        </Link>
-      </PageHero>
+      />
 
-      {serviceBlocks.map((block, index) => (
-        <section
-          key={block.id}
-          className={`service-block${index % 2 === 1 ? ' service-block--alt' : ''}`}
-        >
-          <div className="service-block-container">
-            <ScrollAnimation direction="up">
-              <span className="label">0{index + 1}</span>
-              <h2 className="service-block-main-title">{block.title}</h2>
-            </ScrollAnimation>
-            <div className="service-block-inner">
-              <ScrollAnimation direction="left">
-                <div className="service-block-text">
-                  <p>{block.description}</p>
-                </div>
-              </ScrollAnimation>
-              <ScrollAnimation direction="right">
-                <div className="service-images-grid">
-                  {block.images.map((img, i) => (
-                    <div key={i} className="media-card">
-                      <img src={img} alt={`${block.title} ${i + 1}`} className="media-card__img" loading="lazy" />
-                    </div>
-                  ))}
-                </div>
-              </ScrollAnimation>
-            </div>
-          </div>
-        </section>
-      ))}
-
-      {/* Calibration Section — data from servicesData.js only */}
-      <section className="calibration-section" id="calibration">
-        <div className="calibration-inner">
+      <div className="consultation-page-container">
+        
+        {/* 2. Top Overview (Image + Text Side-by-Side) */}
+        <section className="consultation-feature-section" style={{ marginBlock: '3rem 2.5rem' }}>
           <ScrollAnimation direction="up">
-            <span className="label label--gold">NABL Accredited</span>
-            <h2 className="calibration-main-title">{calibrationSection.title}</h2>
-          </ScrollAnimation>
-          <div className="calibration-grid-container">
-            <ScrollAnimation direction="left">
-              <div className="calibration-images">
-                {calibrationSection.images.map((img, i) => (
-                  <div key={i} className="media-card media-card--contain">
-                    <img src={img} alt={`Calibration ${i + 1}`} className="media-card__img" loading="lazy" />
-                  </div>
+            <div className="services-hero-grid">
+              <div className="services-hero-img-wrap">
+                <img
+                  src={serviceOverview.image}
+                  alt="Service and Calibration"
+                  className="services-hero-img"
+                />
+              </div>
+
+              <div className="consultation-feature-text" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                {serviceOverview.paragraphs.map((para, idx) => (
+                  <p key={idx} style={{ fontSize: '0.96rem', lineHeight: '1.75', color: '#475569', margin: 0 }}>
+                    {para}
+                  </p>
                 ))}
               </div>
-            </ScrollAnimation>
-            <ScrollAnimation direction="right">
-              <div className="calibration-content">
-                {calibrationSection.paragraphs.map((para, i) => <p key={i}>{para}</p>)}
-                <Link to="/contact" className="about-cta-btn" style={{ marginTop: '8px' }}>
-                  Schedule Calibration
-                </Link>
-              </div>
-            </ScrollAnimation>
-          </div>
-        </div>
-      </section>
+            </div>
+          </ScrollAnimation>
+        </section>
 
-      <GlobalPartners />
+        {/* 3. Framed Section 1: Comprehensive Support */}
+        <section className="services-framed-box" style={{ marginBottom: '3rem' }}>
+          <ScrollAnimation direction="up">
+            <div className="framed-card-content">
+              <h2 className="framed-card-title">{comprehensiveSupport.title}</h2>
+              <p className="framed-card-subtitle">{comprehensiveSupport.subtitle}</p>
+
+              <ul className="framed-bullet-list">
+                {comprehensiveSupport.bulletPoints.map((item, idx) => (
+                  <li key={idx}>
+                    <span className="bullet-dot">•</span>
+                    <span className="bullet-text">{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div style={{ marginTop: '2rem' }}>
+                <a
+                  href="/rvtm_service_calibration_brochure.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="framed-brochure-btn"
+                >
+                  BROCHURE
+                </a>
+              </div>
+            </div>
+          </ScrollAnimation>
+        </section>
+
+        {/* 4. Framed Section 2: Calibration Services */}
+        <section className="services-framed-box" style={{ marginBottom: '3.5rem' }}>
+          <ScrollAnimation direction="up">
+            <div className="framed-card-content">
+              <div>
+                <h2 className="framed-card-title">{calibrationServicesData.title}</h2>
+                {calibrationServicesData.paragraphs.map((p, i) => (
+                  <p key={i} style={{ fontSize: '0.95rem', color: '#475569', lineHeight: '1.7', marginBottom: '0.85rem' }}>
+                    {p}
+                  </p>
+                ))}
+              </div>
+
+              <div style={{ marginTop: '1.5rem' }}>
+                <p style={{ fontSize: '0.95rem', color: '#475569', lineHeight: '1.7', marginBottom: '1rem' }}>
+                  {calibrationServicesData.rangesIntro}
+                </p>
+
+                <ul className="framed-bullet-list" style={{ marginBottom: '1.25rem' }}>
+                  {calibrationServicesData.rangesList.map((item, idx) => (
+                    <li key={idx}>
+                      <span className="bullet-dot">•</span>
+                      <span className="bullet-text"><strong>{item}</strong></span>
+                    </li>
+                  ))}
+                </ul>
+
+                <p style={{ fontSize: '0.95rem', color: '#475569', lineHeight: '1.7', margin: 0 }}>
+                  {calibrationServicesData.loadCellInfo}
+                </p>
+              </div>
+
+            </div>
+          </ScrollAnimation>
+        </section>
+
+        {/* 5. Call To Action Section */}
+        <section className="consultation-cta-section">
+          <ScrollAnimation direction="up">
+            <h2>Schedule Your Service &amp; Calibration Visit</h2>
+            <p>
+              Speak with our accredited calibration engineers to schedule an on-site visit, arrange an AMC contract, or request an official calibration quotation.
+            </p>
+            <Link to="/contact" className="consultation-cta-btn">
+              Book Service &amp; Calibration &rarr;
+            </Link>
+          </ScrollAnimation>
+        </section>
+
+      </div>
     </main>
   );
 }

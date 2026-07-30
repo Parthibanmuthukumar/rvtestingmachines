@@ -5,7 +5,8 @@ import heroImg1    from '../assets/images/hero-1.jpg';
 import heroImg2    from '../assets/images/hero-2.jpg';
 import heroImg3    from '../assets/images/hero-3.jpg';
 import nablImg     from '../assets/images/NIC_29221.jpg';
-/* feature cards served directly from public/images */
+import featCoreImg from '../assets/images/material_testing_consultation.jpg';
+import manWithMachine from '../assets/images/man_with_machine.png';
 import ScrollAnimation   from '../components/ScrollAnimation';
 import { GlobalPartners } from '../components/shared/GlobalPartners';
 import { HOME_EXPERTISE_TAGS } from '../seo/keywords';
@@ -51,13 +52,13 @@ const heroStats = [
 /* ── Feature cards ── */
 const featureCards = [
   {
-    src:   '/images/material-testing-core.jpg',
+    src:   featCoreImg,
     tag:   'Core Capability',
     title: 'Material Testing',
     text:  'Universal testing machines for tensile, compression, hardness and quality validation across industrial applications.',
   },
   {
-    src:   '/images/Man with machine.png',
+    src:   manWithMachine,
     tag:   'Accredited Service',
     title: 'Calibration & Support',
     text:  'NABL-accredited calibration laboratory (Cert No: CC – 4232) and expert technical support to keep your lab compliant and production-ready.',
@@ -113,8 +114,8 @@ const whyCards = [
         <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
       </svg>
     ),
-    title: 'Global Technology Partners',
-    text:  'Authorized distribution and technical alignment with leading international brands — Prescott, Hildebrand, Form+Test, and Fisher.',
+    title: 'Global Compliance Standards',
+    text:  'High-precision material testing equipment manufactured to conform with international ISO, ASTM, DIN, and JIS standards.',
   },
   {
     icon: (
@@ -151,14 +152,16 @@ const Hero = () => {
 
       {/* ── Left: dark text panel ── */}
       <div className="hero-left">
-        <p className="hero-eyebrow" key={`ey-${current}`}>{s.eyebrow}</p>
+        <div className="hero-text-content">
+          <p className="hero-eyebrow" key={`ey-${current}`}>{s.eyebrow}</p>
 
-        <h1 className="hero-title" key={`ti-${current}`}>
-          {s.title}
-          <em>{s.em}</em>
-        </h1>
+          <h1 className="hero-title" key={`ti-${current}`}>
+            {s.title}
+            <em>{s.em}</em>
+          </h1>
 
-        <p className="hero-sub" key={`su-${current}`}>{s.sub}</p>
+          <p className="hero-sub" key={`su-${current}`}>{s.sub}</p>
+        </div>
 
         <div className="hero-ctas">
           <Link to="/contact" className="btn btn-gold">Request a Quote</Link>
@@ -208,6 +211,17 @@ export default function Home() {
   const row1 = HOME_EXPERTISE_TAGS.slice(0, half);
   const row2 = HOME_EXPERTISE_TAGS.slice(half);
 
+  const productCategoryLinkMap = {
+    'rubber-durometer-hdd2': '/products#hardness-testing',
+    'rubber-irhd-micro': '/products#hardness-testing',
+    'rheometer-mdr': '/products#rheology-testing',
+    'mooney-viscometer': '/products#viscosity-testing',
+    'metal-hardness-system': '/products#hardness-testing',
+    'fischer-nano-indentation': '/products#nano-indentation-hardness-testing',
+    'utm-type-em': '/products#tensile-compression-testing',
+    'fatigue-creep-testing': '/products#fatigue-testing',
+  };
+
   return (
     <main id="main-content">
       <Hero />
@@ -237,16 +251,22 @@ export default function Home() {
                 <span className="brand-accent">Private Limited</span>
               </h2>
               {/* Taken from DEFAULT_DESCRIPTION in siteConfig.js */}
-              <p>
+              <p className="brand-text-p">
                 NABL accredited material testing, universal testing machines, rubber &amp; metal
                 testing equipment, calibration and technical support across India since 2015.
               </p>
               {/* From servicesIntro in servicesData.js */}
-              <p>
+              <p className="brand-text-p">
                 From installation and commissioning to preventive maintenance and performance
                 validation, RVTM provides complete product service support for material testing
                 machines across India.
               </p>
+
+              <div className="brand-cta-wrap">
+                <Link to="/about" className="btn-brand-about">
+                  Learn More About Us &rarr;
+                </Link>
+              </div>
             </div>
           </ScrollAnimation>
 
@@ -267,7 +287,7 @@ export default function Home() {
             </ScrollAnimation>
           </div>
           <div className="product-grid">
-            {productItems.map((product, idx) => (
+            {productItems.slice(0, 8).map((product, idx) => (
               <ScrollAnimation key={product.id} direction="up" delay={idx * 100}>
                 <article className="product-card">
                   <div className="product-card-img">
@@ -277,7 +297,10 @@ export default function Home() {
                     <span className="product-card-cat">{product.category}</span>
                     <h3>{product.title}</h3>
                     <p>{product.description}</p>
-                    <Link to="/products" className="product-card-link">
+                    <Link
+                      to={productCategoryLinkMap[product.id] || '/products'}
+                      className="product-card-link"
+                    >
                       Learn More
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"/>
@@ -341,6 +364,14 @@ export default function Home() {
                     <span className="feat-card-tag">{card.tag}</span>
                     <h3>{card.title}</h3>
                     <p>{card.text}</p>
+                    <div style={{ marginTop: '1.25rem' }}>
+                      <Link
+                        to={idx === 0 ? '/products' : '/services'}
+                        className="feat-card-cta-btn"
+                      >
+                        {idx === 0 ? 'Explore Testing Equipment' : 'Explore Calibration Services'} &rarr;
+                      </Link>
+                    </div>
                   </div>
                 </article>
               </ScrollAnimation>
@@ -362,9 +393,6 @@ export default function Home() {
           <div className="calibration-showcase">
             <ScrollAnimation direction="left">
               <div className="calibration-text">
-                <span className="calibration-badge">
-                  NABL Cert No: CC – 4232
-                </span>
                 {calibrationSection.paragraphs.map((para, i) => (
                   <p key={i}>{para}</p>
                 ))}

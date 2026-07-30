@@ -1,33 +1,62 @@
-import durometer from '../assets/images/products/Digital-Durometer_HDD-2.jpg';
-import irhdMicro from '../assets/images/products/IRHD_Micro.jpg';
-import mega from '../assets/images/MEGA-11-350-SD.png';
-import up50 from '../assets/images/UP-50-HK-2-DH.png';
-import em400 from '../assets/images/EM-400.png';
-import em10 from '../assets/images/EM-10 image 1.png';
-import alpha from '../assets/images/ALPHA-3-3000-AD.png';
-import prescott from '../assets/images/prescott-mv.png';
-import nic from '../assets/images/NIC_29221.jpg';
+import docxDurometerHDD2 from '../assets/images/docx_products/docx_digital_durometer_hdd2.jpg';
+import docxIrhdMicro from '../assets/images/docx_products/docx_irhd_micro_tester.jpg';
+import docxMetalHardness from '../assets/images/docx_products/docx_metal_hardness_testers.jpg';
+import docxUtmUP100 from '../assets/images/docx_products/docx_utm_up100_ak2dh.png';
+import docxUtmEM from '../assets/images/docx_products/docx_utm_type_em.png';
+import docxAlpha10 from '../assets/images/docx_products/docx_compression_alpha10.png';
+import docxTensileComp from '../assets/images/docx_products/docx_tensile_compression_machine.png';
+import docxFatigue from '../assets/images/docx_products/docx_fatigue_testing_machine.png';
+import docxCreep from '../assets/images/docx_products/docx_creep_testing_machine.png';
+import docxMdr from '../assets/images/docx_products/docx_moving_die_rheometer.png';
+import docxOdr from '../assets/images/docx_products/docx_rheoline_odr.png';
+import docxMooney from '../assets/images/docx_products/docx_mooney_viscometer.png';
+import docxDma from '../assets/images/docx_products/docx_dma_analyser.jpg';
+import docxNanoIndentation from '../assets/images/docx_products/docx_nano_indentation_system.png';
+import docxCoatingMP0R from '../assets/images/docx_products/docx_coating_thickness_mp0r.jpg';
+import docxThicknessHTGA from '../assets/images/docx_products/docx_thickness_gauge_htga.jpg';
+import docxAbrasion from '../assets/images/docx_products/docx_abrasion_resilience.png';
+import docxCompressionSet from '../assets/images/docx_products/docx_compression_set.jpg';
+import docxVolumetricCutter from '../assets/images/docx_products/docx_volumetric_cutter.jpg';
+import docxDumbbellCutter from '../assets/images/docx_products/docx_dumbbell_cutter.png';
+
+// Blue SAMPLE stamp placeholder for categories without document photos
+import samplePlaceholder from '../assets/images/products/sample_placeholder.svg';
+
+export const INTRO_HIGHLIGHTS = [
+  {
+    id: 1,
+    boldText: 'Expertised in Plastic & Rubber testing laboratory',
+    normalText: 'for a wide range test parameters for your Plastics Materials, Elastomers, Polymers, and Metal Products in Maeon & RVTM laboratory. Polymer material testing analysis, Polymer Mechanical properties, Polymer Chemical Properties, Polymer electrical properties conducted covered many international standards.',
+  },
+];
 
 export const TESTING_CATEGORIES = [
   {
     id: 'hardness-testing',
     name: 'Hardness Testing',
     highlight: false,
-    description: 'Shore A/D durometers, IRHD micro hardness, Rockwell, Vickers & Brinell testers.',
+    description: 'Shore A/D durometers, IRHD micro hardness, Rockwell, Brinell, Vickers, Micro Vickers & Rockwell Superficial testers.',
     subcategories: [
       {
         material: 'Rubber',
         title: 'Digital Durometer HDD-2 & IRHD Micro',
-        image: durometer,
+        image: docxDurometerHDD2,
         text: 'Precision Shore A/D and Micro IRHD hardness measurement for rubber, O-rings, and polymers.',
-        link: '/products#rubber-durometer',
+        link: '/products#hardness-testing',
       },
       {
         material: 'Metal',
-        title: 'Precision Hardness System UP-50',
-        image: up50,
-        text: 'Industrial Rockwell, Vickers, and Brinell hardness testing systems for engineered metals & alloys.',
-        link: '/products#metal-hardness',
+        title: 'Metal - Hardness Tester',
+        image: docxMetalHardness,
+        text: 'High-precision hardness testing systems for engineered metals & alloys.',
+        tags: [
+          'Rockwell',
+          'Brinell',
+          'Vickers',
+          'Micro Vickers',
+          'Rockwell Superficial',
+        ],
+        link: '/products#hardness-testing',
       },
     ],
   },
@@ -38,18 +67,32 @@ export const TESTING_CATEGORIES = [
     description: 'Universal testing machines for high-capacity tension, compression, and elongation analysis.',
     subcategories: [
       {
-        material: 'Rubber',
-        title: 'Tensile & Elongation Testing Systems',
-        image: em10,
-        text: 'High-precision load cell UTM systems tailored for elastomer elongation and tensile strength evaluation.',
-        link: '/products#rubber-testing',
+        material: 'Tensile / Compression',
+        title: 'Universal Testing Machine UP 100 AK-2DH',
+        image: docxUtmUP100,
+        text: 'High-precision load cell UTM systems for tension, elongation, and material strength evaluation.',
+        link: '/products#tensile-compression-testing',
       },
       {
-        material: 'Metal',
-        title: 'Universal Testing Machine MEGA-11',
-        image: mega,
-        text: 'Heavy-duty dual-column UTM for tension, compression, and shear testing up to 600 kN capacity.',
-        link: '/products#metal-utm',
+        material: 'Tensile / Compression',
+        title: 'Universal Testing Machine Type EM',
+        image: docxUtmEM,
+        text: 'Electromechanical universal testing machine for precision load application.',
+        link: '/products#tensile-compression-testing',
+      },
+      {
+        material: 'Compression Testing',
+        title: 'Compression Testing Machine — ALPHA 10-2000',
+        image: docxAlpha10,
+        text: 'Heavy-duty digital compression testing machine for structural material testing.',
+        link: '/products#tensile-compression-testing',
+      },
+      {
+        material: 'Compression Testing',
+        title: 'Tensile / Compression Testing Machine',
+        image: docxTensileComp,
+        text: 'High-precision dual-column electromechanical compression and universal testing machine.',
+        link: '/products#tensile-compression-testing',
       },
     ],
   },
@@ -57,21 +100,21 @@ export const TESTING_CATEGORIES = [
     id: 'acceleration-speed-testing',
     name: 'Acceleration / Speed Testing',
     highlight: false,
-    description: 'Dynamic load rate and speed-controlled material behavior testing systems.',
+    description: 'Dynamic load rate and speed-controlled material behavior testing systems up to 60,000 rpm.',
     subcategories: [
       {
         material: 'Rubber & Plastics',
         title: 'High-Speed Velocity Testers',
-        image: alpha,
+        image: samplePlaceholder,
         text: 'Dynamic strain rate evaluation for high-velocity material deformation.',
-        link: '/products',
+        link: '/products#acceleration-speed-testing',
       },
       {
         material: 'Metals & Alloys',
         title: 'Impact Speed Measurement Rigs',
-        image: '/images/UTM Testing.png',
+        image: samplePlaceholder,
         text: 'High-frequency load response and speed transducer testing systems.',
-        link: '/products',
+        link: '/products#acceleration-speed-testing',
       },
     ],
   },
@@ -79,21 +122,21 @@ export const TESTING_CATEGORIES = [
     id: 'displacement-measurement-testing',
     name: 'Displacement Measurement Testing',
     highlight: false,
-    description: 'High-resolution optical & contact extensometer displacement measuring systems.',
+    description: 'High-resolution optical & contact extensometer displacement measuring systems (0.0001 mm resolution).',
     subcategories: [
       {
-        material: 'Elastomers',
-        title: 'Long-Travel Extensometer',
-        image: nic,
-        text: 'Non-contact video & long-stroke optical displacement measurement.',
-        link: '/products',
+        material: 'Elastomers & Metals',
+        title: 'Controller and Extensometer',
+        image: samplePlaceholder,
+        text: 'High-precision crosshead displacement and strain extensometer measurement.',
+        link: '/products#displacement-measurement-testing',
       },
       {
         material: 'Structural Materials',
         title: 'LVDT & Strain Gauge Systems',
-        image: em400,
+        image: samplePlaceholder,
         text: 'Micron-level displacement measurement for modulus and strain analysis.',
-        link: '/products',
+        link: '/products#displacement-measurement-testing',
       },
     ],
   },
@@ -101,21 +144,21 @@ export const TESTING_CATEGORIES = [
     id: 'fatigue-testing',
     name: 'Fatigue Testing',
     highlight: false,
-    description: 'Cyclic load, flex-life, and endurance dynamic mechanical fatigue analyzers.',
+    description: 'Cyclic load, flex-life, and endurance dynamic mechanical fatigue analyzers with DOLI controller.',
     subcategories: [
       {
         material: 'Rubber',
         title: 'De Mattia & Flex Fatigue Testers',
-        image: '/images/Hilde Brand.png',
+        image: samplePlaceholder,
         text: 'Repeated flexural cracking & cut growth fatigue testing for elastomers.',
-        link: '/products',
+        link: '/products#fatigue-testing',
       },
       {
         material: 'Metal',
-        title: 'Servo-Hydraulic Dynamic Fatigue System',
-        image: '/images/material-testing-core.jpg',
+        title: 'Fatigue Testing Machine',
+        image: docxFatigue,
         text: 'High-cycle (HCF) and low-cycle (LCF) dynamic fatigue testing rigs.',
-        link: '/products',
+        link: '/products#fatigue-testing',
       },
     ],
   },
@@ -128,16 +171,16 @@ export const TESTING_CATEGORIES = [
       {
         material: 'Rubber & Polymers',
         title: 'Polymer Creep & Relaxation Testers',
-        image: irhdMicro,
+        image: samplePlaceholder,
         text: 'Long-term stress relaxation and compressive creep measurement.',
-        link: '/products',
+        link: '/products#creep-testing',
       },
       {
         material: 'Metal & Alloys',
-        title: 'High-Temp Stress Rupture Creep Rig',
-        image: mega,
-        text: 'Furnace-integrated creep rupture evaluation for aerospace & power metals.',
-        link: '/products',
+        title: 'Creep Testing Machine',
+        image: docxCreep,
+        text: 'Furnace-integrated long-term stress rupture creep testing machine.',
+        link: '/products#creep-testing',
       },
     ],
   },
@@ -145,21 +188,28 @@ export const TESTING_CATEGORIES = [
     id: 'rheology-testing',
     name: 'Rheology Testing',
     highlight: false,
-    description: 'Moving die rheometers (MDR) and viscoelastic polymer processing analyzers.',
+    description: 'Moving die rheometers (MDR), Oscillating Disc Rheometers (ODR), and viscoelastic analyzers.',
     subcategories: [
       {
         material: 'Rubber Compound',
-        title: 'Prescott Moving Die Rheometer (MDR)',
-        image: prescott,
-        text: 'Cure kinetics, scorch time, and vulcanization characterization for rubber.',
-        link: '/products',
+        title: 'Moving Die Rheometer (MDR)',
+        image: docxMdr,
+        text: 'Cure kinetics, scorch time, and vulcanization characterization for rubber compounds.',
+        link: '/products#rheology-testing',
       },
       {
-        material: 'Polymers',
-        title: 'Process Rheometers & RPA',
-        image: '/images/Prescott.png',
-        text: 'Rubber Process Analyzer (RPA) for dynamic property testing.',
-        link: '/products',
+        material: 'Rubber Compound',
+        title: 'The Rheoline Oscillating Disc Rheometer (ODR)',
+        image: docxOdr,
+        text: 'Oscillating Disc Rheometer for dynamic property testing.',
+        link: '/products#rheology-testing',
+      },
+      {
+        material: 'Polymers & Elastomers',
+        title: 'Dynamic Mechanical Analyser (DMA)',
+        image: docxDma,
+        text: 'Viscoelastic property analysis over temperature and frequency sweeps.',
+        link: '/products#rheology-testing',
       },
     ],
   },
@@ -171,39 +221,39 @@ export const TESTING_CATEGORIES = [
     subcategories: [
       {
         material: 'Raw Rubber',
-        title: 'Mooney Viscometer MV-2000',
-        image: prescott,
+        title: 'Mooney Viscometer',
+        image: docxMooney,
         text: 'Mooney viscosity, stress relaxation, and pre-vulcanization testing.',
-        link: '/products',
+        link: '/products#viscosity-testing',
       },
       {
         material: 'Thermoplastics',
-        title: 'Melt Flow Indexer (MFI/MFR)',
-        image: alpha,
-        text: 'Volumetric and mass melt flow rate measurement for plastics.',
-        link: '/products',
+        title: 'Volumetric Sample Cutter',
+        image: docxVolumetricCutter,
+        text: 'Volumetric sample preparation and specimen cutter for rubber & plastics.',
+        link: '/products#viscosity-testing',
       },
     ],
   },
   {
     id: 'specific-gravity-weighing',
-    name: 'Specific Gravity, Weighing Measurement',
+    name: 'Specific Gravity, Weighing Mesurement',
     highlight: false,
-    description: 'Hydrostatic balances and precision density determination instruments.',
+    description: 'Hydrostatic balances and precision density determination instruments up to 100kg.',
     subcategories: [
       {
         material: 'Rubber & Plastics',
         title: 'Automatic Specific Gravity Densimeter',
-        image: '/images/Man with machine.png',
+        image: samplePlaceholder,
         text: 'Direct digital specific gravity reading for solid rubber & polymer samples.',
-        link: '/products',
+        link: '/products#specific-gravity-weighing',
       },
       {
         material: 'Laboratory QC',
         title: 'Precision Micro Balances & Hydrostatic Kit',
-        image: nic,
+        image: samplePlaceholder,
         text: 'High-accuracy laboratory density kit traceable to ISO standards.',
-        link: '/products',
+        link: '/products#specific-gravity-weighing',
       },
     ],
   },
@@ -216,38 +266,38 @@ export const TESTING_CATEGORIES = [
       {
         material: 'Nuclear & Power',
         title: 'Small Punch Creep Test Rig',
-        image: '/images/Unconventional Testing.png',
+        image: samplePlaceholder,
         text: 'Evaluation of localized creep strain using 8mm x 0.5mm disc samples.',
-        link: '/products',
+        link: '/products#small-punch-creep-testing',
       },
       {
         material: 'Alloys & Welds',
         title: 'Micro-Mechanical Punch Tester',
-        image: up50,
+        image: samplePlaceholder,
         text: 'Yield strength & ductility assessment on miniature component samples.',
-        link: '/products',
+        link: '/products#small-punch-creep-testing',
       },
     ],
   },
   {
-    id: 'flexural-testing',
-    name: 'Flexural Testing',
+    id: 'fluxural-testing',
+    name: 'Fluxural Testing',
     highlight: false,
     description: '3-point and 4-point bending flexural strength and modulus fixtures.',
     subcategories: [
       {
         material: 'Composite / Wood',
         title: '3-Point Bend Flexural Fixture',
-        image: em400,
+        image: samplePlaceholder,
         text: 'Flexural strength & modulus determination for fiber composites & plastics.',
-        link: '/products',
+        link: '/products#fluxural-testing',
       },
       {
         material: 'Metal & Ceramics',
         title: 'Guided 4-Point Bending Rig',
-        image: mega,
+        image: samplePlaceholder,
         text: 'High-stiffness bending evaluation for structural ceramics & alloys.',
-        link: '/products',
+        link: '/products#fluxural-testing',
       },
     ],
   },
@@ -260,16 +310,16 @@ export const TESTING_CATEGORIES = [
       {
         material: 'Engineered Metals',
         title: 'Instrumented Micro-Indentation System',
-        image: up50,
+        image: samplePlaceholder,
         text: 'Continuous depth-sensing hardness and elastic indentation modulus.',
-        link: '/products',
+        link: '/products#instrumented-hardness-testing',
       },
       {
         material: 'Coatings & Polymers',
         title: 'Automated Micro Vickers IIT',
-        image: irhdMicro,
+        image: samplePlaceholder,
         text: 'High-precision micro hardness mapping on surface layers.',
-        link: '/products',
+        link: '/products#instrumented-hardness-testing',
       },
     ],
   },
@@ -281,17 +331,17 @@ export const TESTING_CATEGORIES = [
     subcategories: [
       {
         material: 'Thin Films',
-        title: 'Nano-Indenter & Scratch Tester',
-        image: '/images/Unconventional Testing.png',
+        title: 'Nano Indentation Hardness Testing System (Fischer)',
+        image: docxNanoIndentation,
         text: 'Nanohardness, Youngs modulus, and film adhesion measurement.',
-        link: '/products',
+        link: '/products#nano-indentation-hardness-testing',
       },
       {
         material: 'Nanomaterials',
         title: 'Atomic-Scale Hardness Tester',
-        image: '/images/Fisher.png',
+        image: samplePlaceholder,
         text: 'Ultra-low load nano-indentation for semiconductor & optical coatings.',
-        link: '/products',
+        link: '/products#nano-indentation-hardness-testing',
       },
     ],
   },
@@ -299,43 +349,43 @@ export const TESTING_CATEGORIES = [
     id: 'coating-thickness-measurement',
     name: 'Coating Thickness Measurement',
     highlight: false,
-    description: 'Fischer magnetic induction and eddy-current coating thickness meters.',
+    description: 'Magnetic induction and eddy-current coating thickness meters.',
     subcategories: [
       {
-        material: 'Plated Metals',
-        title: 'Fischer Coating Thickness Gauge',
-        image: '/images/Fisher.png',
-        text: 'Non-destructive coating thickness gauge for paint, zinc, & chrome.',
-        link: '/products',
+        material: 'Metal',
+        title: 'Coating Thickness Pocket Gauge MP0R-FP',
+        image: docxCoatingMP0R,
+        text: 'Non-destructive coating thickness gauge for paint, zinc, chrome, and electroplated layers.',
+        link: '/products#coating-thickness-measurement',
       },
       {
-        material: 'Substrates',
-        title: 'Dual-Probe Thickness Meter',
-        image: durometer,
-        text: 'Ferrous and non-ferrous substrate automatic probe switching.',
-        link: '/products',
+        material: 'Rubber',
+        title: 'Dickenmessgerät HTG-A Thickness Measurement Gauge',
+        image: docxThicknessHTGA,
+        text: 'Precision thickness gauge for rubber, elastomeric sheets, and films.',
+        link: '/products#coating-thickness-measurement',
       },
     ],
   },
   {
-    id: 'abrasion-resilience-testing',
-    name: 'Abrasion, Resilience Testing',
+    id: 'abrasion-resilence-testing',
+    name: 'Abrasion, Resilence Testing',
     highlight: false,
     description: 'DIN rubber abrasion resistance and Schob rebound resilience meters.',
     subcategories: [
       {
         material: 'Tire & Conveyor Rubber',
-        title: 'DIN Rotary Drum Abrasion Tester',
-        image: '/images/Hilde Brand.png',
+        title: 'Abrasion & Resilience Tester',
+        image: docxAbrasion,
         text: 'Volume loss abrasion resistance measurement for vulcanized rubber.',
-        link: '/products',
+        link: '/products#abrasion-resilence-testing',
       },
       {
-        material: 'Elastomer Foam',
-        title: 'Schob Rebound Resilience Pendulum',
-        image: irhdMicro,
-        text: 'Elastic rebound elasticity and energy absorption testing.',
-        link: '/products',
+        material: 'Rubber',
+        title: 'Compression Set Apparatus',
+        image: docxCompressionSet,
+        text: 'Permanent set determination under constant deflection.',
+        link: '/products#abrasion-resilence-testing',
       },
     ],
   },
@@ -347,17 +397,17 @@ export const TESTING_CATEGORIES = [
     subcategories: [
       {
         material: 'All Materials',
-        title: 'Form+Test Environmental Chamber',
-        image: '/images/Form+Test.png',
+        title: 'Environmental Thermal Chamber',
+        image: samplePlaceholder,
         text: 'Temperature-controlled material testing in high & sub-zero conditions.',
-        link: '/products',
+        link: '/products#temperature-testing',
       },
       {
         material: 'Polymers',
         title: 'Thermal Aging Test Oven',
-        image: em400,
+        image: samplePlaceholder,
         text: 'Precision forced-convection heat degradation & aging ovens.',
-        link: '/products',
+        link: '/products#temperature-testing',
       },
     ],
   },
@@ -370,16 +420,16 @@ export const TESTING_CATEGORIES = [
       {
         material: 'Metals & Alloys',
         title: 'Pendulum Impact Tester (Charpy/Izod)',
-        image: mega,
+        image: samplePlaceholder,
         text: '300J / 500J notched specimen impact energy absorption tester.',
-        link: '/products',
+        link: '/products#impact-testing',
       },
       {
         material: 'Polymers & Composites',
         title: 'Instrumented Drop Tower Impact Rig',
-        image: '/images/material-testing-core.jpg',
+        image: samplePlaceholder,
         text: 'Low & high energy drop weight impact energy recording system.',
-        link: '/products',
+        link: '/products#impact-testing',
       },
     ],
   },

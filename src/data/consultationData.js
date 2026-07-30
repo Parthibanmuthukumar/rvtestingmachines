@@ -1,49 +1,92 @@
-import slider1 from '../assets/images/slider-1.jpg';
-import slider2 from '../assets/images/slider-2.jpg';
-import slider3 from '../assets/images/slider-3.jpg';
-import technical from '../assets/images/technical-support.jpg';
+import consultationImg from '../assets/images/material_testing_consultation.jpg';
 
 export const consultationIntro =
-  'Our consultation team helps you select the right testing systems, validate methods, and maintain compliance — from equipment specification through installation and ongoing calibration.';
+  'Our senior consultation team provides technical guidance to help you select the ideal testing systems, validate ASTM/ISO test methods, and maintain ISO/IEC 17025 compliance — from initial specification to installation, operator training, and calibration.';
 
-export const consultationSlides = [
-  { src: slider1, alt: 'Material testing laboratory' },
-  { src: slider2, alt: 'Calibration and precision testing' },
-  { src: slider3, alt: 'Advanced testing equipment' },
+export const consultationFeatureData = {
+  image: consultationImg,
+  badge: 'Expert Technical Consultation & Advisory',
+  title: 'Comprehensive Material Testing & Laboratory Advisory',
+  description:
+    'Navigating complex testing standards and selecting high-precision equipment requires specialized industry domain knowledge. RVTM & Maeon laboratories provide technical consultancy for polymers, rubbers, elastomers, and metals to ensure your testing procedures deliver repeatable, accurate, and internationally recognized results.',
+  bulletPoints: [
+    'ASTM, ISO, DIN, and JIS testing method selection & validation.',
+    'Custom fixture design & load cell capacity optimization.',
+    'Material failure diagnosis & batch-to-batch variation analysis.',
+    'ISO/IEC 17025 quality system alignment & audit preparation.',
+  ],
+};
+
+export const consultationServices = [
+  {
+    id: 1,
+    title: 'Method Development & Standard Compliance',
+    icon: 'document',
+    description:
+      'Specialized guidance for setting up ASTM D2240 (Shore Hardness), ASTM D1415 (IRHD), ASTM D5289 (MDR Cure Kinetics), ASTM D1646 (Mooney Viscometer), and ASTM D412 / ISO 37 (Tensile & Elongation).',
+    standards: 'ASTM D2240, ASTM D1415, ASTM D5289, ISO 37',
+  },
+  {
+    id: 2,
+    title: 'Laboratory Setup & Equipment Selection',
+    icon: 'settings',
+    description:
+      'Tailored recommendations for force capacities, load cell ranges, thermal environmental chambers, and specialized grips matching your material parameters and budget.',
+    standards: 'ISO 17025, ISO 9001 Alignment',
+  },
+  {
+    id: 3,
+    title: 'Failure Analysis & Troubleshooting',
+    icon: 'search',
+    description:
+      'In-depth technical diagnosis of polymer degradation, unexpected specimen failure, cure curve anomalies, and batch-to-batch physical property variations.',
+    standards: 'Polymer & Metal Microstructure Analysis',
+  },
+  {
+    id: 4,
+    title: 'Calibration & QA Planning',
+    icon: 'award',
+    description:
+      'ISO/IEC 17025 compliant calibration schedules, measurement uncertainty budgets, and quality control audit preparation for high-reliability testing.',
+    standards: 'Traceable to National & International Standards',
+  },
 ];
 
-export const consultationHighlights = [
+export const consultationProcessSteps = [
   {
-    title: 'Equipment Selection',
-    description:
-      'Expert guidance to match your material type, load range, standards, and budget with the optimal testing solution.',
+    step: '01',
+    title: 'Initial Needs Assessment',
+    description: 'We evaluate your target materials, operational parameters, required load ranges, and target testing standards.',
   },
   {
-    title: 'Method Validation',
-    description:
-      'Support for test method setup, fixture selection, and repeatability studies aligned with your quality requirements.',
+    step: '02',
+    title: 'Method & Spec Blueprinting',
+    description: 'Our engineers define precise test protocols, fixture requirements, and machine specifications for optimal accuracy.',
   },
   {
-    title: 'Compliance Planning',
-    description:
-      'ISO/IEC 17025 aligned consultation for calibration intervals, traceability, and documentation readiness.',
+    step: '03',
+    title: 'Implementation & Training',
+    description: 'Hands-on laboratory setup, software calibration configuration, and operator guidance to ensure repeatable testing.',
   },
   {
-    title: 'On-Site Technical Review',
-    description:
-      'Practical assessments of existing machines, performance checks, and upgrade recommendations from experienced engineers.',
+    step: '04',
+    title: 'Ongoing Review & Audit',
+    description: 'Continuous technical assistance, periodic calibration reviews, and assistance with standard updates.',
   },
+];
+
+export const consultationSectors = [
+  'Rubber & Elastomers Processing',
+  'Automotive & Transportation Parts',
+  'Aerospace & Defense Components',
+  'Polymers & Thermoplastics R&D',
+  'Metals & Structural Metallurgy',
+  'Academic & Third-Party Test Labs',
 ];
 
 export const consultationStats = [
-  { value: '10+', label: 'Years Industry Experience' },
-  { value: '500+', label: 'Machines Supported' },
-  { value: 'ISO', label: '17025 Accredited Lab' },
-  { value: '24/7', label: 'Technical Assistance' },
-];
-
-export const consultationGallery = [
-  { src: technical, alt: 'Technical support team' },
-  { src: slider2, alt: 'Testing consultation' },
-  { src: slider3, alt: 'Laboratory equipment' },
+  { value: '10+', label: 'Years Technical Leadership' },
+  { value: '500+', label: 'Testing Rigs Consulted' },
+  { value: 'ISO/IEC 17025', label: 'Accredited Advisory' },
+  { value: '100%', label: 'Standard Traceability' },
 ];
