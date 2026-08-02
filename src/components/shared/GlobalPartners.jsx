@@ -1,35 +1,39 @@
-import prescottLogo from '../../assets/images/logos/Prescott.png';
+import fischerLogo from '../../assets/images/logos/fischer.png';
+import formTestLogo from '../../assets/images/logos/form_test.png';
+import hildebrandLogo from '../../assets/images/logos/hildebrand.png';
+import unconventionalLogo from '../../assets/images/logos/unconventional_testing.png';
+import prescottLogo from '../../assets/images/logos/prescott.png';
+import utmTestingLogo from '../../assets/images/logos/utm_testing.png';
 
 const PARTNERS = [
   {
     name: 'Fischer',
-    src: '/images/Fisher.png',
+    src: fischerLogo,
     tag: 'Nano Indentation & Coating Measurement',
   },
   {
     name: 'Form + Test',
-    src: '/images/Form+Test.png',
+    src: formTestLogo,
     tag: 'Materials & Compression Systems',
   },
   {
     name: 'Hildebrand',
-    src: '/images/Hilde Brand.png',
+    src: hildebrandLogo,
     tag: 'Hardness & Durometer Systems',
   },
   {
     name: 'UTM Unconventional Testing Machines',
-    src: '/images/Unconventional Testing.png',
+    src: unconventionalLogo,
     tag: 'Unconventional Testing Machines Research & Development',
   },
   {
     name: 'Prescott Instruments',
-    src: '/images/Prescott.png',
-    fallbackSrc: prescottLogo,
+    src: prescottLogo,
     tag: 'Rheology & Polymer Testing',
   },
   {
     name: 'UTM Testing',
-    src: '/images/UTM Testing.png',
+    src: utmTestingLogo,
     tag: 'Unconventional Testing Machine',
   },
 ];
@@ -51,11 +55,6 @@ export function GlobalPartners({
                 src={partner.src}
                 alt={`${partner.name} logo`}
                 loading="lazy"
-                onError={(e) => {
-                  if (partner.fallbackSrc && e.currentTarget.src !== partner.fallbackSrc) {
-                    e.currentTarget.src = partner.fallbackSrc;
-                  }
-                }}
               />
             </div>
           ))}
