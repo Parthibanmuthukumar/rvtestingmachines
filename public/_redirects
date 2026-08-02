@@ -1,0 +1,11 @@
+/* Netlify _redirects — SPA fallback for React Router */
+/* All routes serve index.html so React Router handles them */
+/*    /index.html   200
+/sitemap.xml  /sitemap.xml  200
+/robots.txt   /robots.txt   200
+
+/* Redirect www to non-www (uncomment if needed) */
+# https://www.rvtestingmachines.com/*  https://rvtestingmachines.com/:splat  301!
+
+/* SPA fallback */
+/*  /index.html  200

@@ -28,6 +28,14 @@ export default function Navbar() {
   const megaTimerRef = useRef(null);
   const headerRef = useRef(null);
   const { pathname } = useLocation();
+  const [prevPathname, setPrevPathname] = useState(pathname);
+
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setMenuOpen(false);
+    setMegaOpen(false);
+    setMobileCategoriesOpen(false);
+  }
 
   const handleMegaEnter = () => {
     if (megaTimerRef.current) clearTimeout(megaTimerRef.current);
@@ -38,7 +46,7 @@ export default function Navbar() {
     if (megaTimerRef.current) clearTimeout(megaTimerRef.current);
     megaTimerRef.current = setTimeout(() => {
       setMegaOpen(false);
-    }, 350); // Graceful 350ms delay to allow moving cursor seamlessly to box
+    }, 350);
   };
 
   /* Close mega menu when clicking outside */
@@ -56,14 +64,6 @@ export default function Navbar() {
     };
   }, [megaOpen]);
 
-  /* Close on route change */
-  useEffect(() => {
-    setMenuOpen(false);
-    setMegaOpen(false);
-    setMobileCategoriesOpen(false);
-    document.body.classList.remove('nav-menu-open');
-  }, [pathname]);
-
   /* Clean up timer on unmount */
   useEffect(() => {
     return () => {
@@ -74,7 +74,11 @@ export default function Navbar() {
   /* Body lock for mobile menu */
   useEffect(() => {
     document.body.classList.toggle('nav-menu-open', menuOpen);
-    return () => document.body.classList.remove('nav-menu-open');
+    document.documentElement.classList.toggle('nav-menu-open', menuOpen);
+    return () => {
+      document.body.classList.remove('nav-menu-open');
+      document.documentElement.classList.remove('nav-menu-open');
+    };
   }, [menuOpen]);
 
   /* Scroll detection */

@@ -3,6 +3,8 @@ import { PageHero } from '../components/shared/PageHero';
 import { GlobalPartners } from '../components/shared/GlobalPartners';
 import ScrollAnimation from '../components/ScrollAnimation';
 import TiltCard from '../components/TiltCard';
+import SEO from '../components/SEO/SEO';
+import { getPageMeta } from '../seo/pageMeta';
 import {
   consultationIntro,
   consultationFeatureData,
@@ -51,8 +53,16 @@ function getServiceIcon(type) {
 }
 
 export default function Consultation() {
+  const pageMeta = getPageMeta('/consultation');
+
   return (
     <main id="main-content" className="inner-page">
+      <SEO
+        title={pageMeta.title}
+        description={pageMeta.description}
+        keywords={pageMeta.keywords}
+        path="/consultation"
+      />
       {/* 1. Page Hero Header */}
       <PageHero
         eyebrow="Expert Advisory & Method Development"

@@ -1024,7 +1024,18 @@
   color: var(--blue);
 }
 
-body.nav-menu-open { overflow: hidden; }
+html.nav-menu-open,
+body.nav-menu-open {
+  overflow: hidden !important;
+  touch-action: none !important;
+  overscroll-behavior: none !important;
+  height: 100vh !important;
+}
+
+.nav-drawer,
+.mobile-categories-drawer {
+  touch-action: pan-y !important;
+}
 
 /* ── Responsive Media Queries ── */
 @media (max-width: 1100px) {

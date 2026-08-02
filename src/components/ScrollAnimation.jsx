@@ -18,16 +18,17 @@ const ScrollAnimation = ({ children, direction = 'up', delay = 0, className = ''
       }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const el = ref.current;
+    if (el) {
+      observer.observe(el);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (el) {
+        observer.unobserve(el);
       }
     };
-  }, [viewport]);
+  }, [viewport.amount, viewport.margin]);
 
   const getAnimationClass = () => {
     if (!isVisible) return '';

@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import { PageHero } from '../components/shared/PageHero';
+import { GlobalPartners } from '../components/shared/GlobalPartners';
 import ScrollAnimation from '../components/ScrollAnimation';
+import SEO from '../components/SEO/SEO';
+import { getPageMeta } from '../seo/pageMeta';
 import {
   servicesIntro,
   serviceOverview,
@@ -10,8 +13,16 @@ import {
 import '../styles/pages.css';
 
 export default function Services() {
+  const pageMeta = getPageMeta('/services');
+
   return (
     <main id="main-content" className="inner-page">
+      <SEO
+        title={pageMeta.title}
+        description={pageMeta.description}
+        keywords={pageMeta.keywords}
+        path="/services"
+      />
       {/* 1. Page Hero Header */}
       <PageHero
         eyebrow="Precision Maintenance & Technical Support"
@@ -60,16 +71,7 @@ export default function Services() {
                 ))}
               </ul>
 
-              <div style={{ marginTop: '2rem' }}>
-                <a
-                  href="/rvtm_service_calibration_brochure.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="framed-brochure-btn"
-                >
-                  BROCHURE
-                </a>
-              </div>
+
             </div>
           </ScrollAnimation>
         </section>
@@ -124,6 +126,8 @@ export default function Services() {
         </section>
 
       </div>
+
+      <GlobalPartners />
     </main>
   );
 }

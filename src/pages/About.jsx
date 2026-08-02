@@ -4,6 +4,8 @@ import { GlobalPartners } from '../components/shared/GlobalPartners';
 import { PageHero } from '../components/shared/PageHero';
 import ScrollAnimation from '../components/ScrollAnimation';
 import TiltCard from '../components/TiltCard';
+import SEO from '../components/SEO/SEO';
+import { getPageMeta } from '../seo/pageMeta';
 
 /*
   ALL content below is taken from original project data files:
@@ -15,8 +17,16 @@ import TiltCard from '../components/TiltCard';
 */
 
 export default function About() {
+  const pageMeta = getPageMeta('/about');
+
   return (
     <main id="main-content" className="about-page inner-page">
+      <SEO
+        title={pageMeta.title}
+        description={pageMeta.description}
+        keywords={pageMeta.keywords}
+        path="/about"
+      />
 
       {/* Page Hero */}
       <PageHero

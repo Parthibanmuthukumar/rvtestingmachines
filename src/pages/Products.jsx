@@ -1,18 +1,23 @@
 import { useState, useEffect } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { PageHero } from '../components/shared/PageHero';
 import { GlobalPartners } from '../components/shared/GlobalPartners';
 import ScrollAnimation from '../components/ScrollAnimation';
 import { TESTING_CATEGORIES, INTRO_HIGHLIGHTS } from '../data/productCategoriesData';
+import SEO from '../components/SEO/SEO';
+import { getPageMeta } from '../seo/pageMeta';
 import '../styles/products-page.css';
 
 export default function Products() {
   const location = useLocation();
+  const pageMeta = getPageMeta('/products');
   const [activeId, setActiveId] = useState(TESTING_CATEGORIES[0].id);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   // Smooth scroll to a category section by ID
   const scrollToCategory = (id) => {
     setActiveId(id);
+    setIsMobileOpen(false);
     const element = document.getElementById(id);
     if (element) {
       const yOffset = -90;
@@ -20,6 +25,16 @@ export default function Products() {
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
+
+  // Lock body scroll when mobile categories drawer is open
+  useEffect(() => {
+    document.body.classList.toggle('nav-menu-open', isMobileOpen);
+    document.documentElement.classList.toggle('nav-menu-open', isMobileOpen);
+    return () => {
+      document.body.classList.remove('nav-menu-open');
+      document.documentElement.classList.remove('nav-menu-open');
+    };
+  }, [isMobileOpen]);
 
   // Sync active category with URL hash if provided
   useEffect(() => {
@@ -56,6 +71,12 @@ export default function Products() {
 
   return (
     <main id="main-content" className="inner-page">
+      <SEO
+        title={pageMeta.title}
+        description={pageMeta.description}
+        keywords={pageMeta.keywords}
+        path="/products"
+      />
       <PageHero
         eyebrow="Precision Material Testing"
         title="Our Products & Test Solutions"
@@ -70,7 +91,6 @@ export default function Products() {
             <aside className="products-sidebar" aria-label="Testing Property Categories">
               <div className="sidebar-header">
                 <h3>Testing Categories</h3>
-                <span className="count-badge">{TESTING_CATEGORIES.length} Items</span>
               </div>
               <ul className="sidebar-menu-list" role="tablist">
                 {TESTING_CATEGORIES.map((cat, idx) => {
@@ -191,6 +211,71 @@ export default function Products() {
         title="Principles &amp; Technology Partners"
         subtitle="Representing leading global brands in material testing and calibration."
       />
+
+      {/* ── MOBILE FLOATING ACTION BUTTON (FAB) ── */}
+      <button
+        type="button"
+        className="mobile-categories-fab"
+        onClick={() => setIsMobileOpen(true)}
+        aria-label="Open Testing Categories Menu"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="8" y1="6" x2="21" y2="6" />
+          <line x1="8" y1="12" x2="21" y2="12" />
+          <line x1="8" y1="18" x2="21" y2="18" />
+          <line x1="3" y1="6" x2="3.01" y2="6" />
+          <line x1="3" y1="12" x2="3.01" y2="12" />
+          <line x1="3" y1="18" x2="3.01" y2="18" />
+        </svg>
+        <span>Categories</span>
+      </button>
+
+      {/* ── MOBILE CATEGORIES DRAWER / MODAL ── */}
+      {isMobileOpen && (
+        <div className="mobile-categories-modal-root">
+          <div
+            className="mobile-categories-backdrop"
+            onClick={() => setIsMobileOpen(false)}
+            aria-hidden="true"
+          />
+          <div className="mobile-categories-drawer">
+            <div className="mobile-drawer-header">
+              <h3>Testing Categories</h3>
+              <button
+                type="button"
+                className="mobile-drawer-close-btn"
+                onClick={() => setIsMobileOpen(false)}
+                aria-label="Close categories menu"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+            <div className="mobile-drawer-body">
+              <ul className="mobile-drawer-list">
+                {TESTING_CATEGORIES.map((cat, idx) => {
+                  const isActive = cat.id === activeId;
+                  const numStr = String(idx + 1).padStart(2, '0');
+                  return (
+                    <li key={cat.id}>
+                      <button
+                        type="button"
+                        className={`mobile-drawer-btn${isActive ? ' is-active' : ''}`}
+                        onClick={() => scrollToCategory(cat.id)}
+                      >
+                        <span className="drawer-num">{numStr}</span>
+                        <span className="drawer-text">{cat.name}</span>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

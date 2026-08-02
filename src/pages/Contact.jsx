@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { PageHero } from '../components/shared/PageHero';
-import { GlobalPartners } from '../components/shared/GlobalPartners';
 import ScrollAnimation from '../components/ScrollAnimation';
 import TiltCard from '../components/TiltCard';
+import SEO from '../components/SEO/SEO';
+import { getPageMeta } from '../seo/pageMeta';
 import { CONTACT } from '../seo/siteConfig';
 
 const initialForm = { name: '', email: '', phone: '', subject: '', message: '' };
@@ -23,6 +24,7 @@ const TOOLTIPS = {
 };
 
 export default function Contact() {
+  const pageMeta = getPageMeta('/contact');
   const [form, setForm]           = useState(initialForm);
   const [submitted, setSubmitted] = useState(false);
   const [activeTip, setActiveTip] = useState('address');
@@ -45,12 +47,14 @@ export default function Contact() {
     }
     if (timerRef.current) clearTimeout(timerRef.current);
     setDismissedTips((prev) => ({ ...prev, [key]: true }));
-    setActiveTip(null);
+    setActiveTip((curr) => (curr === key ? null : curr));
   };
 
   useEffect(() => {
-    // Automatically show address tooltip for 4 seconds on initial page load
-    showTip('address');
+    // Automatically hide initial address tooltip after 4 seconds
+    timerRef.current = setTimeout(() => {
+      setActiveTip(null);
+    }, 4000);
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
@@ -61,22 +65,22 @@ export default function Contact() {
     setForm(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const subject = form.subject || 'Website Contact Inquiry';
-    const body = `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone || 'N/A'}\n\nMessage:\n${form.message}`;
-    
-    // Check if device is mobile (iOS or Android)
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const mailtoSubject = encodeURIComponent(form.subject || 'Material Testing Enquiry');
+    const mailtoBody = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\n\nMessage:\n${form.message}`
+    );
 
-    const mailtoUrl = `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT.email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+      CONTACT.email
+    )}&su=${mailtoSubject}&body=${mailtoBody}`;
+
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     if (isMobile) {
-      // On mobile, trigger mailto to open native Gmail app
-      window.location.href = mailtoUrl;
+      window.location.href = `mailto:${CONTACT.email}?subject=${mailtoSubject}&body=${mailtoBody}`;
     } else {
-      // On laptop/desktop, open Gmail Web directly in a new browser tab
       window.open(gmailWebUrl, '_blank', 'noopener,noreferrer');
     }
 
@@ -100,6 +104,12 @@ export default function Contact() {
 
   return (
     <main id="main-content" className="inner-page">
+      <SEO
+        title={pageMeta.title}
+        description={pageMeta.description}
+        keywords={pageMeta.keywords}
+        path="/contact"
+      />
       <PageHero
         eyebrow="Get In Touch"
         title="Contact Us"
@@ -282,8 +292,6 @@ export default function Contact() {
           </div>
         </ScrollAnimation>
       </section>
-
-      <GlobalPartners />
     </main>
   );
 }

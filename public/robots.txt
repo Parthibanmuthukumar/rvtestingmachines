@@ -1,8 +1,55 @@
-# https://www.robotstxt.org/robotstxt.html
+# RV Testing Machines Private Limited — robots.txt
+# https://www.rvtestingmachines.com/
+# Updated: 2025-07-31
+
 User-agent: *
 Allow: /
-
-# Disallow build artifacts if ever exposed
 Disallow: /assets/*.map
+Disallow: /src/
+Disallow: /*.json$
 
+# Allow all major search engine bots explicitly
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: facebot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# Block AI scrapers that don't respect opt-outs
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+# Sitemaps
 Sitemap: https://www.rvtestingmachines.com/sitemap.xml

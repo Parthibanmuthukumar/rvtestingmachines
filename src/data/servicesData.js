@@ -8,7 +8,7 @@ export const servicesIntro =
   'With regular maintenance, service and calibration, you can ensure your instruments run smoother for longer, and achieve the most reliable and accurate results.';
 
 export const serviceOverview = {
-  image: servicesPageImg,
+  image: '/images/services and calibration page.png',
   paragraphs: [
     'With regular maintenance, service and calibration, you can ensure your instruments run smoother for longer, and achieve the most reliable and accurate results.',
     'RV Testing Machines Private Limited can service and calibrate a wide range of laboratory equipment in line with our ISO/IEC 17025 accreditation. Not limited to only our products, our highly skilled service engineers are also able to service and calibrate most rubber testing equipment, alongside general material testing instruments.',
@@ -25,7 +25,6 @@ export const comprehensiveSupport = {
     'Hardness, temperature, density, and impact equipment',
     'Tensile Tester and load cell calibration',
   ],
-  brochureText: 'Request Technical Brochure',
 };
 
 export const calibrationServicesData = {

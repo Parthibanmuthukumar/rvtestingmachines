@@ -5,7 +5,7 @@
 /* ── Global Layout & Overflow Prevention ── */
 html, body {
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 *, *::before, *::after {
@@ -64,17 +64,17 @@ p, h1, h2, h3, h4, h5, h6, span, li, a {
 
 @media (max-width: 768px) {
   .consultation-cards-container { grid-template-columns: 1fr; }
-  .consultation-stats      { grid-template-columns: 1fr 1fr; }
+  .consultation-stats      { grid-template-columns: 1fr; }
   .consultation-gallery    { grid-template-columns: 1fr; }
   .service-images-grid     { grid-template-columns: 1fr; }
   .image-slider            { height: 240px; }
   .contact-form-wrap       { padding: 1.5rem 1.25rem; }
   .form-row                { grid-template-columns: 1fr; }
-  .stat-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .stat-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1.5rem 1rem; }
+  .stat-card:last-child { border-bottom: none; }
 }
 
 @media (max-width: 480px) {
-  .consultation-stats { grid-template-columns: 1fr; }
   .product-showcase-media { aspect-ratio: 1/1; }
   .contact-card { padding: 1rem; }
 }

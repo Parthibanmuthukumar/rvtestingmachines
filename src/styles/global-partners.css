@@ -27,7 +27,7 @@
   margin-bottom: 3rem;
 }
 
-/* ── Grid: always 6 columns, never wraps ── */
+/* ── Grid: 6 partner logo columns ── */
 .global-partners-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);

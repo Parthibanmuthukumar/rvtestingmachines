@@ -1,5 +1,4 @@
 import docxDurometerHDD2 from '../assets/images/docx_products/docx_digital_durometer_hdd2.jpg';
-import docxIrhdMicro from '../assets/images/docx_products/docx_irhd_micro_tester.jpg';
 import docxMetalHardness from '../assets/images/docx_products/docx_metal_hardness_testers.jpg';
 import docxUtmUP100 from '../assets/images/docx_products/docx_utm_up100_ak2dh.png';
 import docxUtmEM from '../assets/images/docx_products/docx_utm_type_em.png';
@@ -17,10 +16,9 @@ import docxThicknessHTGA from '../assets/images/docx_products/docx_thickness_gau
 import docxAbrasion from '../assets/images/docx_products/docx_abrasion_resilience.png';
 import docxCompressionSet from '../assets/images/docx_products/docx_compression_set.jpg';
 import docxVolumetricCutter from '../assets/images/docx_products/docx_volumetric_cutter.jpg';
-import docxDumbbellCutter from '../assets/images/docx_products/docx_dumbbell_cutter.png';
 
-// Blue SAMPLE stamp placeholder for categories without document photos
-import samplePlaceholder from '../assets/images/products/sample_placeholder.svg';
+// Testing machine placeholder image for categories without specific document photos
+const samplePlaceholder = '/images/sample-testingMachine.jpeg';
 
 export const INTRO_HIGHLIGHTS = [
   {

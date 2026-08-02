@@ -186,11 +186,6 @@ function add(set, phrase) {
   if (cleaned.length > 2 && cleaned.length < 120) set.add(cleaned);
 }
 
-function combine(set, a, b) {
-  add(set, `${a} ${b}`);
-  add(set, `${b} ${a}`);
-}
-
 export function buildAllKeywords() {
   const set = new Set();
 

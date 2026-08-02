@@ -1,18 +1,53 @@
 {
-  "name": "RV Testing Machines",
-  "short_name": "RVTM",
-  "description": "ISO/IEC 17025 accredited material testing and calibration laboratory",
+  "name": "RV Testing Machines Private Limited",
+  "short_name": "RVTMPL",
+  "description": "NABL accredited ISO/IEC 17025 material testing equipment & calibration laboratory — Chennai, India",
   "start_url": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#ffffff",
   "theme_color": "#1a3c6b",
   "lang": "en-IN",
+  "dir": "ltr",
+  "scope": "/",
+  "categories": ["business", "productivity", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Our Products",
+      "short_name": "Products",
+      "description": "View material testing equipment catalogue",
+      "url": "/products",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "Get in touch for calibration quotes",
+      "url": "/contact",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Calibration Services",
+      "short_name": "Calibration",
+      "description": "NABL accredited calibration services",
+      "url": "/services",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    }
+  ],
   "icons": [
     {
       "src": "/favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any"
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
-  ]
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }

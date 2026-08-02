@@ -79,7 +79,7 @@ body {
   background: var(--white);
   color: var(--txt-b);
   line-height: 1.65;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 #root { width: 100%; }
@@ -89,6 +89,19 @@ a { text-decoration: none; color: inherit; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 ul { list-style: none; }
 h1,h2,h3,h4,h5 { color: var(--txt-h); line-height: 1.15; font-weight: 700; }
+
+/* Accessible visually-hidden — readable by screen readers & crawlers but not visible */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
 
 /* ============================================================
    LAYOUT

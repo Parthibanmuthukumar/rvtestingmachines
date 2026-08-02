@@ -10,8 +10,11 @@ import manWithMachine from '../assets/images/man_with_machine.png';
 import ScrollAnimation   from '../components/ScrollAnimation';
 import { GlobalPartners } from '../components/shared/GlobalPartners';
 import { HOME_EXPERTISE_TAGS } from '../seo/keywords';
+import SEO from '../components/SEO/SEO';
+import { getPageMeta } from '../seo/pageMeta';
 import { productItems } from '../data/productsData';
 import { calibrationSection, serviceBlocks } from '../data/servicesData';
+import { HOME_FAQS } from '../seo/structuredData';
 
 /* ── Hero slides — text taken directly from original data / siteConfig ── */
 const slides = [
@@ -222,8 +225,16 @@ export default function Home() {
     'fatigue-creep-testing': '/products#fatigue-testing',
   };
 
+  const pageMeta = getPageMeta('/');
+
   return (
     <main id="main-content">
+      <SEO
+        title={pageMeta.title}
+        description={pageMeta.description}
+        keywords={pageMeta.keywords}
+        path="/"
+      />
       <Hero />
 
       {/* ── Brand / About Section ── */}
@@ -446,6 +457,45 @@ export default function Home() {
                   <h3>{card.title}</h3>
                   <p>{card.text}</p>
                 </article>
+              </ScrollAnimation>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ Section — powers Google FAQ rich results ── */}
+      <section className="home-faq" aria-labelledby="faq-h">
+        <div className="home-faq-inner">
+          <div className="home-faq-header">
+            <ScrollAnimation direction="up">
+              <span className="home-label">Common Questions</span>
+              <h2 id="faq-h">Frequently Asked Questions</h2>
+              <p>
+                Get quick answers about RV Testing Machines Private Limited, our NABL accreditation,
+                calibration services, and material testing equipment.
+              </p>
+            </ScrollAnimation>
+          </div>
+          <div className="home-faq-list">
+            {HOME_FAQS.map((faq, idx) => (
+              <ScrollAnimation key={idx} direction="up" delay={idx * 50}>
+                <details className="faq-item" open={idx === 0}>
+                  <summary className="faq-question">
+                    <span>{faq.question}</span>
+                    <svg
+                      className="faq-chevron"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </summary>
+                  <p className="faq-answer">{faq.answer}</p>
+                </details>
               </ScrollAnimation>
             ))}
           </div>
