@@ -2,7 +2,7 @@ import fischerLogo from '../../assets/images/logos/fischer.png';
 import formTestLogo from '../../assets/images/logos/form_test.png';
 import hildebrandLogo from '../../assets/images/logos/hildebrand.png';
 import unconventionalLogo from '../../assets/images/logos/unconventional_testing.png';
-import prescottLogo from '../../assets/images/logos/prescott.png';
+import prescottLogo from '../../assets/images/logos/Prescott.png';
 import utmTestingLogo from '../../assets/images/logos/utm_testing.png';
 
 const PARTNERS = [
