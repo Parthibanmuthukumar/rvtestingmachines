@@ -3,7 +3,7 @@
    ============================================================ */
 
 .global-partners {
-  padding: var(--gy) var(--gx);
+  padding: clamp(2rem, 4vw, 3rem) var(--gx) clamp(3rem, 6vw, 5rem);
   background: var(--bg);
   text-align: center;
   overflow: hidden;

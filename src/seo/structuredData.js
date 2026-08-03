@@ -335,42 +335,27 @@ export const HOME_FAQS = [
   {
     question: 'What is RV Testing Machines Private Limited (RVTMPL)?',
     answer:
-      'RV Testing Machines Private Limited (RVTMPL / RVTM) is a Chennai-based company founded in 2015 by Mr. K. Ravichandran. We are an NABL accredited (ISO/IEC 17025) calibration laboratory and material testing equipment sales and service company serving clients across India.',
+      'RV Testing Machines Private Limited (RVTMPL / RVTM) is a Chennai-based company founded in 2015 by Mr. K. Ravichandran. We are an NABL accredited (ISO/IEC 17025, Cert CC-4232) calibration laboratory and material testing equipment sales and service provider serving clients across India.',
   },
   {
     question: 'Is RV Testing Machines NABL accredited?',
     answer:
-      'Yes. RV Testing Machines Private Limited operates an NABL accredited calibration laboratory with Certificate Number CC – 4232. Our calibration services are traceable to national measurement standards and comply with ISO/IEC 17025 requirements.',
+      'Yes. RV Testing Machines Private Limited operates an NABL accredited calibration laboratory with Certificate Number CC-4232. Our calibration services comply with ISO/IEC 17025 standards and are traceable to national measurement standards.',
   },
   {
-    question: 'What types of material testing machines does RVTM provide?',
+    question: 'What types of material testing equipment does RVTM provide?',
     answer:
-      'RVTM provides Universal Testing Machines (UTM), IRHD Micro Hardness Testers, Digital Durometers, Rheometers (MDR), Mooney Viscometers, Rockwell/Brinell/Vickers Hardness Testers, Impact Testers, Fatigue Testing Machines, and more — covering rubber, elastomers, metals, plastics, composites, textiles, and ceramics.',
+      'RVTM provides Universal Testing Machines (UTM), IRHD Micro Hardness Testers, Digital Durometers, Rheometers (MDR), Mooney Viscometers, Rockwell/Brinell/Vickers Hardness Testers, Impact Testers, and Fatigue Testing Machines for rubber, polymers, metals, and composites.',
   },
   {
-    question: 'Does RV Testing Machines offer calibration services across India?',
+    question: 'Does RVTM offer NABL calibration and AMC services across India?',
     answer:
-      'Yes. We offer both on-site and in-laboratory NABL accredited calibration services across India, including Chennai, Mumbai, Delhi, Bangalore, Hyderabad, Pune, Coimbatore, Ahmedabad, and Kolkata. We issue ISO/IEC 17025 compliant calibration certificates traceable to national standards.',
+      'Yes. We offer both on-site and laboratory NABL accredited calibration services (Cert CC-4232), preventive maintenance, and Annual Maintenance Contracts (AMC) across India, including Chennai, Mumbai, Delhi, Bangalore, Hyderabad, Pune, Coimbatore, Ahmedabad, and Kolkata.',
   },
   {
-    question: 'How do I contact RV Testing Machines for a calibration quote?',
+    question: 'Which global technology partners and brands does RVTM represent?',
     answer:
-      'You can reach us at +91 94444 90691 (WhatsApp/Mobile), +91 44 2249 0691 (Landline), or email us at sales@rvtestingmachines.com. You can also fill out our contact form on the website for a calibration quote or technical consultation.',
-  },
-  {
-    question: 'What is the NABL accreditation certificate number of RV Testing Machines?',
-    answer:
-      'The NABL accreditation certificate number of RV Testing Machines Private Limited is CC – 4232. This accreditation covers calibration of universal testing machines (UTM), hardness testers, load cells, and related material testing instruments.',
-  },
-  {
-    question: 'Does RVTM provide Annual Maintenance Contracts (AMC)?',
-    answer:
-      'Yes. RV Testing Machines Private Limited offers comprehensive Annual Maintenance Contracts (AMC) for testing machines including preventive maintenance, scheduled calibration, emergency repairs, and technical support — keeping your lab production-ready year-round.',
-  },
-  {
-    question: 'Which technology partners and brands does RVTM represent?',
-    answer:
-      'RVTM is an authorized representative for leading global testing equipment manufacturers including Prescott (Germany), Fischer (Germany), Form+Test (Germany), Hildebrand (Germany), and other reputed international brands in material testing.',
+      'RVTM is an authorized sales and service representative for leading global testing equipment manufacturers including Prescott (Germany), Fischer (Germany), Form+Test (Germany), Hildebrand (Germany), and UTM Unconventional Testing Machines.',
   },
 ];
 
