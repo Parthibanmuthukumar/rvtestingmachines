@@ -26,17 +26,18 @@
 
 /* ── Brand Section ── */
 .brand-section {
-  padding: clamp(2rem, 3.5vw, 3rem) var(--gx) 1.25rem var(--gx);
+  padding: clamp(3rem, 5vw, 4.5rem) var(--gx);
   background: var(--white);
 }
 
 .brand-section__inner {
-  max-width: var(--max);
+  max-width: 1050px;
   margin-inline: auto;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: clamp(3rem, 6vw, 6rem);
+  display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  gap: clamp(3rem, 5vw, 5rem);
 }
 
 /* Logo column */
@@ -684,14 +685,15 @@
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .brand-section__inner {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    text-align: center;
     gap: 2rem;
   }
 
   .brand-logo-col {
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .feat-cards-grid { grid-template-columns: 1fr; }
