@@ -462,13 +462,14 @@
   margin-bottom: clamp(2rem, 4vw, 3.5rem);
 }
 
-.home-calibration-header h2 {
+.home-calibration-header h2,
+.calibration-heading {
   font-size: clamp(1.7rem, 3.5vw, 2.5rem);
   font-weight: 900;
   color: var(--navy);
   letter-spacing: -0.025em;
   line-height: 1.15;
-  margin-top: 0.2rem;
+  margin: 0.2rem 0 0.5rem;
 }
 
 .calibration-showcase {

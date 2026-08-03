@@ -394,22 +394,19 @@ export default function Home() {
       {/* ── Service & Calibration ── */}
       <section className="home-calibration" aria-labelledby="calib-h">
         <div className="home-calibration-inner">
-          <div className="home-calibration-header">
-            <ScrollAnimation direction="up">
-              <span className="home-label">Service &amp; Calibration</span>
-              <h2 id="calib-h">{calibrationSection.title}</h2>
-            </ScrollAnimation>
-          </div>
-
           <div className="calibration-showcase">
             <ScrollAnimation direction="left">
               <div className="calibration-text">
+                <span className="home-label">Service &amp; Calibration</span>
+                <h2 id="calib-h" className="calibration-heading">{calibrationSection.title}</h2>
                 {calibrationSection.paragraphs.map((para, i) => (
                   <p key={i}>{para}</p>
                 ))}
-                <Link to="/contact" className="btn btn-gold calibration-cta">
-                  Schedule Calibration
-                </Link>
+                <div style={{ marginTop: '0.5rem' }}>
+                  <Link to="/contact" className="btn btn-gold calibration-cta">
+                    Schedule Calibration
+                  </Link>
+                </div>
               </div>
             </ScrollAnimation>
             <ScrollAnimation direction="right">
