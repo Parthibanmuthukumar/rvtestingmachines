@@ -471,7 +471,7 @@ export default function Home() {
           <div className="home-faq-list">
             {HOME_FAQS.map((faq, idx) => (
               <ScrollAnimation key={idx} direction="up" delay={idx * 50}>
-                <details className="faq-item" open={idx === 0}>
+                <details className="faq-item">
                   <summary className="faq-question">
                     <span>{faq.question}</span>
                     <svg

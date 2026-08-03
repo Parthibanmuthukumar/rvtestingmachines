@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import logoPng from '../assets/images/logo_equal_padding.png';
 import { ProductsMegaMenu } from './ProductsMegaMenu';
-import { TESTING_CATEGORIES } from '../data/productCategoriesData';
 
 const navItems = [
   { to: '/',            label: 'Home',        end: true },
@@ -24,7 +23,6 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
-  const [mobileCategoriesOpen, setMobileCategoriesOpen] = useState(false);
   const megaTimerRef = useRef(null);
   const headerRef = useRef(null);
   const { pathname } = useLocation();
@@ -34,7 +32,6 @@ export default function Navbar() {
     setPrevPathname(pathname);
     setMenuOpen(false);
     setMegaOpen(false);
-    setMobileCategoriesOpen(false);
   }
 
   const handleMegaEnter = () => {
@@ -46,7 +43,7 @@ export default function Navbar() {
     if (megaTimerRef.current) clearTimeout(megaTimerRef.current);
     megaTimerRef.current = setTimeout(() => {
       setMegaOpen(false);
-    }, 350);
+    }, 500);
   };
 
   /* Close mega menu when clicking outside */
@@ -148,7 +145,10 @@ export default function Navbar() {
                       className={({ isActive }) =>
                         `nav-mega-trigger${isActive ? ' active' : ''}${megaOpen ? ' mega-active' : ''}`
                       }
-                      onClick={() => setMegaOpen(false)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setMegaOpen(o => !o);
+                      }}
                     >
                       {item.label}
                       <svg
@@ -240,78 +240,20 @@ export default function Navbar() {
         </div>
 
         <ul className="nav-drawer-links" role="list">
-          {navItems.map((item) => {
-            if (item.hasMega) {
-              return (
-                <li key={item.to} className="drawer-item-mega-group">
-                  <div className="drawer-mega-header">
-                    <NavLink
-                      to={item.to}
-                      className={({ isActive }) => `drawer-link${isActive ? ' active' : ''}`}
-                      onClick={close}
-                    >
-                      {item.label}
-                    </NavLink>
-                    <button
-                      type="button"
-                      className={`drawer-accordion-btn${mobileCategoriesOpen ? ' is-open' : ''}`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setMobileCategoriesOpen(o => !o);
-                      }}
-                      aria-label="Toggle products categories menu"
-                    >
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <polyline points="6 9 12 15 18 9" />
-                      </svg>
-                    </button>
-                  </div>
-
-                  {/* Mobile Categories Collapsible List */}
-                  {mobileCategoriesOpen && (
-                    <ul className="drawer-categories-sublist" role="list">
-                      {TESTING_CATEGORIES.map((cat, idx) => (
-                        <li key={cat.id}>
-                          <NavLink
-                            to={`/products#${cat.id}`}
-                            className="drawer-category-sublink"
-                            onClick={close}
-                          >
-                            <span className="sublink-num">{String(idx + 1).padStart(2, '0')}</span>
-                            <span className="sublink-name">{cat.name}</span>
-                          </NavLink>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              );
-            }
-
-            return (
-              <li key={item.to}>
-                <NavLink
-                  to={item.to}
-                  end={item.end}
-                  className={({ isActive }) =>
-                    [item.enquiry ? 'drawer-enquiry-btn' : 'drawer-link', isActive ? 'active' : ''].filter(Boolean).join(' ')
-                  }
-                  onClick={close}
-                >
-                  {item.label}
-                </NavLink>
-              </li>
-            );
-          })}
+          {navItems.map((item) => (
+            <li key={item.to}>
+              <NavLink
+                to={item.to}
+                end={item.end}
+                className={({ isActive }) =>
+                  [item.enquiry ? 'drawer-enquiry-btn' : 'drawer-link', isActive ? 'active' : ''].filter(Boolean).join(' ')
+                }
+                onClick={close}
+              >
+                {item.label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
 
         {/* Mobile Drawer Footer with Contact Information */}

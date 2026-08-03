@@ -18,12 +18,19 @@ export default function Products() {
   const scrollToCategory = (id) => {
     setActiveId(id);
     setIsMobileOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      const yOffset = -90;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
+    document.body.classList.remove('nav-menu-open');
+    document.documentElement.classList.remove('nav-menu-open');
+
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          const yOffset = -90;
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 60);
+    });
   };
 
   // Lock body scroll when mobile categories drawer is open
@@ -42,6 +49,8 @@ export default function Products() {
       const hashId = location.hash.replace('#', '');
       const match = TESTING_CATEGORIES.find((cat) => cat.id === hashId);
       if (match) {
+        document.body.classList.remove('nav-menu-open');
+        document.documentElement.classList.remove('nav-menu-open');
         setTimeout(() => {
           scrollToCategory(match.id);
         }, 150);
