@@ -28,16 +28,33 @@
 .brand-section {
   padding: clamp(3rem, 5vw, 4.5rem) var(--gx);
   background: var(--white);
+  text-align: center;
 }
 
 .brand-section__inner {
-  max-width: 1050px;
+  max-width: 860px;
   margin-inline: auto;
   display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: center;
-  gap: clamp(3rem, 5vw, 5rem);
+}
+
+.brand-content-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.brand-content-center h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 900;
+  color: var(--navy);
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin-top: 0.2rem;
+  text-align: center;
 }
 
 /* Logo column */
@@ -125,16 +142,18 @@
 .brand-accent { color: var(--blue); }
 
 .brand-text-col > p, .brand-text-p {
-  color: #374965;              /* explicit dark mid-tone */
-  font-size: 0.97rem;
+  color: #374965;
+  font-size: 0.98rem;
   line-height: 1.85;
-  max-width: 620px;
-  text-align: justify;
-  hyphens: auto;
+  max-width: 760px;
+  text-align: center;
+  margin-inline: auto;
 }
 
 .brand-cta-wrap {
   margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
 }
 
 .btn-brand-about {

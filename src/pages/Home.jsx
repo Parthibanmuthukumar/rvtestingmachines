@@ -240,33 +240,29 @@ export default function Home() {
       {/* ── Brand / About Section ── */}
       <section className="brand-section" aria-labelledby="brand-h">
         <div className="brand-section__inner">
-
-          <ScrollAnimation direction="left">
-            <div className="brand-logo-col">
-              <div className="brand-logo-frame">
-                <img
-                  src={logoPdf}
-                  alt="RV Testing Machines Private Limited logo"
-                  className="brand-logo-img"
-                />
-              </div>
-              <span className="brand-cert-text">ISO / IEC 17025 Accredited</span>
-            </div>
-          </ScrollAnimation>
-
-          <ScrollAnimation direction="right">
-            <div className="brand-text-col">
+          <ScrollAnimation direction="up">
+            <div className="brand-content-center">
               <span className="home-label">About Us</span>
               <h2 id="brand-h">
-                RV Testing Machines<br />
+                RV Testing Machines{' '}
                 <span className="brand-accent">Private Limited</span>
               </h2>
-              {/* Taken from DEFAULT_DESCRIPTION in siteConfig.js */}
+
+              <div className="brand-logo-col">
+                <div className="brand-logo-frame">
+                  <img
+                    src={logoPdf}
+                    alt="RV Testing Machines Private Limited logo"
+                    className="brand-logo-img"
+                  />
+                </div>
+                <span className="brand-cert-text">ISO / IEC 17025 Accredited</span>
+              </div>
+
               <p className="brand-text-p">
                 NABL accredited material testing, universal testing machines, rubber &amp; metal
                 testing equipment, calibration and technical support across India since 2015.
               </p>
-              {/* From servicesIntro in servicesData.js */}
               <p className="brand-text-p">
                 From installation and commissioning to preventive maintenance and performance
                 validation, RVTM provides complete product service support for material testing
@@ -280,7 +276,6 @@ export default function Home() {
               </div>
             </div>
           </ScrollAnimation>
-
         </div>
       </section>
 
