@@ -1,3 +1,4 @@
+/** RV Testing Machines — Index SEO Plugin */
 import { readFileSync, writeFileSync } from 'node:fs';
 import { buildAllKeywords } from './src/seo/generateKeywords.js';
 import { buildIndexSeoHtml, selectIndexKeywords } from './src/seo/selectIndexKeywords.js';

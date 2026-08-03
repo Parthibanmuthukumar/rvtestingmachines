@@ -1,3 +1,4 @@
+// RV Testing Machines — Vite 8 Configuration
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
