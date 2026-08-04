@@ -321,17 +321,17 @@
 }
 
 .product-card-content {
-  padding: 1.5rem;
+  padding: 1.25rem 1.5rem;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  justify-content: flex-start;
 }
 
 .product-card-content h3 {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: #0f172a;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   line-height: 1.35;
 }
 
@@ -339,8 +339,13 @@
   font-size: 0.9rem;
   line-height: 1.6;
   color: #64748b;
-  margin-bottom: 1.25rem;
-  flex: 1;
+  margin-bottom: 0.75rem;
+  margin-top: 0;
+  flex: none;
+}
+
+.product-card-content p:last-child {
+  margin-bottom: 0;
 }
 
 .product-card-cta {
