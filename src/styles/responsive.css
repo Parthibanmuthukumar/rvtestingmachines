@@ -51,6 +51,52 @@ p, h1, h2, h3, h4, h5, h6, span, li, a {
 }
 
 /* ── Inner pages ── */
+.consultation-cards-container,
+.consultation-process-grid,
+.product-grid,
+.why-grid,
+.feat-cards-grid,
+.service-highlights,
+.category-products-grid {
+  align-items: stretch !important;
+}
+
+.consultation-cards-container > div,
+.consultation-cards-container > div > div,
+.consultation-process-grid > div,
+.consultation-process-grid > div > div,
+.product-grid > div,
+.product-grid > div > div,
+.why-grid > div,
+.why-grid > div > div,
+.feat-cards-grid > div,
+.feat-cards-grid > div > div,
+.service-highlights > div,
+.service-highlights > div > div,
+.category-products-grid > div,
+.category-products-grid > div > div {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  width: 100% !important;
+  flex: 1 1 auto !important;
+}
+
+.consultation-card-premium,
+.process-step-card,
+.product-card,
+.why-card,
+.feat-card,
+.service-highlight-card,
+.product-item-card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  width: 100% !important;
+  flex: 1 1 auto !important;
+  box-sizing: border-box !important;
+}
+
 @media (max-width: 1024px) {
   .product-showcase-inner  { grid-template-columns: 1fr; }
   .product-showcase-inner--reverse { direction: ltr; }
@@ -58,25 +104,39 @@ p, h1, h2, h3, h4, h5, h6, span, li, a {
   .contact-grid            { grid-template-columns: 1fr; }
   .calibration-grid-container { grid-template-columns: 1fr; }
   .calibration-images .media-card__img { width: 100%; max-width: 420px; height: auto; }
-  .consultation-cards-container { grid-template-columns: repeat(2, 1fr); padding: 1.5rem 0; }
-  .consultation-stats      { grid-template-columns: repeat(2, 1fr); }
+  .consultation-cards-container { grid-template-columns: repeat(2, 1fr); padding: 1.5rem 0; gap: 1.25rem; }
+  .consultation-stats      { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 850px) {
+  .consultation-cards-container { grid-template-columns: 1fr !important; gap: 1.25rem !important; }
+}
+
+@media (max-width: 640px) {
+  .consultation-stats      { grid-template-columns: 1fr !important; }
 }
 
 @media (max-width: 768px) {
-  .consultation-cards-container { grid-template-columns: 1fr; }
-  .consultation-stats      { grid-template-columns: 1fr; }
+  .consultation-cards-container { grid-template-columns: 1fr !important; gap: 1.25rem !important; }
   .consultation-gallery    { grid-template-columns: 1fr; }
   .service-images-grid     { grid-template-columns: 1fr; }
   .image-slider            { height: 240px; }
   .contact-form-wrap       { padding: 1.5rem 1.25rem; }
   .form-row                { grid-template-columns: 1fr; }
-  .stat-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1.5rem 1rem; }
+  .stat-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 1.25rem 1rem; }
   .stat-card:last-child { border-bottom: none; }
 }
 
 @media (max-width: 480px) {
   .product-showcase-media { aspect-ratio: 1/1; }
   .contact-card { padding: 1rem; }
+  .consultation-card-premium {
+    padding: 1.25rem 1rem !important;
+  }
+  .consultation-standards-tag {
+    padding: 8px 10px !important;
+    font-size: 0.75rem !important;
+  }
 }
 
 /* ── About ── */

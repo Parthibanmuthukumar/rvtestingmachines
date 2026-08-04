@@ -113,11 +113,74 @@
   transition: all 0.25s;
 }
 
-.footer-social:hover {
-  background: var(--blue);
-  border-color: var(--blue);
-  color: #fff;
+.footer-social:hover,
+.footer-social:active,
+.footer-social:focus {
+  transform: translateY(-2px);
 }
+
+.footer-social svg {
+  transition: all 0.25s var(--ease);
+}
+
+.footer-social:hover svg,
+.footer-social:active svg,
+.footer-social:focus svg {
+  transform: scale(1.1);
+}
+
+/* Facebook Brand Color Reveal */
+.footer-social--facebook:hover,
+.footer-social--facebook:active,
+.footer-social--facebook:focus {
+  background: #1877F2 !important;
+  border-color: #1877F2 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(24, 119, 242, 0.45);
+}
+
+/* IndiaMART Brand Color & Logo Reveal */
+.footer-social--indiamart svg {
+  filter: grayscale(100%) opacity(0.45);
+  transition: filter 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.footer-social--indiamart:hover,
+.footer-social--indiamart:active,
+.footer-social--indiamart:focus {
+  background: #ffffff !important;
+  border-color: #e31b23 !important;
+  box-shadow: 0 4px 16px rgba(227, 27, 35, 0.45);
+}
+
+.footer-social--indiamart:hover svg,
+.footer-social--indiamart:active svg,
+.footer-social--indiamart:focus svg {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.08);
+}
+
+/* Twitter / X Brand Color Reveal */
+.footer-social--twitter:hover,
+.footer-social--twitter:active,
+.footer-social--twitter:focus {
+  background: #0f1419 !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
+}
+
+/* LinkedIn Brand Color Reveal */
+.footer-social--linkedin:hover,
+.footer-social--linkedin:active,
+.footer-social--linkedin:focus {
+  background: #0A66C2 !important;
+  border-color: #0A66C2 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 16px rgba(10, 102, 194, 0.45);
+}
+
+
 
 /* Link columns */
 .footer-col-title {

@@ -41,8 +41,8 @@ const TiltCard = ({ children, className = '', intensity = 12, ...props }) => {
   return (
     <div
       ref={ref}
-      className={className}
-      style={{ willChange: 'transform', transition: 'transform 0.15s ease, box-shadow 0.15s ease' }}
+      className={`tilt-card ${className}`.trim()}
+      style={{ willChange: 'transform', transition: 'transform 0.15s ease, box-shadow 0.15s ease', display: 'flex', flexDirection: 'column', height: '100%', width: '100%', flex: 1 }}
       {...props}
     >
       {children}

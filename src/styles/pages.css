@@ -498,8 +498,13 @@
 }
 
 .consultation-cards-container > div,
+.consultation-cards-container > div > div,
 .consultation-cards-container .tilt-card {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  width: 100%;
+  flex: 1;
 }
 
 .consultation-card-premium {
@@ -511,6 +516,9 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
+  flex: 1;
+  box-sizing: border-box;
   transition: transform 0.3s var(--ease), box-shadow 0.3s, border-color 0.3s;
   position: relative;
   overflow: hidden;
@@ -569,16 +577,20 @@
   color: #1d4ed8;
   background: #f0fdf4;
   border: 1px solid #bbf7d0;
-  padding: 8px 12px;
-  border-radius: 6px;
+  padding: 10px 12px;
+  border-radius: 8px;
   margin-top: auto;
   line-height: 1.5;
-  word-break: normal !important;
-  overflow-wrap: normal !important;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
 }
 
 .consultation-standards-tag strong {
   color: #15803d;
+  margin-right: 4px;
 }
 
 /* Consultation Process Steps */
@@ -594,6 +606,16 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
+  align-items: stretch;
+}
+
+.consultation-process-grid > div,
+.consultation-process-grid > div > div {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  flex: 1;
 }
 
 .process-step-card {
@@ -603,6 +625,9 @@
   border: 1px solid #e2e8f0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.03);
   height: 100%;
+  width: 100%;
+  flex: 1;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
@@ -688,7 +713,7 @@
 
 .stat-card {
   text-align: center;
-  padding: 2.25rem 1.25rem;
+  padding: 1.75rem 0.75rem;
   background: #0f172a;
   position: relative;
   z-index: 1;
@@ -697,6 +722,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-width: 0;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .stat-card:hover {
@@ -705,26 +733,30 @@
 
 .stat-card strong {
   display: block;
-  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-size: clamp(0.95rem, 1.6vw, 1.8rem);
   font-weight: 900;
   color: #f59e0b;
   margin-bottom: 8px;
   letter-spacing: -0.02em;
-  line-height: 1.1;
-  white-space: nowrap;
+  line-height: 1.2;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .stat-card span {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: #cbd5e1;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   font-weight: 700;
-  line-height: 1.45;
-  word-break: normal !important;
-  overflow-wrap: normal !important;
-  word-wrap: normal !important;
-  hyphens: manual !important;
+  line-height: 1.4;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  max-width: 100%;
 }
 
 /* Call To Action (C2A) Section */

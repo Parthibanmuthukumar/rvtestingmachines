@@ -219,31 +219,91 @@
 
 .why-list { display: flex; flex-direction: column; gap: 0; list-style: none; max-width: 700px; }
 
-.why-list li {
-  display: flex; gap: 1.5rem; align-items: flex-start;
-  padding: 1.5rem 0; border-bottom: 1px solid var(--bdr2);
-  transition: padding-left 0.3s;
+.why-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  max-width: 700px;
 }
 
-.why-list li:last-child { border-bottom: none; }
-.why-list li:hover { padding-left: 8px; }
+.why-list li {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid var(--bdr2);
+  transition: all 0.3s var(--ease);
+  position: relative;
+  border-radius: var(--r8);
+}
+
+.why-list li:last-child {
+  border-bottom: none;
+}
+
+.why-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0%;
+  background: var(--blue);
+  border-radius: 3px;
+  transition: height 0.3s var(--ease), opacity 0.3s var(--ease);
+  opacity: 0;
+}
+
+.why-list li:hover {
+  background: rgba(30, 92, 179, 0.03);
+}
+
+.why-list li:hover::before {
+  height: 60%;
+  opacity: 1;
+}
 
 .why-number {
-  font-size: 1.8rem; font-weight: 900;
-  color: var(--blue); opacity: 0.2; line-height: 1;
-  flex-shrink: 0; min-width: 48px;
-  font-variant-numeric: tabular-nums; letter-spacing: -0.04em;
-  transition: opacity 0.3s;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--blue);
+  opacity: 0.25;
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 48px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+  transition: all 0.3s var(--ease);
 }
 
-.why-list li:hover .why-number { opacity: 0.4; }
+.why-list li:hover .why-number {
+  opacity: 1;
+  color: var(--blue);
+  transform: scale(1.08);
+}
 
 .why-list li strong {
-  display: block; font-size: 1rem; font-weight: 800;
-  color: var(--txt-h); margin-bottom: 4px; letter-spacing: -0.01em;
+  display: block;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--txt-h);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+  transition: color 0.3s var(--ease);
 }
 
-.why-list li p { font-size: 0.88rem; color: #374965; line-height: 1.7; margin: 0; }
+.why-list li:hover strong {
+  color: var(--blue);
+}
+
+.why-list li p {
+  font-size: 0.88rem;
+  color: #374965;
+  line-height: 1.7;
+  margin: 0;
+}
 
 /* ── Partners ── */
 .about-partners { padding: var(--gy2) var(--gx); background: var(--white); text-align: center; }

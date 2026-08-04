@@ -1,14 +1,12 @@
 import { Link } from 'react-router-dom';
 import { TESTING_CATEGORIES } from '../data/productCategoriesData';
 
-export function ProductsMegaMenu({ onClose, onMouseEnter, onMouseLeave }) {
+export function ProductsMegaMenu({ onClose }) {
   return (
     <div
       className="mega-menu mega-menu--categories-only"
       role="region"
       aria-label="Our Products Categories"
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
     >
       <div className="mega-menu-categories-header">
         <div className="header-title-wrap">

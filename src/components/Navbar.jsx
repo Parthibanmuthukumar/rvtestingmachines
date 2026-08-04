@@ -23,7 +23,6 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
-  const megaTimerRef = useRef(null);
   const headerRef = useRef(null);
   const { pathname } = useLocation();
   const [prevPathname, setPrevPathname] = useState(pathname);
@@ -33,18 +32,6 @@ export default function Navbar() {
     setMenuOpen(false);
     setMegaOpen(false);
   }
-
-  const handleMegaEnter = () => {
-    if (megaTimerRef.current) clearTimeout(megaTimerRef.current);
-    setMegaOpen(true);
-  };
-
-  const handleMegaLeave = () => {
-    if (megaTimerRef.current) clearTimeout(megaTimerRef.current);
-    megaTimerRef.current = setTimeout(() => {
-      setMegaOpen(false);
-    }, 500);
-  };
 
   /* Close mega menu when clicking outside */
   useEffect(() => {
@@ -60,13 +47,6 @@ export default function Navbar() {
       document.removeEventListener('pointerdown', handleClickOutside);
     };
   }, [megaOpen]);
-
-  /* Clean up timer on unmount */
-  useEffect(() => {
-    return () => {
-      if (megaTimerRef.current) clearTimeout(megaTimerRef.current);
-    };
-  }, []);
 
   /* Body lock for mobile menu */
   useEffect(() => {
@@ -96,7 +76,6 @@ export default function Navbar() {
   }, []);
 
   const close = () => {
-    if (megaTimerRef.current) clearTimeout(megaTimerRef.current);
     setMenuOpen(false);
     setMegaOpen(false);
   };
@@ -137,8 +116,6 @@ export default function Navbar() {
                   <li
                     key={item.to}
                     className="nav-item-mega-wrapper"
-                    onMouseEnter={handleMegaEnter}
-                    onMouseLeave={handleMegaLeave}
                   >
                     <NavLink
                       to={item.to}
@@ -146,6 +123,7 @@ export default function Navbar() {
                         `nav-mega-trigger${isActive ? ' active' : ''}${megaOpen ? ' mega-active' : ''}`
                       }
                       onClick={(e) => {
+                        e.preventDefault();
                         e.stopPropagation();
                         setMegaOpen(o => !o);
                       }}
@@ -170,8 +148,6 @@ export default function Navbar() {
                     {megaOpen && (
                       <ProductsMegaMenu
                         onClose={close}
-                        onMouseEnter={handleMegaEnter}
-                        onMouseLeave={handleMegaLeave}
                       />
                     )}
                   </li>

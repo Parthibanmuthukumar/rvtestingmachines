@@ -28,9 +28,10 @@ export const CONTACT = {
 
 export const SOCIAL = {
   instagram: 'https://instagram.com',
-  facebook: 'https://facebook.com',
-  twitter: 'https://twitter.com',
-  linkedin: 'https://linkedin.com',
+  facebook: 'https://www.facebook.com/RVTestingMachines',
+  indiamart: 'https://www.indiamart.com/r-v-testing-machines/',
+  twitter: 'https://twitter.com/RVTestingMachine',
+  linkedin: 'http://www.linkedin.com/in/rvtestingmachines',
 };
 
 export const OG_IMAGE = `${SITE_URL}/og-image.jpg`;

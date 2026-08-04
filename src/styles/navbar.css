@@ -237,16 +237,8 @@
   position: relative;
 }
 
-/* Invisible hover bridge pseudo-element extending downwards and sideways to cover full dropdown width */
 .nav-item-mega-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: -180px;
-  right: -180px;
-  height: 32px;
-  background: transparent;
-  z-index: 998;
+  display: none;
 }
 
 .mega-menu {
