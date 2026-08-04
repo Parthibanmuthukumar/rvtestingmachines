@@ -16,6 +16,12 @@ export function ProductsMegaMenu({ onClose }) {
         <span className="mega-menu-count-chip">{TESTING_CATEGORIES.length} Categories</span>
       </div>
 
+      <div className="mega-menu-categories-top">
+        <Link to="/products" className="btn-view-all-products" onClick={onClose}>
+          View All Testing Equipment &rarr;
+        </Link>
+      </div>
+
       <div className="mega-categories-grid">
         {TESTING_CATEGORIES.map((cat, index) => (
           <Link
@@ -41,12 +47,6 @@ export function ProductsMegaMenu({ onClose }) {
             </svg>
           </Link>
         ))}
-      </div>
-
-      <div className="mega-menu-categories-footer">
-        <Link to="/products" className="btn-view-all-products" onClick={onClose}>
-          View All Testing Equipment &rarr;
-        </Link>
       </div>
     </div>
   );

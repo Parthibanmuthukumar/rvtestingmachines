@@ -14,12 +14,16 @@ export default function Products() {
   const [activeId, setActiveId] = useState(TESTING_CATEGORIES[0].id);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-  // Smooth scroll to a category section by ID
-  const scrollToCategory = (id) => {
+  // Smooth scroll to a category section by ID and update URL hash
+  const scrollToCategory = (id, pushToHistory = true) => {
     setActiveId(id);
     setIsMobileOpen(false);
     document.body.classList.remove('nav-menu-open');
     document.documentElement.classList.remove('nav-menu-open');
+
+    if (pushToHistory && window.location.hash !== `#${id}`) {
+      window.history.pushState(null, '', `/products#${id}`);
+    }
 
     requestAnimationFrame(() => {
       setTimeout(() => {
@@ -52,14 +56,15 @@ export default function Products() {
         document.body.classList.remove('nav-menu-open');
         document.documentElement.classList.remove('nav-menu-open');
         setTimeout(() => {
-          scrollToCategory(match.id);
+          scrollToCategory(match.id, false);
         }, 150);
       }
     }
   }, [location.hash]);
 
-  // Observer to update active sidebar link on scroll
+  // Observer to update active sidebar link and URL hash on scroll
   useEffect(() => {
+    let currentActive = activeId;
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200;
       for (const cat of TESTING_CATEGORIES) {
@@ -68,7 +73,13 @@ export default function Products() {
           const top = el.offsetTop;
           const height = el.offsetHeight;
           if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveId(cat.id);
+            if (currentActive !== cat.id) {
+              currentActive = cat.id;
+              setActiveId(cat.id);
+              if (window.location.hash !== `#${cat.id}`) {
+                window.history.replaceState(null, '', `/products#${cat.id}`);
+              }
+            }
             break;
           }
         }

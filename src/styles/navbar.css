@@ -238,7 +238,14 @@
 }
 
 .nav-item-mega-wrapper::after {
-  display: none;
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  right: -20px;
+  height: 20px;
+  background: transparent;
+  z-index: 998;
 }
 
 .mega-menu {
@@ -366,27 +373,37 @@
   color: #1d4ed8;
 }
 
+.mega-menu-categories-top,
 .mega-menu-categories-footer {
-  margin-top: 1rem;
-  padding-top: 0.85rem;
-  border-top: 1px solid #e2e8f0;
+  padding-bottom: 0.85rem;
+  margin-bottom: 0.85rem;
+  border-bottom: 1px solid #e2e8f0;
   text-align: center;
 }
 
 .btn-view-all-products {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  font-size: 0.85rem;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 16px;
+  background: #1d4ed8 !important;
+  color: #ffffff !important;
+  font-size: 0.86rem;
   font-weight: 800;
-  color: #1d4ed8;
-  text-decoration: none;
-  transition: color 0.2s ease;
+  border-radius: 8px;
+  text-decoration: none !important;
+  box-shadow: 0 2px 8px rgba(29, 78, 216, 0.2);
+  transition: all 0.25s ease;
+  box-sizing: border-box;
 }
 
 .btn-view-all-products:hover {
-  color: #1e40af;
+  background: #1e40af !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.4);
+  transform: translateY(-1px);
 }
 
 @keyframes megaDrop {

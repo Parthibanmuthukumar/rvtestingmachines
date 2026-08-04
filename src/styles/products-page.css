@@ -282,20 +282,20 @@
 }
 
 .product-card-media {
-  height: 220px;
+  height: 150px;
   background: #f8fafc;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 0.85rem;
   border-bottom: 1px solid #f1f5f9;
   overflow: hidden;
 }
 
 .product-card-media img {
   max-width: 100%;
-  max-height: 100%;
+  max-height: 120px;
   object-fit: contain;
   transition: transform 0.4s ease;
 }

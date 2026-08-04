@@ -56,12 +56,9 @@ p, h1, h2, h3, h4, h5, h6, span, li, a {
 .product-grid,
 .why-grid,
 .feat-cards-grid,
-.service-highlights {
-  align-items: stretch !important;
-}
-
+.service-highlights,
 .category-products-grid {
-  align-items: start !important;
+  align-items: stretch !important;
 }
 
 .consultation-cards-container > div,
@@ -75,18 +72,14 @@ p, h1, h2, h3, h4, h5, h6, span, li, a {
 .feat-cards-grid > div,
 .feat-cards-grid > div > div,
 .service-highlights > div,
-.service-highlights > div > div {
+.service-highlights > div > div,
+.category-products-grid > div,
+.category-products-grid > div > div {
   display: flex !important;
   flex-direction: column !important;
   height: 100% !important;
   width: 100% !important;
   flex: 1 1 auto !important;
-}
-
-.category-products-grid > div,
-.category-products-grid > div > div {
-  width: 100% !important;
-  height: auto !important;
 }
 
 .consultation-card-premium,
@@ -94,20 +87,13 @@ p, h1, h2, h3, h4, h5, h6, span, li, a {
 .product-card,
 .why-card,
 .feat-card,
-.service-highlight-card {
+.service-highlight-card,
+.product-item-card {
   display: flex !important;
   flex-direction: column !important;
   height: 100% !important;
   width: 100% !important;
   flex: 1 1 auto !important;
-  box-sizing: border-box !important;
-}
-
-.product-item-card {
-  display: flex !important;
-  flex-direction: column !important;
-  height: auto !important;
-  width: 100% !important;
   box-sizing: border-box !important;
 }
 

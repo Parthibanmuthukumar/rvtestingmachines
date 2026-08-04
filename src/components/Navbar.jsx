@@ -24,6 +24,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const headerRef = useRef(null);
+  const megaTimeoutRef = useRef(null);
   const { pathname } = useLocation();
   const [prevPathname, setPrevPathname] = useState(pathname);
 
@@ -32,6 +33,21 @@ export default function Navbar() {
     setMenuOpen(false);
     setMegaOpen(false);
   }
+
+  const handleMegaMouseEnter = () => {
+    if (megaTimeoutRef.current) {
+      clearTimeout(megaTimeoutRef.current);
+    }
+  };
+
+  const handleMegaMouseLeave = () => {
+    if (megaTimeoutRef.current) {
+      clearTimeout(megaTimeoutRef.current);
+    }
+    megaTimeoutRef.current = setTimeout(() => {
+      setMegaOpen(false);
+    }, 250);
+  };
 
   /* Close mega menu when clicking outside */
   useEffect(() => {
@@ -116,6 +132,8 @@ export default function Navbar() {
                   <li
                     key={item.to}
                     className="nav-item-mega-wrapper"
+                    onMouseEnter={handleMegaMouseEnter}
+                    onMouseLeave={handleMegaMouseLeave}
                   >
                     <NavLink
                       to={item.to}
