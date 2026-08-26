@@ -54,7 +54,8 @@ export function SEO({
       />
       <meta name="category" content="Material Testing & Calibration" />
 
-      {/* ─── Robots ─── */}
+      {/* ─── Robots & Google Verification ─── */}
+      <meta name="google-site-verification" content="google72a1f1a19579ab8f" />
       <meta
         name="robots"
         content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
