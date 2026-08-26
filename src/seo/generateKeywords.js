@@ -34,6 +34,16 @@ const EQUIPMENT = [
   'laboratory testing equipment',
   'industrial testing equipment',
   'quality testing equipment',
+  'DOLI digital controller',
+  'DOLI EDCi controller',
+  'DOLI EDCi20 controller',
+  'DOLI EDCi50 controller',
+  'DOLI extensometer',
+  'DOLI RMC remote control',
+  'Rockwell diamond indenter',
+  'HRC test blocks',
+  'durometer spares',
+  'testing machine spares',
 ];
 
 const RUBBER = [
@@ -104,8 +114,14 @@ const STANDARDS = [
 ];
 
 const PARTNERS = [
+  'DOLI Elektronik',
+  'DOLI Elektronik GmbH',
+  'DOLI controllers India',
+  'DOLI extensometer electronics',
   'Prescott testing machines',
   'Fischer testing equipment',
+  'Form + Test',
+  'Hildebrand durometer',
   'KOBELCO testing',
   'Nubateco',
   'CISAM testing machines',

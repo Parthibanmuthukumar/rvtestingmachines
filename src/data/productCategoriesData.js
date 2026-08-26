@@ -16,6 +16,8 @@ import docxThicknessHTGA from '../assets/images/docx_products/docx_thickness_gau
 import docxAbrasion from '../assets/images/docx_products/docx_abrasion_resilience.png';
 import docxCompressionSet from '../assets/images/docx_products/docx_compression_set.jpg';
 import docxVolumetricCutter from '../assets/images/docx_products/docx_volumetric_cutter.jpg';
+import docxControllerExtensometer from '../assets/images/docx_products/docx_controller_extensometer.jpg';
+import docxDiamondIndenters from '../assets/images/docx_products/docx_diamond_indenters.png';
 
 // Testing machine placeholder image for categories without specific document photos
 const samplePlaceholder = '/images/sample-testingMachine.jpeg';
@@ -428,6 +430,46 @@ export const TESTING_CATEGORIES = [
         image: samplePlaceholder,
         text: 'Low & high energy drop weight impact energy recording system.',
         link: '/products#impact-testing',
+      },
+    ],
+  },
+  {
+    id: 'spares',
+    name: 'Spares & DOLI Electronics',
+    highlight: true,
+    description: 'Genuine DOLI Elektronik digital controllers (EDCi series), extensometer amplifiers, RMC handheld remotes, hardness diamond indenters, HRC test blocks & testing machine spare parts.',
+    subcategories: [
+      {
+        material: 'DOLI Electronics',
+        title: 'DOLI EDCi Digital Controller & Measurement Electronics',
+        image: docxControllerExtensometer,
+        text: 'High-precision 32-bit DSP digital measurement & closed-loop control system for Universal Testing Machines (UTM) and dynamic fatigue rigs. High-speed 10 kHz control rate, TEDS sensor recognition, and PCIe/Ethernet data acquisition.',
+        tags: ['DOLI EDCi20', 'DOLI EDCi50', '32-Bit DSP', 'Closed-Loop Control', 'PCIe Interface'],
+        link: '/products#spares',
+      },
+      {
+        material: 'DOLI Transducers',
+        title: 'DOLI High-Precision Extensometer & Signal Electronics',
+        image: docxControllerExtensometer,
+        text: 'Precision strain measurement transducers, clip-on extensometers, optical extensometer interfaces, and high-resolution signal amplifiers for load cells, LVDTs, and strain gauges.',
+        tags: ['Extensometer', 'Strain Gauge', 'LVDT Amplifier', 'DOLI Transducer'],
+        link: '/products#spares',
+      },
+      {
+        material: 'DOLI Remotes & Software',
+        title: 'DOLI RMC Handheld Remote Unit & Test&Motion Software',
+        image: docxControllerExtensometer,
+        text: 'Ergonomic manual control terminal with graphical LCD display, emergency stop, precision jog wheel for manual crosshead positioning, and Windows-based DOLI Test&Motion testing software.',
+        tags: ['RMC7 Remote', 'Manual Jog Wheel', 'Test&Motion Software', 'Crosshead Control'],
+        link: '/products#spares',
+      },
+      {
+        material: 'Hardness Spares',
+        title: 'Diamond Indenters, Test Blocks & Durometer Spares',
+        image: docxDiamondIndenters,
+        text: 'ISO/NABL certified Rockwell diamond indenters, Micro Vickers indenters, HRC test blocks, durometer indenter points, dumbbell sample cutters, and replacement load cell cables.',
+        tags: ['Diamond Indenters', 'HRC Test Blocks', 'Durometer Points', 'Sample Cutters'],
+        link: '/products#spares',
       },
     ],
   },
