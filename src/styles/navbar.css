@@ -56,13 +56,17 @@
 }
 
 .nav-logo-img {
-  height: 44px;
+  height: 54px;
   width: auto;
   object-fit: contain;
   border-radius: 8px;
   background: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-  transition: transform 0.3s var(--ease);
+  transition: transform 0.3s var(--ease), height 0.3s var(--ease);
+}
+
+.site-header.scrolled .nav-logo-img {
+  height: 46px;
 }
 
 .nav-logo:hover .nav-logo-img {
@@ -77,17 +81,17 @@
 }
 
 .brand-text-main {
-  font-size: 0.92rem;
-  font-weight: 800;
+  font-size: 1.15rem;
+  font-weight: 900;
   color: var(--navy);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .brand-text-sub {
-  font-size: 0.68rem;
-  font-weight: 600;
+  font-size: 0.78rem;
+  font-weight: 700;
   color: var(--txt-m);
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
 }
 
 /* Accreditation Header Badge */

@@ -1,4 +1,4 @@
-import consultationImg from '../assets/images/material_testing_consultation.jpg';
+import consultationImg from '../assets/images/technical_consultation_advisory.jpg';
 
 export const consultationIntro =
   'Our senior consultation team provides technical guidance to help you select the ideal testing systems, validate ASTM/ISO test methods, and maintain ISO/IEC 17025 compliance — from initial specification to installation, operator training, and calibration.';

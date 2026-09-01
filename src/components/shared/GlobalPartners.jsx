@@ -5,13 +5,14 @@ import unconventionalLogo from '../../assets/images/logos/unconventional_testing
 import prescottLogo from '../../assets/images/logos/prescott_logo.png';
 import utmTestingLogo from '../../assets/images/logos/utm_testing.png';
 import doliLogo from '../../assets/images/logos/doli_logo.svg';
+import doliPdf from '../../assets/260806DirectAccesstoDOLIElektronik.pdf';
 
 const PARTNERS = [
   {
     name: 'DOLI Elektronik',
     src: doliLogo,
     tag: 'Digital Controllers & Testing Machine Electronics',
-    pdfLink: '/documents/260806DirectAccesstoDOLIElektronik.pdf',
+    pdfLink: doliPdf,
   },
   {
     name: 'Fischer',
@@ -37,11 +38,6 @@ const PARTNERS = [
     name: 'Prescott Instruments',
     src: prescottLogo,
     tag: 'Rheology & Polymer Testing',
-  },
-  {
-    name: 'UTM Testing',
-    src: utmTestingLogo,
-    tag: 'Unconventional Testing Machine',
   },
 ];
 

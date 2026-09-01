@@ -5,7 +5,7 @@ import heroImg1    from '../assets/images/hero-1.jpg';
 import heroImg2    from '../assets/images/hero-2.jpg';
 import heroImg3    from '../assets/images/hero-3.jpg';
 import nablImg     from '../assets/images/NIC_29221.jpg';
-import featCoreImg from '../assets/images/material_testing_consultation.jpg';
+import featCoreImg from '../assets/images/material_testing_core.jpg';
 import manWithMachine from '../assets/images/man_with_machine.png';
 import ScrollAnimation   from '../components/ScrollAnimation';
 import { GlobalPartners } from '../components/shared/GlobalPartners';
@@ -20,24 +20,24 @@ import { HOME_FAQS } from '../seo/structuredData';
 const slides = [
   {
     img:    heroImg1,
-    eyebrow:'ISO / IEC 17025 Accredited',
-    title:  'Precision Testing',
-    em:     'for Industry',
-    sub:    'World-class material testing machines, accredited calibration & expert technical support across India.',
+    eyebrow:'DOLI Digital Closed-Loop Control',
+    title:  'Dynamic Fatigue',
+    em:     'Testing Systems',
+    sub:    'High-cycle & low-cycle dynamic fatigue testing machines with 32-bit DSP real-time digital closed-loop control.',
   },
   {
     img:    heroImg2,
-    eyebrow:'NABL Accredited Calibration Lab',
-    title:  'Traceable',
-    em:     'Calibration',
-    sub:    'Certified calibration traceable to national standards for load cells, hardness testers, and UTM systems.',
+    eyebrow:'FORM+TEST Prüfsysteme Germany',
+    title:  'Creep & Stress Rupture',
+    em:     'Testing Rigs',
+    sub:    'High-temperature furnace-integrated creep testing systems with precision thermal monitoring and ISO accreditation.',
   },
   {
     img:    heroImg3,
-    eyebrow:'Material Testing Solutions',
-    title:  'Rubber & Metal',
-    em:     'Testing Equipment',
-    sub:    'Comprehensive testing equipment for rubber, elastomers, metals, and engineering materials across India.',
+    eyebrow:'ISO / IEC 17025 Accredited Calibration',
+    title:  'Precision Hardness',
+    em:     'Testing Stations',
+    sub:    'High-precision digital hardness testers, multi-indenter turrets, and Shore durometer measurement systems.',
   },
 ];
 
@@ -216,13 +216,13 @@ export default function Home() {
 
   const productCategoryLinkMap = {
     'rubber-durometer-hdd2': '/products#hardness-testing',
-    'rubber-irhd-micro': '/products#hardness-testing',
+    'rubber-irhd-micro': '/products#coating-thickness-measurement',
     'rheometer-mdr': '/products#rheology-testing',
     'mooney-viscometer': '/products#viscosity-testing',
     'metal-hardness-system': '/products#hardness-testing',
     'fischer-nano-indentation': '/products#nano-indentation-hardness-testing',
     'utm-type-em': '/products#tensile-compression-testing',
-    'fatigue-creep-testing': '/products#fatigue-testing',
+    'spares-accessories': '/products#spares',
   };
 
   const pageMeta = getPageMeta('/');

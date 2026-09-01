@@ -6,6 +6,7 @@ import ScrollAnimation from '../components/ScrollAnimation';
 import { TESTING_CATEGORIES, INTRO_HIGHLIGHTS } from '../data/productCategoriesData';
 import SEO from '../components/SEO/SEO';
 import { getPageMeta } from '../seo/pageMeta';
+import doliPdf from '../assets/260806DirectAccesstoDOLIElektronik.pdf';
 import '../styles/products-page.css';
 
 export default function Products() {
@@ -163,7 +164,7 @@ export default function Products() {
                   key={category.id}
                   id={category.id}
                   className="product-category-section"
-                  style={{ marginBottom: '4rem', scrollMarginTop: '100px' }}
+                  style={{ marginBottom: category.id === 'spares' ? '0.5rem' : '4rem', scrollMarginTop: '100px' }}
                 >
                   <ScrollAnimation>
                     <div className="active-category-header">
@@ -215,6 +216,26 @@ export default function Products() {
                             </div>
                           ))}
                         </div>
+                      </div>
+                    )}
+
+                    {category.id === 'spares' && (
+                      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1.25rem', marginBottom: '0.25rem' }}>
+                        <a
+                          href={doliPdf}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="doli-brochure-btn"
+                        >
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                          </svg>
+                          <span>View DOLI Elektronik Brochure</span>
+                        </a>
                       </div>
                     )}
                   </ScrollAnimation>

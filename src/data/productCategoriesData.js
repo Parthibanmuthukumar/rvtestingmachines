@@ -1,4 +1,5 @@
 import docxDurometerHDD2 from '../assets/images/docx_products/docx_digital_durometer_hdd2.jpg';
+import hildebrandHdd2User from '../assets/images/hildebrand_hdd2_user.png';
 import docxMetalHardness from '../assets/images/docx_products/docx_metal_hardness_testers.jpg';
 import docxUtmUP100 from '../assets/images/docx_products/docx_utm_up100_ak2dh.png';
 import docxUtmEM from '../assets/images/docx_products/docx_utm_type_em.png';
@@ -7,7 +8,7 @@ import docxTensileComp from '../assets/images/docx_products/docx_tensile_compres
 import docxFatigue from '../assets/images/docx_products/docx_fatigue_testing_machine.png';
 import docxCreep from '../assets/images/docx_products/docx_creep_testing_machine.png';
 import docxMdr from '../assets/images/docx_products/docx_moving_die_rheometer.png';
-import docxOdr from '../assets/images/docx_products/docx_rheoline_odr.png';
+import docxMfr from '../assets/images/docx_products/docx_mfr_tester.jpg';
 import docxMooney from '../assets/images/docx_products/docx_mooney_viscometer.png';
 import docxDma from '../assets/images/docx_products/docx_dma_analyser.jpg';
 import docxNanoIndentation from '../assets/images/docx_products/docx_nano_indentation_system.png';
@@ -18,6 +19,13 @@ import docxCompressionSet from '../assets/images/docx_products/docx_compression_
 import docxVolumetricCutter from '../assets/images/docx_products/docx_volumetric_cutter.jpg';
 import docxControllerExtensometer from '../assets/images/docx_products/docx_controller_extensometer.jpg';
 import docxDiamondIndenters from '../assets/images/docx_products/docx_diamond_indenters.png';
+import docxSpecificGravityDensimeter from '../assets/images/docx_products/docx_specific_gravity_densimeter.jpg';
+import docxPrecisionMicroBalance from '../assets/images/docx_products/docx_precision_micro_balance.jpg';
+import docxSmallPunchCreepRig from '../assets/images/docx_products/docx_small_punch_creep_rig.jpg';
+import doliEdciOverview from '../assets/images/docx_products/doli_edci_overview.png';
+import doliSystemIntegrationDiagram from '../assets/images/docx_products/doli_system_integration_diagram.png';
+import doliClosedLoopSchematic from '../assets/images/docx_products/doli_closed_loop_schematic.png';
+import doliEdciControllerBox from '../assets/images/docx_products/doli_edci_controller_box.jpg';
 
 // Testing machine placeholder image for categories without specific document photos
 const samplePlaceholder = '/images/sample-testingMachine.jpeg';
@@ -68,30 +76,23 @@ export const TESTING_CATEGORIES = [
     subcategories: [
       {
         material: 'Tensile / Compression',
-        title: 'Universal Testing Machine UP 100 AK-2DH',
+        title: 'Universal Testing Machine UP Series',
         image: docxUtmUP100,
         text: 'High-precision load cell UTM systems for tension, elongation, and material strength evaluation.',
         link: '/products#tensile-compression-testing',
       },
       {
         material: 'Tensile / Compression',
-        title: 'Universal Testing Machine Type EM',
+        title: 'Universal Testing Machine EM Series',
         image: docxUtmEM,
         text: 'Electromechanical universal testing machine for precision load application.',
         link: '/products#tensile-compression-testing',
       },
       {
         material: 'Compression Testing',
-        title: 'Compression Testing Machine — ALPHA 10-2000',
+        title: 'Compression Testing Machine',
         image: docxAlpha10,
         text: 'Heavy-duty digital compression testing machine for structural material testing.',
-        link: '/products#tensile-compression-testing',
-      },
-      {
-        material: 'Compression Testing',
-        title: 'Tensile / Compression Testing Machine',
-        image: docxTensileComp,
-        text: 'High-precision dual-column electromechanical compression and universal testing machine.',
         link: '/products#tensile-compression-testing',
       },
     ],
@@ -147,13 +148,6 @@ export const TESTING_CATEGORIES = [
     description: 'Cyclic load, flex-life, and endurance dynamic mechanical fatigue analyzers with DOLI controller.',
     subcategories: [
       {
-        material: 'Rubber',
-        title: 'De Mattia & Flex Fatigue Testers',
-        image: samplePlaceholder,
-        text: 'Repeated flexural cracking & cut growth fatigue testing for elastomers.',
-        link: '/products#fatigue-testing',
-      },
-      {
         material: 'Metal',
         title: 'Fatigue Testing Machine',
         image: docxFatigue,
@@ -188,7 +182,7 @@ export const TESTING_CATEGORIES = [
     id: 'rheology-testing',
     name: 'Rheology Testing',
     highlight: false,
-    description: 'Moving die rheometers (MDR), Oscillating Disc Rheometers (ODR), and viscoelastic analyzers.',
+    description: 'Moving die rheometers (MDR), Melt Flow Rate (MFR) indexers, and viscoelastic analyzers.',
     subcategories: [
       {
         material: 'Rubber Compound',
@@ -198,10 +192,10 @@ export const TESTING_CATEGORIES = [
         link: '/products#rheology-testing',
       },
       {
-        material: 'Rubber Compound',
-        title: 'The Rheoline Oscillating Disc Rheometer (ODR)',
-        image: docxOdr,
-        text: 'Oscillating Disc Rheometer for dynamic property testing.',
+        material: 'Thermoplastics & Polymers',
+        title: 'Melt Flow Rate (MFR) Tester',
+        image: docxMfr,
+        text: 'Extrusion plastometer for Melt Mass-Flow Rate (MFR) and Melt Volume-Flow Rate (MVR) determination (ASTM D1238 & ISO 1133).',
         link: '/products#rheology-testing',
       },
       {
@@ -220,14 +214,14 @@ export const TESTING_CATEGORIES = [
     description: 'Mooney viscometers and melt flow index (MFI) polymer testing equipment.',
     subcategories: [
       {
-        material: 'Raw Rubber',
+        material: 'Rubber Compound',
         title: 'Mooney Viscometer',
         image: docxMooney,
         text: 'Mooney viscosity, stress relaxation, and pre-vulcanization testing.',
         link: '/products#viscosity-testing',
       },
       {
-        material: 'Thermoplastics',
+        material: 'Rubber Compound',
         title: 'Volumetric Sample Cutter',
         image: docxVolumetricCutter,
         text: 'Volumetric sample preparation and specimen cutter for rubber & plastics.',
@@ -237,21 +231,21 @@ export const TESTING_CATEGORIES = [
   },
   {
     id: 'specific-gravity-weighing',
-    name: 'Specific Gravity, Weighing Mesurement',
+    name: 'Specific Gravity, Weighing Measurement',
     highlight: false,
     description: 'Hydrostatic balances and precision density determination instruments up to 100kg.',
     subcategories: [
       {
         material: 'Rubber & Plastics',
         title: 'Automatic Specific Gravity Densimeter',
-        image: samplePlaceholder,
+        image: docxSpecificGravityDensimeter,
         text: 'Direct digital specific gravity reading for solid rubber & polymer samples.',
         link: '/products#specific-gravity-weighing',
       },
       {
         material: 'Laboratory QC',
         title: 'Precision Micro Balances & Hydrostatic Kit',
-        image: samplePlaceholder,
+        image: docxPrecisionMicroBalance,
         text: 'High-accuracy laboratory density kit traceable to ISO standards.',
         link: '/products#specific-gravity-weighing',
       },
@@ -266,7 +260,7 @@ export const TESTING_CATEGORIES = [
       {
         material: 'Nuclear & Power',
         title: 'Small Punch Creep Test Rig',
-        image: samplePlaceholder,
+        image: docxSmallPunchCreepRig,
         text: 'Evaluation of localized creep strain using 8mm x 0.5mm disc samples.',
         link: '/products#small-punch-creep-testing',
       },
@@ -286,17 +280,10 @@ export const TESTING_CATEGORIES = [
     description: '3-point and 4-point bending flexural strength and modulus fixtures.',
     subcategories: [
       {
-        material: 'Composite / Wood',
-        title: '3-Point Bend Flexural Fixture',
+        material: 'Metal/Plastic/Composite',
+        title: '3-Point Bend Flexural Fixture Testing Machines',
         image: samplePlaceholder,
         text: 'Flexural strength & modulus determination for fiber composites & plastics.',
-        link: '/products#fluxural-testing',
-      },
-      {
-        material: 'Metal & Ceramics',
-        title: 'Guided 4-Point Bending Rig',
-        image: samplePlaceholder,
-        text: 'High-stiffness bending evaluation for structural ceramics & alloys.',
         link: '/products#fluxural-testing',
       },
     ],
@@ -314,13 +301,6 @@ export const TESTING_CATEGORIES = [
         text: 'Continuous depth-sensing hardness and elastic indentation modulus.',
         link: '/products#instrumented-hardness-testing',
       },
-      {
-        material: 'Coatings & Polymers',
-        title: 'Automated Micro Vickers IIT',
-        image: samplePlaceholder,
-        text: 'High-precision micro hardness mapping on surface layers.',
-        link: '/products#instrumented-hardness-testing',
-      },
     ],
   },
   {
@@ -334,13 +314,6 @@ export const TESTING_CATEGORIES = [
         title: 'Nano Indentation Hardness Testing System (Fischer)',
         image: docxNanoIndentation,
         text: 'Nanohardness, Youngs modulus, and film adhesion measurement.',
-        link: '/products#nano-indentation-hardness-testing',
-      },
-      {
-        material: 'Nanomaterials',
-        title: 'Atomic-Scale Hardness Tester',
-        image: samplePlaceholder,
-        text: 'Ultra-low load nano-indentation for semiconductor & optical coatings.',
         link: '/products#nano-indentation-hardness-testing',
       },
     ],
@@ -360,7 +333,7 @@ export const TESTING_CATEGORIES = [
       },
       {
         material: 'Rubber',
-        title: 'Dickenmessgerät HTG-A Thickness Measurement Gauge',
+        title: 'Thickness Gauge for Rubber',
         image: docxThicknessHTGA,
         text: 'Precision thickness gauge for rubber, elastomeric sheets, and films.',
         link: '/products#coating-thickness-measurement',
@@ -424,13 +397,6 @@ export const TESTING_CATEGORIES = [
         text: '300J / 500J notched specimen impact energy absorption tester.',
         link: '/products#impact-testing',
       },
-      {
-        material: 'Polymers & Composites',
-        title: 'Instrumented Drop Tower Impact Rig',
-        image: samplePlaceholder,
-        text: 'Low & high energy drop weight impact energy recording system.',
-        link: '/products#impact-testing',
-      },
     ],
   },
   {
@@ -441,26 +407,34 @@ export const TESTING_CATEGORIES = [
     subcategories: [
       {
         material: 'DOLI Electronics',
-        title: 'DOLI EDCi Digital Controller & Measurement Electronics',
-        image: docxControllerExtensometer,
-        text: 'High-precision 32-bit DSP digital measurement & closed-loop control system for Universal Testing Machines (UTM) and dynamic fatigue rigs. High-speed 10 kHz control rate, TEDS sensor recognition, and PCIe/Ethernet data acquisition.',
+        title: 'DOLI EDCi Digital Controller Unit',
+        image: doliEdciControllerBox,
+        text: 'High-precision 32-bit DSP digital measurement & closed-loop controller box (EDCi series) featuring 10 kHz control rate, TEDS auto-sensor recognition, Ethernet/USB connectivity, and multi-channel acquisition for load cells, extensometers, and encoders.',
         tags: ['DOLI EDCi20', 'DOLI EDCi50', '32-Bit DSP', 'Closed-Loop Control', 'PCIe Interface'],
         link: '/products#spares',
       },
       {
-        material: 'DOLI Transducers',
-        title: 'DOLI High-Precision Extensometer & Signal Electronics',
-        image: docxControllerExtensometer,
-        text: 'Precision strain measurement transducers, clip-on extensometers, optical extensometer interfaces, and high-resolution signal amplifiers for load cells, LVDTs, and strain gauges.',
-        tags: ['Extensometer', 'Strain Gauge', 'LVDT Amplifier', 'DOLI Transducer'],
+        material: 'DOLI Lineup',
+        title: 'DOLI EDCi Controllers & RMC Remotes Lineup',
+        image: doliEdciOverview,
+        text: 'Manufacturer-independent testing machine control suite showing stacked DOLI EDCi controller modules, electronic PCIe interface cards, desktop control consoles, and ergonomic RMC manual remotes with emergency stop & digital jog wheel.',
+        tags: ['EDCi Stack', 'RMC Remotes', 'Interface Cards', 'UTM Setup'],
         link: '/products#spares',
       },
       {
-        material: 'DOLI Remotes & Software',
-        title: 'DOLI RMC Handheld Remote Unit & Test&Motion Software',
-        image: docxControllerExtensometer,
-        text: 'Ergonomic manual control terminal with graphical LCD display, emergency stop, precision jog wheel for manual crosshead positioning, and Windows-based DOLI Test&Motion testing software.',
-        tags: ['RMC7 Remote', 'Manual Jog Wheel', 'Test&Motion Software', 'Crosshead Control'],
+        material: 'System Architecture',
+        title: 'DOLI Controller System Integration Architecture',
+        image: doliSystemIntegrationDiagram,
+        text: 'System integration architecture diagram showing closed-loop connection between DOLI EDCi controller, real-time PC Test&Motion software, precision strain extensometers, load cells, safety interlocks, and RMC remote control terminal.',
+        tags: ['System Integration', 'Real-Time Acquisition', 'Test&Motion', 'Sensors & Extensometers'],
+        link: '/products#spares',
+      },
+      {
+        material: 'Control Schematic',
+        title: 'DOLI Closed-Loop Control & Wiring Schematic',
+        image: doliClosedLoopSchematic,
+        text: 'Technical wiring schematic detailing closed-loop feedback loops between DOLI EDCi electronics, servo motor drive amplifiers, crosshead encoders, load cell sensors, and emergency safety circuits for dynamic & static testing machines.',
+        tags: ['Closed-Loop Feedback', 'Safety Interlocks', 'Drive Control', 'Multi-Axis Interface'],
         link: '/products#spares',
       },
       {

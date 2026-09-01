@@ -1,12 +1,11 @@
 import durometerHDD2 from '../assets/images/docx_products/docx_digital_durometer_hdd2.jpg';
-import irhdMicro from '../assets/images/docx_products/docx_irhd_micro_tester.jpg';
+import thicknessGauge from '../assets/images/docx_products/docx_thickness_gauge_htga.jpg';
 import mdrRheometer from '../assets/images/docx_products/docx_moving_die_rheometer.png';
 import mooneyViscometer from '../assets/images/docx_products/docx_mooney_viscometer.png';
 import metalHardness from '../assets/images/docx_products/docx_metal_hardness_testers.jpg';
 import nanoIndentation from '../assets/images/docx_products/docx_nano_indentation_system.png';
 import utmTypeEM from '../assets/images/docx_products/docx_utm_type_em.png';
-import fatigueTesting from '../assets/images/docx_products/docx_fatigue_testing_machine.png';
-import sparesLoadcells from '../assets/images/docx_products/docx_diamond_indenters.png';
+import doliControllerBox from '../assets/images/docx_products/doli_edci_controller_box.jpg';
 
 export const productsIntro =
   'RV Testing Machines Private Limited is a leading manufacturer and supplier of high-quality Material Testing Machines based in Chennai, India. Our product range includes advanced instruments sourced from reputed Indian manufacturers and international brands from Europe, the UK, and Asia.';
@@ -14,10 +13,10 @@ export const productsIntro =
 export const productItems = [
   {
     id: 'rubber-durometer-hdd2',
-    category: 'Rubber Testing',
-    title: 'Digital Durometer HDD-2',
+    category: 'Hardness Testing',
+    title: 'Digital Durometer HDD-2 & IRHD Micro',
     description:
-      'High-precision digital Shore A & Shore D durometer for hardness measurement on rubber, elastomers, O-rings, and flexible polymers.',
+      'Precision Shore A/D and Micro IRHD hardness measurement for rubber, O-rings, and polymers.',
     image: durometerHDD2,
     features: [
       'Digital Shore A & Shore D measurement',
@@ -28,24 +27,24 @@ export const productItems = [
   },
   {
     id: 'rubber-irhd-micro',
-    category: 'Rubber Testing',
-    title: 'IRHD Micro Hardness System',
+    category: 'Coating Thickness Measurement',
+    title: 'Thickness Gauge for Rubber',
     description:
-      'Micro IRHD hardness evaluation system for thin rubber specimens, O-rings, seals, and gaskets with specialized centering fixture.',
-    image: irhdMicro,
+      'Precision thickness gauge for rubber, elastomeric sheets, and films.',
+    image: thicknessGauge,
     features: [
-      'Micro IRHD non-destructive hardness testing',
-      'Specialized O-Ring Zentriereinrichtung centering device',
-      'High-accuracy measurement for thin seals and gaskets',
+      'Digital thickness measurement for rubber & polymers',
+      'Specialized anvil and weight assembly',
+      'High-accuracy measurement for thin sheets and gaskets',
       'ISO/IEC 17025 accredited calibration support',
     ],
   },
   {
     id: 'rheometer-mdr',
-    category: 'Rubber Testing',
+    category: 'Rheology Testing',
     title: 'Moving Die Rheometer (MDR)',
     description:
-      'Advanced rotorless cure meter for measuring viscoelastic cure kinetics, scorch time, and vulcanization characterization of rubber compounds.',
+      'Cure kinetics, scorch time, and vulcanization characterization for rubber compounds.',
     image: mdrRheometer,
     features: [
       'Precise cure curve and scorch time determination',
@@ -56,10 +55,10 @@ export const productItems = [
   },
   {
     id: 'mooney-viscometer',
-    category: 'Rubber Testing',
+    category: 'Viscosity Testing',
     title: 'Mooney Viscometer',
     description:
-      'Precision Mooney viscometer for measuring Mooney viscosity, scorch time, and stress relaxation of raw and un-vulcanized rubber compounds.',
+      'Mooney viscosity, stress relaxation, and pre-vulcanization testing.',
     image: mooneyViscometer,
     features: [
       'Standard Large (L) and Small (S) rotors',
@@ -70,10 +69,10 @@ export const productItems = [
   },
   {
     id: 'metal-hardness-system',
-    category: 'Metal Testing',
-    title: 'Hardness Testers for Metals (Rockwell, Brinell, Vickers)',
+    category: 'Hardness Testing',
+    title: 'Metal - Hardness Tester',
     description:
-      'Comprehensive metal hardness testing machines including Touchscreen Superficial Rockwell (HST-HSRS45T), Automatic Brinell (HST-HBS3000TZ), and Auto-Turret Vickers (HST-HVS5).',
+      'High-precision hardness testing systems for engineered metals & alloys.',
     image: metalHardness,
     features: [
       'Direct & Indirect verification for Rockwell, Brinell, and Vickers',
@@ -84,10 +83,10 @@ export const productItems = [
   },
   {
     id: 'fischer-nano-indentation',
-    category: 'Nano Indentation',
-    title: 'Nano Indentation Hardness System',
+    category: 'Nano Indentation Hardness Testing',
+    title: 'Nano Indentation Hardness Testing System (Fischer)',
     description:
-      'Ultra-precise Fischer nano indentation testing machine for nano-scale hardness, elastic modulus, and creep testing of thin coatings and micro-structures.',
+      'Nanohardness, Youngs modulus, and film adhesion measurement.',
     image: nanoIndentation,
     features: [
       'Sub-nanometer depth resolution',
@@ -98,10 +97,10 @@ export const productItems = [
   },
   {
     id: 'utm-type-em',
-    category: 'Material Testing Machines',
-    title: 'Universal Testing Machine Type EM',
+    category: 'Tensile / Compression Testing',
+    title: 'Universal Testing Machine EM Series',
     description:
-      'Electromechanical Universal Testing Machine (EM-10 / EM-400) for high-precision tensile, compression, flexural, and shear testing.',
+      'Electromechanical universal testing machine for precision load application.',
     image: utmTypeEM,
     features: [
       'High-stiffness dual-column load frame',
@@ -111,31 +110,17 @@ export const productItems = [
     ],
   },
   {
-    id: 'fatigue-creep-testing',
-    category: 'Material Testing Machines',
-    title: 'Fatigue & Creep Testing Machine',
-    description:
-      'Dynamic fatigue and creep testing machine equipped with DOLI EDCi20 digital controller and extensometer.',
-    image: fatigueTesting,
-    features: [
-      'DOLI EDCi20 controller for high-speed dynamic control',
-      'Cyclic fatigue and long-term creep strain measurement',
-      'High accuracy extensometer up to 550 mm range',
-      'Cost-effective new build and retrofitting capabilities',
-    ],
-  },
-  {
     id: 'spares-accessories',
-    category: 'Consumables & Spares',
-    title: 'Load Cells, Extensometers, Indenters & Test Blocks',
+    category: 'Spares & DOLI Electronics',
+    title: 'DOLI EDCi Digital Controller Unit',
     description:
-      'Complete range of genuine consumables and spares: load cells, extensometers, grips, Rockwell diamond indenters, HRC test blocks, Shore A/D test blocks, dumbbell cutters, and Melinex 80mm rolls.',
-    image: sparesLoadcells,
+      'High-precision 32-bit DSP digital measurement & closed-loop controller box featuring 10 kHz control rate, TEDS auto-sensor recognition, and multi-channel acquisition.',
+    image: doliControllerBox,
     features: [
-      'High-precision S-beam and pancake load cells',
-      'Certified Rockwell indenters & standard hardness blocks',
-      'Hildebrand Shore test block sets for durometers',
-      'Dumbbell sample cutters & Melinex film rolls (80mm)',
+      '32-bit DSP with 10 kHz closed-loop control rate',
+      'TEDS auto-sensor recognition and multi-channel acquisition',
+      'PCIe / Ethernet real-time PC Test&Motion software connection',
+      'Compatible with RMC handheld remotes with jog wheel',
     ],
   },
 ];
