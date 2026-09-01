@@ -866,6 +866,41 @@
   box-shadow: 0 14px 32px rgba(201, 146, 42, 0.55);
 }
 
+.consultation-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.consultation-cta-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff !important;
+  font-weight: 800;
+  font-size: 0.98rem;
+  padding: 14px 28px;
+  border-radius: var(--r12);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s var(--ease);
+  cursor: pointer;
+}
+
+.consultation-cta-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+
 /* ============================================================
    CONTACT
    ============================================================ */
