@@ -355,7 +355,7 @@ export const HOME_FAQS = [
   {
     question: 'Which global technology partners and brands does RVTM represent?',
     answer:
-      'RVTM is an authorized sales and service representative for leading global testing equipment manufacturers including Prescott (Germany), Fischer (Germany), Form+Test (Germany), Hildebrand (Germany), and UTM Unconventional Testing Machines.',
+      'RVTM is an authorized sales and service representative for leading global testing equipment manufacturers including Prescott (Germany), Fischer (Germany), Form+Test (Germany), Nubateco (Germany), and UTM Unconventional Testing Machines.',
   },
 ];
 

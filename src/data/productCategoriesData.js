@@ -1,5 +1,4 @@
 import docxDurometerHDD2 from '../assets/images/docx_products/docx_digital_durometer_hdd2.jpg';
-import hildebrandHdd2User from '../assets/images/hildebrand_hdd2_user.png';
 import docxMetalHardness from '../assets/images/docx_products/docx_metal_hardness_testers.jpg';
 import docxUtmUP100 from '../assets/images/docx_products/docx_utm_up100_ak2dh.png';
 import docxUtmEM from '../assets/images/docx_products/docx_utm_type_em.png';
@@ -26,9 +25,13 @@ import doliEdciOverview from '../assets/images/docx_products/doli_edci_overview.
 import doliSystemIntegrationDiagram from '../assets/images/docx_products/doli_system_integration_diagram.png';
 import doliClosedLoopSchematic from '../assets/images/docx_products/doli_closed_loop_schematic.png';
 import doliEdciControllerBox from '../assets/images/docx_products/doli_edci_controller_box.jpg';
-
-// Testing machine placeholder image for categories without specific document photos
-const samplePlaceholder = '/images/sample-testingMachine.jpeg';
+import utmProdScooper50 from '../assets/images/docx_products/utm_prod_thumb_scooper50.png';
+import utmProdGe76 from '../assets/images/docx_products/utm_prod_thumb_ge76.png';
+import utmProdPt8 from '../assets/images/docx_products/utm_prod_thumb_pt8.png';
+import utmProdTts190 from '../assets/images/docx_products/utm_prod_thumb_tts190.png';
+import utmProdSpc1200 from '../assets/images/docx_products/utm_prod_thumb_spc1200.png';
+import pendulumImpactTester from '../assets/images/docx_products/pendulum_impact_tester.jpg';
+import sparesLoadcells from '../assets/images/products/spares_loadcells.jpg';
 
 export const INTRO_HIGHLIGHTS = [
   {
@@ -106,14 +109,14 @@ export const TESTING_CATEGORIES = [
       {
         material: 'Rubber & Plastics',
         title: 'High-Speed Velocity Testers',
-        image: samplePlaceholder,
+        image: utmProdScooper50,
         text: 'Dynamic strain rate evaluation for high-velocity material deformation.',
         link: '/products#acceleration-speed-testing',
       },
       {
         material: 'Metals & Alloys',
         title: 'Impact Speed Measurement Rigs',
-        image: samplePlaceholder,
+        image: utmProdGe76,
         text: 'High-frequency load response and speed transducer testing systems.',
         link: '/products#acceleration-speed-testing',
       },
@@ -128,14 +131,14 @@ export const TESTING_CATEGORIES = [
       {
         material: 'Elastomers & Metals',
         title: 'Controller and Extensometer',
-        image: samplePlaceholder,
+        image: docxControllerExtensometer,
         text: 'High-precision crosshead displacement and strain extensometer measurement.',
         link: '/products#displacement-measurement-testing',
       },
       {
         material: 'Structural Materials',
         title: 'LVDT & Strain Gauge Systems',
-        image: samplePlaceholder,
+        image: sparesLoadcells,
         text: 'Micron-level displacement measurement for modulus and strain analysis.',
         link: '/products#displacement-measurement-testing',
       },
@@ -165,7 +168,7 @@ export const TESTING_CATEGORIES = [
       {
         material: 'Rubber & Polymers',
         title: 'Polymer Creep & Relaxation Testers',
-        image: samplePlaceholder,
+        image: docxCreep,
         text: 'Long-term stress relaxation and compressive creep measurement.',
         link: '/products#creep-testing',
       },
@@ -267,7 +270,7 @@ export const TESTING_CATEGORIES = [
       {
         material: 'Alloys & Welds',
         title: 'Micro-Mechanical Punch Tester',
-        image: samplePlaceholder,
+        image: utmProdPt8,
         text: 'Yield strength & ductility assessment on miniature component samples.',
         link: '/products#small-punch-creep-testing',
       },
@@ -282,7 +285,7 @@ export const TESTING_CATEGORIES = [
       {
         material: 'Metal/Plastic/Composite',
         title: '3-Point Bend Flexural Fixture Testing Machines',
-        image: samplePlaceholder,
+        image: docxTensileComp,
         text: 'Flexural strength & modulus determination for fiber composites & plastics.',
         link: '/products#fluxural-testing',
       },
@@ -297,7 +300,7 @@ export const TESTING_CATEGORIES = [
       {
         material: 'Engineered Metals',
         title: 'Instrumented Micro-Indentation System',
-        image: samplePlaceholder,
+        image: docxNanoIndentation,
         text: 'Continuous depth-sensing hardness and elastic indentation modulus.',
         link: '/products#instrumented-hardness-testing',
       },
@@ -371,14 +374,14 @@ export const TESTING_CATEGORIES = [
       {
         material: 'All Materials',
         title: 'Environmental Thermal Chamber',
-        image: samplePlaceholder,
+        image: utmProdTts190,
         text: 'Temperature-controlled material testing in high & sub-zero conditions.',
         link: '/products#temperature-testing',
       },
       {
         material: 'Polymers',
         title: 'Thermal Aging Test Oven',
-        image: samplePlaceholder,
+        image: utmProdSpc1200,
         text: 'Precision forced-convection heat degradation & aging ovens.',
         link: '/products#temperature-testing',
       },
@@ -393,7 +396,7 @@ export const TESTING_CATEGORIES = [
       {
         material: 'Metals & Alloys',
         title: 'Pendulum Impact Tester (Charpy/Izod)',
-        image: samplePlaceholder,
+        image: pendulumImpactTester,
         text: '300J / 500J notched specimen impact energy absorption tester.',
         link: '/products#impact-testing',
       },

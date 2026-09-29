@@ -1,9 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logoPdf     from '../assets/images/RVTMPL LOGO_page-0001.jpg';
-import heroImg1    from '../assets/images/hero-1.jpg';
-import heroImg2    from '../assets/images/hero-2.jpg';
-import heroImg3    from '../assets/images/hero-3.jpg';
+import prescottImg from '../assets/images/prescott-mv.png';
+import durometerImg from '../assets/images/products/Durometer_HD3000L.jpg';
+import doliImg from '../assets/images/docx_products/doli_edci_controller_box.jpg';
+import utmImg from '../assets/images/docx_products/docx_utm_up100_ak2dh.png';
+import formtestImg from '../assets/images/EM-400.png';
+import fischerImg from '../assets/images/docx_products/docx_nano_indentation_system.png';
+
+import prescottLogo from '../assets/images/logos/prescott_logo.png';
+import fischerLogo from '../assets/images/logos/fischer.png';
+import formTestLogo from '../assets/images/logos/form_test.png';
+import hildebrandLogo from '../assets/images/logos/hildebrand.png';
+import utmLogo from '../assets/images/logos/utm_testing.png';
+import doliLogo from '../assets/images/logos/doli_logo.svg';
+
 import nablImg     from '../assets/images/NIC_29221.jpg';
 import featCoreImg from '../assets/images/material_testing_core.jpg';
 import manWithMachine from '../assets/images/man_with_machine.png';
@@ -16,28 +27,67 @@ import { productItems } from '../data/productsData';
 import { calibrationSection, serviceBlocks } from '../data/servicesData';
 import { HOME_FAQS } from '../seo/structuredData';
 
-/* ── Hero slides — text taken directly from original data / siteConfig ── */
+/* ── Hero slides featuring authentic machine hardware from 6 principal partner companies ── */
 const slides = [
   {
-    img:    heroImg1,
-    eyebrow:'DOLI Digital Closed-Loop Control',
-    title:  'Dynamic Fatigue',
-    em:     'Testing Systems',
-    sub:    'High-cycle & low-cycle dynamic fatigue testing machines with 32-bit DSP real-time digital closed-loop control.',
+    brand: 'Prescott Instruments',
+    logo: prescottLogo,
+    machineName: 'Mooney Viscometer',
+    eyebrow: 'Authorized Representative • Prescott Instruments',
+    title: 'Prescott Mooney Viscometers',
+    em: '& MDR Rheometers',
+    sub: 'Precision vulcanization & viscosity testing equipment for rubber, polymers, and elastomers with real-time kinetic analysis software.',
+    img: prescottImg,
   },
   {
-    img:    heroImg2,
-    eyebrow:'FORM+TEST Prüfsysteme Germany',
-    title:  'Creep & Stress Rupture',
-    em:     'Testing Rigs',
-    sub:    'High-temperature furnace-integrated creep testing systems with precision thermal monitoring and ISO accreditation.',
+    brand: 'Hildebrand Prüf- und Messtechnik',
+    logo: hildebrandLogo,
+    machineName: 'Digital Durometer HD-3000L',
+    eyebrow: 'Precision Hardness & Rubber Testing • Hildebrand',
+    title: 'Hildebrand Digital Durometers',
+    em: '& IRHD Micro Stations',
+    sub: 'Automatic optical positioning digital hardness testers, Shore durometers, and IRHD micro hardness test blocks for precision polymer QA.',
+    img: durometerImg,
   },
   {
-    img:    heroImg3,
-    eyebrow:'ISO / IEC 17025 Accredited Calibration',
-    title:  'Precision Hardness',
-    em:     'Testing Stations',
-    sub:    'High-precision digital hardness testers, multi-indenter turrets, and Shore durometer measurement systems.',
+    brand: 'DOLI Elektronik GmbH',
+    logo: doliLogo,
+    machineName: 'EDCi Digital Controller',
+    eyebrow: 'Control Electronics • DOLI Elektronik GmbH',
+    title: 'DOLI EDCi Digital Closed-Loop',
+    em: 'UTM Controllers',
+    sub: 'World-leading EDCi digital closed-loop controllers, extensometers, and hand-held remote consoles for universal testing machines.',
+    img: doliImg,
+  },
+  {
+    brand: 'Universal Testing Machines',
+    logo: utmLogo,
+    machineName: 'Universal Testing Machine',
+    eyebrow: 'Universal Testing Partner • UTM Systems',
+    title: 'Universal Tensile & Compression',
+    em: 'Testing Machines',
+    sub: 'Heavy-duty dual-column electromechanical & hydraulic UTM frames from 5kN to 600kN for metals, composites, and plastics.',
+    img: utmImg,
+  },
+  {
+    brand: 'Form+Test Prüfsysteme',
+    logo: formTestLogo,
+    machineName: 'EM 400 Universal Testing Machine',
+    eyebrow: 'German Testing Technology • Form+Test Prüfsysteme',
+    title: 'Form+Test Electromechanical',
+    em: '& Compression Rigs',
+    sub: 'High-precision electromechanical testing frames and high-capacity hydraulic compression testing machines from Form+Test Prüfsysteme.',
+    img: formtestImg,
+  },
+  {
+    brand: 'Helmut Fischer GmbH',
+    logo: fischerLogo,
+    machineName: 'Nano Indentation System',
+    eyebrow: 'Precision Surface Measurement • Helmut Fischer',
+    title: 'Fischer Nano Indentation',
+    em: '& Coating Gauges',
+    sub: 'Sub-nanometer depth resolution nano indentation hardness testers and non-destructive surface coating thickness measurement instruments.',
+    img: fischerImg,
   },
 ];
 
@@ -195,11 +245,17 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* ── Right: 4K image panel ── */}
+      {/* ── Right: Machine Showcase Panel ── */}
       <div className="hero-right">
         {slides.map((sl, i) => (
           <div key={i} className={`hero-slide-img${i === current ? ' active' : ''}`}>
-            <img src={sl.img} alt="" aria-hidden="true" />
+            <div className="hero-slide-card">
+              <div className="hero-brand-badge">
+                <img src={sl.logo} alt={sl.brand} />
+                <span className="hero-brand-name">{sl.machineName}</span>
+              </div>
+              <img src={sl.img} alt={sl.title} className="hero-machine-img" />
+            </div>
           </div>
         ))}
       </div>
