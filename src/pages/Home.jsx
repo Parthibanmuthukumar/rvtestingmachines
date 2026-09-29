@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logoPdf     from '../assets/images/RVTMPL LOGO_page-0001.jpg';
-import prescottImg from '../assets/images/prescott-mv.png';
-import durometerImg from '../assets/images/products/Durometer_HD3000L.jpg';
-import doliImg from '../assets/images/docx_products/doli_edci_controller_box.jpg';
-import utmImg from '../assets/images/docx_products/docx_utm_up100_ak2dh.png';
-import formtestImg from '../assets/images/EM-400.png';
-import fischerImg from '../assets/images/docx_products/docx_nano_indentation_system.png';
+import prescottImg from '../assets/images/hero/hero_prescott.png';
+import durometerImg from '../assets/images/hero/hero_hildebrand.png';
+import doliImg from '../assets/images/hero/hero_doli.png';
+import utmImg from '../assets/images/hero/hero_utm.png';
+import formtestImg from '../assets/images/hero/hero_formtest.png';
+import fischerImg from '../assets/images/hero/hero_fischer.png';
 
 import prescottLogo from '../assets/images/logos/prescott_logo.png';
 import fischerLogo from '../assets/images/logos/fischer.png';
@@ -62,11 +62,11 @@ const slides = [
   {
     brand: 'Universal Testing Machines',
     logo: utmLogo,
-    machineName: 'Universal Testing Machine',
+    machineName: 'SPC Universal Testing System',
     eyebrow: 'Universal Testing Partner • UTM Systems',
     title: 'Universal Tensile & Compression',
     em: 'Testing Machines',
-    sub: 'Heavy-duty dual-column electromechanical & hydraulic UTM frames from 5kN to 600kN for metals, composites, and plastics.',
+    sub: 'Heavy-duty electromechanical & high-temperature creep testing systems for metals, composites, and high-performance engineering materials.',
     img: utmImg,
   },
   {
