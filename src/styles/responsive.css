@@ -41,12 +41,19 @@ p, h1, h2, h3, h4, h5, h6, span, li, a {
 @media (max-width: 768px) {
   .page-hero {
     min-height: auto;
-    padding: calc(70px + 1.5rem) 1.25rem 2rem;
+    padding: calc(60px + 0.85rem) 1.25rem 1.15rem;
   }
 
   .page-hero-content h1 {
-    font-size: clamp(1.5rem, 6.5vw, 2.2rem);
+    font-size: clamp(1.4rem, 6vw, 2rem);
     line-height: 1.2;
+    margin-bottom: 0.65rem;
+  }
+
+  .page-hero-sub {
+    margin-bottom: 0.75rem !important;
+    line-height: 1.55 !important;
+    font-size: 0.88rem !important;
   }
 }
 

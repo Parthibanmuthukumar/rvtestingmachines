@@ -1600,10 +1600,10 @@
   .contact-map-frame { height: 260px; }
   .contact-map-wrap  { padding: 0 1.25rem; margin-top: 2rem; }
   
-  /* Services Page Mobile Spacing Fixes */
+  /* Services & Products Page Mobile Spacing Fixes */
   .page-hero {
     min-height: auto !important;
-    padding: 5.5rem var(--gx) 1.75rem !important;
+    padding: calc(60px + 0.85rem) var(--gx) 1.15rem !important;
   }
   .consultation-page-container {
     padding-bottom: 2rem !important;
