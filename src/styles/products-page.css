@@ -477,14 +477,50 @@
 
   .products-search-section.is-sticky {
     top: 60px;
-    padding: 8px 0;
+    padding: 6px 0 8px;
+  }
+  .products-search-section.is-sticky .products-search-container {
+    padding: 0 1rem;
   }
   .products-search-section.is-sticky .products-search-box {
-    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: stretch;
   }
   .products-search-section.is-sticky .products-search-input-group {
     max-width: 100%;
-    flex: 1 1 100%;
+    width: 100%;
+    flex: 0 0 auto;
+  }
+  .products-search-section.is-sticky .products-search-chips {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 2px 0 4px;
+    margin: 0;
+  }
+  .products-search-section.is-sticky .products-search-chips::-webkit-scrollbar {
+    display: none;
+  }
+  .products-search-section.is-sticky .products-chip-label {
+    display: none;
+  }
+  .products-search-section.is-sticky .products-chips-track {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 6px;
+    width: max-content;
+  }
+  .products-search-section.is-sticky .products-chip-btn {
+    padding: 4px 11px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .products-search-section.is-sticky .products-search-status {
+    display: none;
   }
 
   .products-layout {
@@ -1082,27 +1118,129 @@
 }
 
 @media (max-width: 768px) {
+  .products-search-section {
+    margin-bottom: 1.5rem;
+  }
+  .products-search-container {
+    padding: 0;
+  }
   .products-search-box {
-    padding: 1.25rem 1rem;
+    padding: 1.15rem 0.95rem;
+    border-radius: 14px;
   }
   .products-search-input {
-    font-size: 0.92rem;
-    padding: 12px 40px 12px 44px;
+    font-size: 16px; /* Prevents auto-zoom on iOS Safari */
+    padding: 11px 38px 11px 42px;
+    border-radius: 10px;
+    height: 46px;
   }
   .products-search-icon {
-    left: 14px;
+    left: 13px;
     width: 18px;
     height: 18px;
   }
   .products-search-clear-btn {
-    right: 10px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
   }
   .products-search-chips {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    margin-top: 0.9rem;
+  }
+  .products-chip-label {
+    font-size: 0.72rem;
+    color: #64748b;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .products-chips-track {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     gap: 6px;
+    padding-bottom: 3px;
+    width: 100%;
+  }
+  .products-chips-track::-webkit-scrollbar {
+    display: none;
   }
   .products-chip-btn {
-    padding: 5px 11px;
+    flex-shrink: 0;
+    padding: 6px 13px;
     font-size: 0.78rem;
+    white-space: nowrap;
+  }
+  .products-search-status {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    font-size: 0.82rem;
+  }
+  .search-status-active {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  /* Sticky adjustments specifically for mobile phone screens */
+  .products-search-section.is-sticky {
+    top: 56px;
+    padding: 6px 0 7px;
+  }
+  .products-search-section.is-sticky .products-search-container {
+    padding: 0 0.75rem;
+  }
+  .products-search-section.is-sticky .products-search-input {
+    font-size: 16px;
+    height: 38px;
+    padding: 8px 36px 8px 36px;
+  }
+  .products-search-section.is-sticky .products-search-icon {
+    left: 11px;
+    width: 16px;
+    height: 16px;
+  }
+  .products-search-section.is-sticky .products-search-clear-btn {
+    right: 6px;
+    width: 26px;
+    height: 26px;
+  }
+  .products-search-section.is-sticky .products-chip-btn {
+    padding: 3px 10px;
+    font-size: 0.72rem;
+  }
+
+  .category-products-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-page-wrapper {
+    padding: 1rem 0.65rem 3rem;
+  }
+  .products-main-panel {
+    padding: 1rem 0.5rem;
+  }
+  .category-title {
+    font-size: 1.5rem;
+  }
+  .category-desc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+  .mobile-categories-fab {
+    bottom: 18px;
+    right: 14px;
+    padding: 10px 16px;
+    font-size: 0.82rem;
   }
 }
 

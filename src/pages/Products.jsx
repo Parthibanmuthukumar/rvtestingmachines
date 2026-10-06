@@ -29,6 +29,17 @@ export default function Products() {
   const [activeChip, setActiveChip] = useState('All');
   const [fullscreenProduct, setFullscreenProduct] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileScreen, setIsMobileScreen] = useState(false);
+
+  // Detect mobile screen width for responsive input placeholder
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobileScreen(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile, { passive: true });
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Track scroll position to convert search bar to compact sticky mode
   useEffect(() => {
@@ -229,7 +240,7 @@ export default function Products() {
                 <input
                   type="text"
                   className="products-search-input"
-                  placeholder="Search equipment, models, testing standards, or materials (e.g., UTM, Shore A, Vickers, DOLI)..."
+                  placeholder={isMobileScreen ? "Search equipment, standards, or brands..." : "Search equipment, models, testing standards, or materials (e.g., UTM, Shore A, Vickers, DOLI)..."}
                   value={searchQuery}
                   onChange={(e) => {
                     setSearchQuery(e.target.value);

@@ -1652,6 +1652,22 @@
     font-size: 16px !important; /* Prevents iOS auto-zoom on input focus */
   }
 
+  /* Services & Consultation CTA Action Buttons */
+  .consultation-cta-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+  .consultation-cta-btn,
+  .consultation-cta-btn-outline {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+    padding: 12px 20px !important;
+    font-size: 0.92rem !important;
+  }
+
   /* About Page Mobile Grid & Alignment */
   .about-overview-inner,
   .about-why-inner {
