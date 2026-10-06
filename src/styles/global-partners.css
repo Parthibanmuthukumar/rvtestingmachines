@@ -186,20 +186,24 @@
     justify-content: center;
     align-items: center;
     gap: 0.75rem;
-    max-width: 480px;
+    max-width: 440px;
+    margin-inline: auto;
   }
   
   .partner-logo-card {
-    flex: 0 1 calc(50% - 0.75rem);
-    width: calc(50% - 0.75rem);
+    flex: 0 0 calc(50% - 0.4rem);
+    width: calc(50% - 0.4rem);
+    max-width: calc(50% - 0.4rem);
     height: 80px;
     padding: 0.65rem;
   }
 
-  /* Make 7th logo (odd child) center prominently without an awkward gap */
+  /* When total items are odd (e.g. 5 logos: 2 in row 1, 2 in row 2, and the 5th logo is lone), center the last logo */
   .partner-logo-card:last-child:nth-child(odd) {
-    flex: 0 1 calc(60% - 0.75rem);
-    width: calc(60% - 0.75rem);
+    flex: 0 0 calc(50% - 0.4rem);
+    width: calc(50% - 0.4rem);
+    max-width: calc(50% - 0.4rem);
+    margin-inline: auto;
   }
   
   .partner-logo-card img,
@@ -238,14 +242,23 @@
 }
 
 @media (max-width: 420px) {
+  .global-partners-grid {
+    gap: 0.6rem;
+    max-width: 360px;
+  }
+
   .partner-logo-card {
-    flex: 0 1 calc(50% - 0.5rem);
-    width: calc(50% - 0.5rem);
+    flex: 0 0 calc(50% - 0.35rem);
+    width: calc(50% - 0.35rem);
+    max-width: calc(50% - 0.35rem);
     height: 75px;
+    padding: 0.5rem;
   }
   
   .partner-logo-card:last-child:nth-child(odd) {
-    flex: 0 1 80%;
-    width: 80%;
+    flex: 0 0 calc(50% - 0.35rem);
+    width: calc(50% - 0.35rem);
+    max-width: calc(50% - 0.35rem);
+    margin-inline: auto;
   }
 }
