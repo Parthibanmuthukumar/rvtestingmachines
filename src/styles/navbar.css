@@ -1060,13 +1060,21 @@ body.nav-menu-open {
 
 @media (max-width: 900px) {
   /* On mobile view, navbar header is ALWAYS solid glassmorphic white so logo, brand text, and menubar are 100% visible */
+  .site-header {
+    height: 60px !important;
+  }
+
   .site-header .navbar,
-  .site-header:not(.scrolled) .navbar {
+  .site-header:not(.scrolled) .navbar,
+  .site-header.scrolled .navbar {
     background: rgba(255, 255, 255, 0.98) !important;
     backdrop-filter: blur(16px) !important;
     -webkit-backdrop-filter: blur(16px) !important;
     border-bottom: 1px solid #cbd5e1 !important;
     box-shadow: 0 4px 20px rgba(11, 31, 61, 0.08) !important;
+    padding: 0.45rem var(--gx) !important;
+    height: 60px !important;
+    box-sizing: border-box !important;
   }
 
   /* Brand text is always dark navy on mobile — never invisible white */
@@ -1102,7 +1110,16 @@ body.nav-menu-open {
 }
 
 @media (max-width: 480px) {
+  .site-header {
+    height: 56px !important;
+  }
+  .site-header .navbar,
+  .site-header:not(.scrolled) .navbar,
+  .site-header.scrolled .navbar {
+    height: 56px !important;
+    padding: 0.35rem 0.75rem !important;
+  }
   .brand-text-main { font-size: 0.82rem; }
   .brand-text-sub  { display: none; }
-  .nav-logo-img    { height: 38px; }
+  .nav-logo-img    { height: 36px !important; }
 }

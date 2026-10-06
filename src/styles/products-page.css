@@ -1208,14 +1208,20 @@
 
   /* Sticky adjustments specifically for mobile phone screens — compact & sleek */
   .products-search-section.is-sticky {
-    top: 54px;
-    padding: 6px 0 6px;
-    background: #ffffff;
-    border-bottom: 2px solid #cbd5e1;
-    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    top: 60px !important;
+    padding: 8px 0 8px !important;
+    background: #ffffff !important;
+    border-bottom: 2px solid #cbd5e1 !important;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.1) !important;
+  }
+  @media (max-width: 480px) {
+    .products-search-section.is-sticky {
+      top: 56px !important;
+      padding: 8px 0 8px !important;
+    }
   }
   .products-search-section.is-sticky .products-search-container {
-    padding: 0 0.65rem;
+    padding: 0 0.75rem;
   }
   .products-search-section.is-sticky .products-search-box {
     background: transparent !important;
@@ -1225,7 +1231,7 @@
     box-shadow: none !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 4px !important;
+    gap: 6px !important;
     margin: 0 !important;
   }
   .products-search-section.is-sticky .products-search-input-group {
@@ -1236,13 +1242,14 @@
   }
   .products-search-section.is-sticky .products-search-input {
     font-size: 14.5px !important;
-    height: 38px !important;
-    padding: 6px 34px 6px 36px !important;
+    height: 40px !important;
+    padding: 6px 36px 6px 38px !important;
     border-radius: 99px !important;
-    background: #f8fafc !important;
+    background: #ffffff !important;
     border: 1.5px solid #64748b !important;
     color: #0f172a !important;
     box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08) !important;
+    box-sizing: border-box !important;
   }
   .products-search-section.is-sticky .products-search-input::placeholder {
     color: #475569 !important;
