@@ -1059,7 +1059,41 @@ body.nav-menu-open {
 }
 
 @media (max-width: 900px) {
-  .nav-toggle { display: flex; }
+  /* On mobile view, navbar header is ALWAYS solid glassmorphic white so logo, brand text, and menubar are 100% visible */
+  .site-header .navbar,
+  .site-header:not(.scrolled) .navbar {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid #cbd5e1 !important;
+    box-shadow: 0 4px 20px rgba(11, 31, 61, 0.08) !important;
+  }
+
+  /* Brand text is always dark navy on mobile — never invisible white */
+  .site-header .brand-text-main,
+  .site-header:not(.scrolled) .brand-text-main {
+    color: var(--navy) !important;
+  }
+
+  .site-header .brand-text-sub,
+  .site-header:not(.scrolled) .brand-text-sub {
+    color: var(--txt-m) !important;
+  }
+
+  /* Hamburger toggle is always visible and crisp with navy bars */
+  .nav-toggle,
+  .site-header:not(.scrolled) .nav-toggle {
+    display: flex !important;
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06) !important;
+  }
+
+  .nav-toggle-bar,
+  .site-header:not(.scrolled) .nav-toggle-bar {
+    background: var(--navy) !important;
+  }
+
   .nav-links--desktop { display: none !important; }
   .nav-drawer { display: flex; }
   .nav-overlay.is-visible { display: block; opacity: 1; pointer-events: auto; }
