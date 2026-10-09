@@ -3,7 +3,6 @@ import formTestLogo from '../../assets/images/logos/form_test.png';
 import hildebrandLogo from '../../assets/images/logos/hildebrand.png';
 import unconventionalLogo from '../../assets/images/logos/unconventional_testing.png';
 import prescottLogo from '../../assets/images/logos/prescott_logo.png';
-import utmTestingLogo from '../../assets/images/logos/utm_testing.png';
 import doliLogo from '../../assets/images/logos/doli_logo.svg';
 import doliCatalogPdf from '../../assets/DOLI Catalog2026_EN_V1.pdf';
 

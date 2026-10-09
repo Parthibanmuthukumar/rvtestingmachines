@@ -16,7 +16,6 @@ const QUICK_FILTERS = [
   { label: 'Fatigue & Creep', query: 'Fatigue' },
   { label: 'Rheology & MFR', query: 'Rheometer' },
   { label: 'Rubber & Polymers', query: 'Rubber' },
-  { label: 'Metals & Alloys', query: 'Metal' },
   { label: 'DOLI Electronics', query: 'DOLI' },
 ];
 
@@ -449,44 +448,64 @@ export default function Products() {
 
                       {category.matchingSubcategories && category.matchingSubcategories.length > 0 && (
                         <div>
-                          <h3 style={{ fontSize: '1.15rem', fontWeight: '800', color: '#0f172a', marginBottom: '1rem', marginTop: '1.5rem' }}>
-                            Available Equipment &amp; Test Models
-                          </h3>
                           <div className="category-products-grid">
                             {category.matchingSubcategories.map((sub, idx) => (
                               <div key={idx} className="product-item-card">
-                                <div
-                                  className="product-card-media"
-                                  onClick={() => setFullscreenProduct(sub)}
-                                  role="button"
-                                  tabIndex={0}
-                                  aria-label={`View ${sub.title} image full screen`}
-                                  onKeyDown={(e) => {
-                                    if (e.key === 'Enter' || e.key === ' ') {
-                                      e.preventDefault();
-                                      setFullscreenProduct(sub);
-                                    }
-                                  }}
-                                >
-                                  <span className="product-material-tag">{sub.material}</span>
-                                  <img src={sub.image} alt={sub.title} loading="lazy" />
-                                  <button
-                                    type="button"
-                                    className="product-card-fullscreen-btn"
-                                    aria-label={`View ${sub.title} full screen`}
-                                    title="View full screen"
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      setFullscreenProduct(sub);
+                                {sub.image && (
+                                  <div
+                                    className="product-card-media"
+                                    onClick={() => setFullscreenProduct(sub)}
+                                    role="button"
+                                    tabIndex={0}
+                                    aria-label={`View ${sub.title} image full screen`}
+                                    onKeyDown={(e) => {
+                                      if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault();
+                                        setFullscreenProduct(sub);
+                                      }
                                     }}
                                   >
-                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
-                                      <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
-                                    </svg>
-                                    <span>Full Screen</span>
-                                  </button>
-                                </div>
+                                    {sub.material && <span className="product-material-tag">{sub.material}</span>}
+                                    <img src={sub.image} alt={sub.title} loading="lazy" />
+                                    <button
+                                      type="button"
+                                      className="product-card-fullscreen-btn"
+                                      aria-label={`View ${sub.title} full screen`}
+                                      title="View full screen"
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        setFullscreenProduct(sub);
+                                      }}
+                                    >
+                                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+                                      </svg>
+                                      <span>Full Screen</span>
+                                    </button>
+                                  </div>
+                                )}
                                 <div className="product-card-content">
+                                  {sub.material && !sub.image && (
+                                    <span
+                                      className="product-material-tag-inline"
+                                      style={{
+                                        display: 'inline-block',
+                                        alignSelf: 'flex-start',
+                                        background: '#0f172a',
+                                        color: '#ffffff',
+                                        fontSize: '0.7rem',
+                                        fontWeight: '700',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.05em',
+                                        padding: '4px 10px',
+                                        borderRadius: '4px',
+                                        marginBottom: '0.65rem',
+                                        width: 'fit-content',
+                                      }}
+                                    >
+                                      {sub.material}
+                                    </span>
+                                  )}
                                   <h3>{sub.title}</h3>
                                   <p>{sub.text}</p>
                                   {sub.tags && sub.tags.length > 0 && (
@@ -656,7 +675,9 @@ export default function Products() {
           >
             <div className="product-modal-header">
               <div className="product-modal-header-info">
-                <span className="product-modal-badge">{fullscreenProduct.material}</span>
+                {fullscreenProduct.material && (
+                  <span className="product-modal-badge">{fullscreenProduct.material}</span>
+                )}
                 <h3 id="modal-product-title" className="product-modal-title">
                   {fullscreenProduct.title}
                 </h3>
@@ -674,15 +695,17 @@ export default function Products() {
               </button>
             </div>
 
-            <div className="product-modal-body">
-              <div className="product-modal-image-wrapper">
-                <img
-                  src={fullscreenProduct.image}
-                  alt={fullscreenProduct.title}
-                  className="product-modal-image"
-                />
+            {fullscreenProduct.image && (
+              <div className="product-modal-body">
+                <div className="product-modal-image-wrapper">
+                  <img
+                    src={fullscreenProduct.image}
+                    alt={fullscreenProduct.title}
+                    className="product-modal-image"
+                  />
+                </div>
               </div>
-            </div>
+            )}
 
             <div className="product-modal-footer">
               <p className="product-modal-description">{fullscreenProduct.text}</p>

@@ -7,7 +7,6 @@ import docxTensileComp from '../assets/images/docx_products/docx_tensile_compres
 import docxFatigue from '../assets/images/docx_products/docx_fatigue_testing_machine.png';
 import docxCreep from '../assets/images/docx_products/docx_creep_testing_machine.png';
 import docxMdr from '../assets/images/docx_products/docx_moving_die_rheometer.png';
-import docxMfr from '../assets/images/docx_products/docx_mfr_tester.jpg';
 import docxMooney from '../assets/images/docx_products/docx_mooney_viscometer.png';
 import docxDma from '../assets/images/docx_products/docx_dma_analyser.jpg';
 import docxNanoIndentation from '../assets/images/docx_products/docx_nano_indentation_system.png';
@@ -16,7 +15,6 @@ import docxThicknessHTGA from '../assets/images/docx_products/docx_thickness_gau
 import docxAbrasion from '../assets/images/docx_products/docx_abrasion_resilience.png';
 import docxCompressionSet from '../assets/images/docx_products/docx_compression_set.jpg';
 import docxVolumetricCutter from '../assets/images/docx_products/docx_volumetric_cutter.jpg';
-import docxControllerExtensometer from '../assets/images/docx_products/docx_controller_extensometer.jpg';
 import docxDiamondIndenters from '../assets/images/docx_products/docx_diamond_indenters.png';
 import docxSpecificGravityDensimeter from '../assets/images/docx_products/docx_specific_gravity_densimeter.jpg';
 import docxPrecisionMicroBalance from '../assets/images/docx_products/docx_precision_micro_balance.jpg';
@@ -25,13 +23,7 @@ import doliEdciOverview from '../assets/images/docx_products/doli_edci_overview.
 import doliSystemIntegrationDiagram from '../assets/images/docx_products/doli_system_integration_diagram.png';
 import doliClosedLoopSchematic from '../assets/images/docx_products/doli_closed_loop_schematic.png';
 import doliEdciControllerBox from '../assets/images/docx_products/doli_edci_controller_box.jpg';
-import utmProdScooper50 from '../assets/images/docx_products/utm_prod_thumb_scooper50.png';
-import utmProdGe76 from '../assets/images/docx_products/utm_prod_thumb_ge76.png';
 import utmProdPt8 from '../assets/images/docx_products/utm_prod_thumb_pt8.png';
-import utmProdTts190 from '../assets/images/docx_products/utm_prod_thumb_tts190.png';
-import utmProdSpc1200 from '../assets/images/docx_products/utm_prod_thumb_spc1200.png';
-import pendulumImpactTester from '../assets/images/docx_products/pendulum_impact_tester.jpg';
-import sparesLoadcells from '../assets/images/products/spares_loadcells.jpg';
 
 export const INTRO_HIGHLIGHTS = [
   {
@@ -101,45 +93,14 @@ export const TESTING_CATEGORIES = [
     ],
   },
   {
-    id: 'acceleration-speed-testing',
-    name: 'Acceleration / Speed Testing',
-    highlight: false,
-    description: 'Dynamic load rate and speed-controlled material behavior testing systems up to 60,000 rpm.',
-    subcategories: [
-      {
-        material: 'Rubber & Plastics',
-        title: 'High-Speed Velocity Testers',
-        image: utmProdScooper50,
-        text: 'Dynamic strain rate evaluation for high-velocity material deformation.',
-        link: '/products#acceleration-speed-testing',
-      },
-      {
-        material: 'Metals & Alloys',
-        title: 'Impact Speed Measurement Rigs',
-        image: utmProdGe76,
-        text: 'High-frequency load response and speed transducer testing systems.',
-        link: '/products#acceleration-speed-testing',
-      },
-    ],
-  },
-  {
     id: 'displacement-measurement-testing',
     name: 'Displacement Measurement Testing',
     highlight: false,
     description: 'High-resolution optical & contact extensometer displacement measuring systems (0.0001 mm resolution).',
     subcategories: [
       {
-        material: 'Elastomers & Metals',
         title: 'Controller and Extensometer',
-        image: docxControllerExtensometer,
         text: 'High-precision crosshead displacement and strain extensometer measurement.',
-        link: '/products#displacement-measurement-testing',
-      },
-      {
-        material: 'Structural Materials',
-        title: 'LVDT & Strain Gauge Systems',
-        image: sparesLoadcells,
-        text: 'Micron-level displacement measurement for modulus and strain analysis.',
         link: '/products#displacement-measurement-testing',
       },
     ],
@@ -151,7 +112,6 @@ export const TESTING_CATEGORIES = [
     description: 'Cyclic load, flex-life, and endurance dynamic mechanical fatigue analyzers with DOLI controller.',
     subcategories: [
       {
-        material: 'Metal',
         title: 'Fatigue Testing Machine',
         image: docxFatigue,
         text: 'High-cycle (HCF) and low-cycle (LCF) dynamic fatigue testing rigs.',
@@ -173,7 +133,6 @@ export const TESTING_CATEGORIES = [
         link: '/products#creep-testing',
       },
       {
-        material: 'Metal & Alloys',
         title: 'Creep Testing Machine',
         image: docxCreep,
         text: 'Furnace-integrated long-term stress rupture creep testing machine.',
@@ -197,7 +156,6 @@ export const TESTING_CATEGORIES = [
       {
         material: 'Thermoplastics & Polymers',
         title: 'Melt Flow Rate (MFR) Tester',
-        image: docxMfr,
         text: 'Extrusion plastometer for Melt Mass-Flow Rate (MFR) and Melt Volume-Flow Rate (MVR) determination (ASTM D1238 & ISO 1133).',
         link: '/products#rheology-testing',
       },
@@ -261,15 +219,13 @@ export const TESTING_CATEGORIES = [
     description: 'Miniature disc specimen creep rupture and localized mechanical testing.',
     subcategories: [
       {
-        material: 'Nuclear & Power',
-        title: 'Small Punch Creep Test Rig',
+        title: 'Small Punch Creep Test',
         image: docxSmallPunchCreepRig,
         text: 'Evaluation of localized creep strain using 8mm x 0.5mm disc samples.',
         link: '/products#small-punch-creep-testing',
       },
       {
-        material: 'Alloys & Welds',
-        title: 'Micro-Mechanical Punch Tester',
+        title: 'Tool for Creep test',
         image: utmProdPt8,
         text: 'Yield strength & ductility assessment on miniature component samples.',
         link: '/products#small-punch-creep-testing',
@@ -288,21 +244,6 @@ export const TESTING_CATEGORIES = [
         image: docxTensileComp,
         text: 'Flexural strength & modulus determination for fiber composites & plastics.',
         link: '/products#fluxural-testing',
-      },
-    ],
-  },
-  {
-    id: 'instrumented-hardness-testing',
-    name: 'Instrumented Hardness Testing',
-    highlight: false,
-    description: 'Depth-sensing indentation (IIT) recording load-displacement curves.',
-    subcategories: [
-      {
-        material: 'Engineered Metals',
-        title: 'Instrumented Micro-Indentation System',
-        image: docxNanoIndentation,
-        text: 'Continuous depth-sensing hardness and elastic indentation modulus.',
-        link: '/products#instrumented-hardness-testing',
       },
     ],
   },
@@ -362,43 +303,6 @@ export const TESTING_CATEGORIES = [
         image: docxCompressionSet,
         text: 'Permanent set determination under constant deflection.',
         link: '/products#abrasion-resilence-testing',
-      },
-    ],
-  },
-  {
-    id: 'temperature-testing',
-    name: 'Temperature Testing',
-    highlight: false,
-    description: 'Environmental thermal chambers (-70°C to +300°C) for tensile & hardness.',
-    subcategories: [
-      {
-        material: 'All Materials',
-        title: 'Environmental Thermal Chamber',
-        image: utmProdTts190,
-        text: 'Temperature-controlled material testing in high & sub-zero conditions.',
-        link: '/products#temperature-testing',
-      },
-      {
-        material: 'Polymers',
-        title: 'Thermal Aging Test Oven',
-        image: utmProdSpc1200,
-        text: 'Precision forced-convection heat degradation & aging ovens.',
-        link: '/products#temperature-testing',
-      },
-    ],
-  },
-  {
-    id: 'impact-testing',
-    name: 'Impact Testing',
-    highlight: false,
-    description: 'Charpy, Izod pendulum, and drop-weight impact toughness evaluation.',
-    subcategories: [
-      {
-        material: 'Metals & Alloys',
-        title: 'Pendulum Impact Tester (Charpy/Izod)',
-        image: pendulumImpactTester,
-        text: '300J / 500J notched specimen impact energy absorption tester.',
-        link: '/products#impact-testing',
       },
     ],
   },
