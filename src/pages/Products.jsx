@@ -7,6 +7,7 @@ import { TESTING_CATEGORIES, INTRO_HIGHLIGHTS } from '../data/productCategoriesD
 import SEO from '../components/SEO/SEO';
 import { getPageMeta } from '../seo/pageMeta';
 import doliPdf from '../assets/DOLI Catalog2026_EN_V1.pdf';
+import doliDirectAccessPdf from '../assets/260806DirectAccesstoDOLIElektronik.pdf';
 import '../styles/products-page.css';
 
 const QUICK_FILTERS = [
@@ -541,7 +542,7 @@ export default function Products() {
                       )}
 
                       {category.id === 'spares' && (
-                        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1.25rem', marginBottom: '0.25rem' }}>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', marginTop: '1.5rem', marginBottom: '0.25rem' }}>
                           <a
                             href={doliPdf}
                             target="_blank"
@@ -556,6 +557,21 @@ export default function Products() {
                               <polyline points="10 9 9 9 8 9"/>
                             </svg>
                             <span>View DOLI Catalog (2026)</span>
+                          </a>
+                          <a
+                            href={doliDirectAccessPdf}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="doli-brochure-btn"
+                          >
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                              <polyline points="14 2 14 8 20 8"/>
+                              <line x1="16" y1="13" x2="8" y2="13"/>
+                              <line x1="16" y1="17" x2="8" y2="17"/>
+                              <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                            <span>Direct Access to DOLI Elektronik</span>
                           </a>
                         </div>
                       )}
